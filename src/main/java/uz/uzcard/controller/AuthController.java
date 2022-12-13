@@ -37,7 +37,7 @@ public class AuthController {
         return authService.login(dto);
     }
     @PostMapping("/registration/company")
-    @ApiOperation(value = "Api for registration only company" ,nickname = "Registration API for company" ,notes = "registration")
+    @ApiOperation(value = "Api for registration only company " ,nickname = "Registration API for company" ,notes = "registration for company only admin create")
     @ApiResponses(value = {@ApiResponse(code = 200,message = "Muvaffaqqiyatli"),
                            @ApiResponse(code = 403,message = "Ruxsat yo'q "),
                            @ApiResponse(code = 401,message = "Avtorizatsiyadan o'tilmagan "),
