@@ -25,7 +25,7 @@ public class JwtUtil {
         JwtBuilder jwtBuilder= Jwts.builder();
         jwtBuilder.claim("id",id);
         jwtBuilder.setIssuedAt(Date.from(Instant.now()));//start time
-        jwtBuilder.setExpiration(new Date(System.currentTimeMillis()+(60*60*1000)*12));//end time
+        jwtBuilder.setExpiration(new Date(System.currentTimeMillis()+(60*60*1000)*12+1));//end time
         jwtBuilder.signWith(SignatureAlgorithm.HS256, SECRET_KEY);
         return jwtBuilder.compact();
     }

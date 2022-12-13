@@ -1,8 +1,16 @@
 package uz.uzcard.entity;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.annotations.GenericGenerator;
+import uz.uzcard.enums.GeneralRole;
+import uz.uzcard.enums.GeneralStatus;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -22,9 +30,6 @@ public class ClientEntity extends BaseEntity {
 
     @Column
     private String phoneNumber;
-
-    @Column
-    private String email;
 
     @Column
     private String passportSeria;

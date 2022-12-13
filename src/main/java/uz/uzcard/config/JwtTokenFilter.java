@@ -53,7 +53,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
         try {
 
 
-            String token = header.split("")[1];
+            String token = header.split(" ")[1];
 
 
             String id = JwtUtil.decodeId(token);

@@ -1,9 +1,17 @@
 package uz.uzcard.entity;
 
 
-import lombok.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.annotations.GenericGenerator;
+import uz.uzcard.enums.GeneralRole;
+import uz.uzcard.enums.GeneralStatus;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -16,7 +24,6 @@ public class ProfileEntity extends BaseEntity{
 
     @Column
     private String surname;
-
 
 
 }

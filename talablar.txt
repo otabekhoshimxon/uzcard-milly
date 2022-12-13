@@ -6,7 +6,7 @@
     name,
     address,
     email
-    contact,
+    phone,
     created_date,
     status,
     visible,
