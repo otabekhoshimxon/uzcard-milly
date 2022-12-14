@@ -8,8 +8,12 @@ import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import uz.uzcard.dto.AuthDTO;
+import uz.uzcard.dto.ClientRegistrationDTO;
 import uz.uzcard.dto.CompanyRegistrationDTO;
 import uz.uzcard.service.AuthService;
 
@@ -26,10 +30,11 @@ public class AuthController {
 
     @PostMapping("/login")
     @ApiOperation(value = "Api for login" ,nickname = "Login API" ,notes = "login")
-    @ApiResponses(value = {@ApiResponse(code = 200,message = "Muvaffaqqiyatli"),
-                           @ApiResponse(code = 403,message = "Ruxsat yo'q "),
-                           @ApiResponse(code = 401,message = "Avtorizatsiyadan o'tilmagan "),
-                           @ApiResponse(code = 404,message = "Mavjud bo'lmagan API ")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
+            @ApiResponse(code = 403, message = "Ruxsat yo'q "),
+            @ApiResponse(code = 201, message = "Yaratildi "),
+            @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
+            @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
 
     })
     public ResponseEntity login(@Valid @RequestBody AuthDTO dto){
@@ -38,16 +43,32 @@ public class AuthController {
     }
     @PostMapping("/registration/company")
     @ApiOperation(value = "Api for registration only company " ,nickname = "Registration API for company" ,notes = "registration for company only admin create")
-    @ApiResponses(value = {@ApiResponse(code = 200,message = "Muvaffaqqiyatli"),
-                           @ApiResponse(code = 403,message = "Ruxsat yo'q "),
-                           @ApiResponse(code = 401,message = "Avtorizatsiyadan o'tilmagan "),
-                           @ApiResponse(code = 404,message = "Mavjud bo'lmagan API ")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
+            @ApiResponse(code = 403, message = "Ruxsat yo'q "),
+            @ApiResponse(code = 201, message = "Yaratildi "),
+            @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
+            @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
 
     })
      @PreAuthorize("ROLE_ADMIN")
-    public ResponseEntity registration(@Valid @RequestBody CompanyRegistrationDTO dto){
+    public ResponseEntity registrationCompany(@Valid @RequestBody CompanyRegistrationDTO dto){
 
         return authService.companyRegistration(dto);
+    }
+
+   @PostMapping("/registration/client")
+    @ApiOperation(value = "Api for registration only company " ,nickname = "Registration API for company" ,notes = "registration for company only admin create")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
+            @ApiResponse(code = 403, message = "Ruxsat yo'q "),
+            @ApiResponse(code = 201, message = "Yaratildi "),
+            @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
+            @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
+
+    })
+     @PreAuthorize("ROLE_COMPANY")
+    public ResponseEntity registrationClient(@Valid @RequestBody ClientRegistrationDTO dto){
+
+        return authService.clientRegistration(dto);
     }
 
 

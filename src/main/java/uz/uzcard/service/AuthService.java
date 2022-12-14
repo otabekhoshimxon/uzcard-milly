@@ -8,6 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import uz.uzcard.config.CustomUserDetails;
 import uz.uzcard.dto.AuthDTO;
+import uz.uzcard.dto.ClientRegistrationDTO;
 import uz.uzcard.dto.CompanyRegistrationDTO;
 import uz.uzcard.dto.responce.ResponceDTO;
 import uz.uzcard.exceptions.AlreadyExistsException;
@@ -56,5 +57,9 @@ public class AuthService {
     }
 
 
+    public ResponseEntity clientRegistration(ClientRegistrationDTO dto) {
 
+        return clientService.registration(dto);
+
+    }
 }

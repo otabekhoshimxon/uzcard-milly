@@ -26,10 +26,16 @@ public class CompanyEntity extends BaseEntity {
     private String address;
     @Column
     private String phone;
+    @Column
+    private Double servicePersentage;
 
 
 
     public CompanyEntity() {
+    }
+
+    public CompanyEntity(String id) {
+        this.id=id;
     }
     public CompanyEntity(CompanyRegistrationDTO dto){
         this.name=dto.getName();
@@ -38,5 +44,7 @@ public class CompanyEntity extends BaseEntity {
         this.phone=dto.getPhone();
         this.username=dto.getUsername();
         this.password= MD5PasswordGenerator.getMd5Password(dto.getPassword());
+        this.servicePersentage=dto.getServicePersentage();
+        this.role=GeneralRole.COMPANY;
     }
 }

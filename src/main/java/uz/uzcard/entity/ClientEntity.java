@@ -1,21 +1,18 @@
 package uz.uzcard.entity;
 
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.annotations.GenericGenerator;
+import uz.uzcard.dto.ClientRegistrationDTO;
 import uz.uzcard.enums.GeneralRole;
-import uz.uzcard.enums.GeneralStatus;
+import uz.uzcard.util.MD5PasswordGenerator;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
+
 @Entity
 @Table(name = "client",uniqueConstraints = @UniqueConstraint(columnNames = {"passportSeria", "passportNumber"}))
 
@@ -35,8 +32,31 @@ public class ClientEntity extends BaseEntity {
     private String passportSeria;
     @Column
     private String passportNumber;
+    @JoinColumn(name = "companyId",insertable = false,updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    private CompanyEntity company;
+
+    @Column
+    private String companyId;
 
 
+
+    public ClientEntity() {
+    }
+
+    public ClientEntity(ClientRegistrationDTO  dto) {
+        this.name = dto.getName();
+        this.surname = dto.getSurname();
+        this.middleName = dto.getMiddleName();
+        this.username = dto.getUsername();
+        this.phoneNumber = dto.getPhone();
+        this.passportSeria = dto.getPassportSeria();
+        this.passportNumber = dto.getPassportNumber();
+        this.email = dto.getEmail();
+        this.role = GeneralRole.CUSTOMER;
+        this.password= MD5PasswordGenerator.getMd5Password(dto.getPassword());
+
+    }
 }
 
 
