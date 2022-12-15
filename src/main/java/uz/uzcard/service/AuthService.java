@@ -10,8 +10,8 @@ import uz.uzcard.config.CustomUserDetails;
 import uz.uzcard.dto.AuthDTO;
 import uz.uzcard.dto.ClientRegistrationDTO;
 import uz.uzcard.dto.CompanyRegistrationDTO;
+import uz.uzcard.dto.VerificationDTO;
 import uz.uzcard.dto.responce.ResponceDTO;
-import uz.uzcard.exceptions.AlreadyExistsException;
 import uz.uzcard.util.JwtUtil;
 
 @Service
@@ -53,7 +53,6 @@ public class AuthService {
          return companyService.registration(dto);
 
 
-
     }
 
 
@@ -61,5 +60,13 @@ public class AuthService {
 
         return clientService.registration(dto);
 
+    }
+
+    public ResponseEntity verifyClient(VerificationDTO verification) {
+
+
+
+
+        return  clientService.activateClient(verification);
     }
 }

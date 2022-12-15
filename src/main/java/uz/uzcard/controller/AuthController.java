@@ -8,13 +8,11 @@ import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import uz.uzcard.dto.AuthDTO;
 import uz.uzcard.dto.ClientRegistrationDTO;
 import uz.uzcard.dto.CompanyRegistrationDTO;
+import uz.uzcard.dto.VerificationDTO;
 import uz.uzcard.service.AuthService;
 
 import javax.validation.Valid;
@@ -51,9 +49,9 @@ public class AuthController {
 
     })
      @PreAuthorize("ROLE_ADMIN")
-    public ResponseEntity registrationCompany(@Valid @RequestBody CompanyRegistrationDTO dto){
+    public ResponseEntity registrationCompany(@Valid @RequestBody CompanyRegistrationDTO companyRegistration){
 
-        return authService.companyRegistration(dto);
+        return authService.companyRegistration(companyRegistration);
     }
 
    @PostMapping("/registration/client")
@@ -66,9 +64,17 @@ public class AuthController {
 
     })
      @PreAuthorize("ROLE_COMPANY")
-    public ResponseEntity registrationClient(@Valid @RequestBody ClientRegistrationDTO dto){
+    public ResponseEntity registrationClient(@Valid @RequestBody ClientRegistrationDTO clientRegistration){
 
-        return authService.clientRegistration(dto);
+        return authService.clientRegistration(clientRegistration);
+    }
+
+
+    @PreAuthorize("ROLE_COMPANY")
+    @PutMapping("/verification")
+    public ResponseEntity verificationClient(@Valid @RequestBody VerificationDTO verification){
+
+        return authService.verifyClient(verification);
     }
 
 

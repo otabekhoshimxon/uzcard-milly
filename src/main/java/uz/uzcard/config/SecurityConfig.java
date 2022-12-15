@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.client.RestTemplate;
 import uz.uzcard.util.MD5PasswordGenerator;
 
 @Configuration
@@ -92,7 +93,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         };
     }
-
+    @Bean
+public  RestTemplate restTemplate(){
+        return new RestTemplate();
+}
 }
 
 

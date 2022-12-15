@@ -1,7 +1,6 @@
 package uz.uzcard.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -67,5 +66,18 @@ public class MessageService {
         MessageResponceDTO response = restTemplate.postForObject(messageUrl, entity, MessageResponceDTO.class);
         response.setStatus(true);
         return response;
+    }
+
+    public int getMessageCount(String phoneNumber) {
+
+        return messageRepository.getMessageCount(phoneNumber);
+
+    }
+
+    public boolean checkCode(String activationCode,String phone) {
+
+        String lastMessageCodeByPhone = messageRepository.getLastMessageCodeByPhone(phone);
+        return lastMessageCodeByPhone.equals(activationCode);
+
     }
 }

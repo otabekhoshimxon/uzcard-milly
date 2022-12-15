@@ -1,11 +1,14 @@
 package uz.uzcard.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import uz.uzcard.dto.ClientRegistrationDTO;
+import uz.uzcard.dto.VerificationDTO;
 import uz.uzcard.dto.responce.ResponceDTO;
 import uz.uzcard.entity.ClientEntity;
+import uz.uzcard.enums.GeneralStatus;
 import uz.uzcard.interfaces.BaseService;
 import uz.uzcard.repository.ClientRepository;
 import uz.uzcard.util.CompanyUtil;
@@ -13,16 +16,17 @@ import uz.uzcard.util.CompanyUtil;
 import java.util.Optional;
 
 @Service
-public class ClientService  extends BaseService {
+public class ClientService extends BaseService {
 
 
     @Autowired
     private ClientRepository clientRepository;
-  @Autowired
+    @Autowired
     private CompanyUtil companyUtil;
 
-
-
+    @Autowired
+    @Lazy
+    private MessageService messageService;
 
 
     @Override
@@ -58,12 +62,41 @@ public class ClientService  extends BaseService {
             return ResponceDTO.sendBadRequestResponce(-1,"Email already registered");
 
         ClientEntity client=new ClientEntity(dto);
+        client.setStatus(GeneralStatus.BLOCK);
         client.setCompanyId(companyUtil.getCurrentUser().getId());
         clientRepository.save(client);
-        return ResponceDTO.sendOkResponce(1,"Client successfully registered");
+        messageService.sendVerifyCode(client.getId());
+        return ResponceDTO.sendOkResponce(client.getUsername(),1,"Message sent a phone number ");
 
     }
 
 
+    public String getPhoneNumberById(String id) {
+        Optional<ClientEntity> clientEntityById = clientRepository.getClientEntityById(id);
 
+        if (clientEntityById.isPresent()){
+            return clientEntityById.get().getPhoneNumber();
+        }
+        return null;
+    }
+
+    public ResponseEntity activateClient(VerificationDTO verification) {
+        if (messageService.getMessageCount(verification.getPhoneNumber())>=3){
+
+            return ResponceDTO.sendBadRequestResponce(-1,"Limit out");
+        }
+
+        if (!messageService.checkCode(verification.getActivationCode(),verification.getPhoneNumber())){
+
+            return ResponceDTO.sendBadRequestResponce(-1,"Activation code wrong");
+
+        }
+        return setActiveClientByPhone(verification.getPhoneNumber());
+    }
+
+
+    public ResponseEntity setActiveClientByPhone(String phone){
+        clientRepository.setActiveClient(phone);
+        return ResponceDTO.sendOkResponce(1,"ok");
+    }
 }
