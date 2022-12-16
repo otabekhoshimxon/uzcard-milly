@@ -40,7 +40,7 @@ public class AuthController {
         return authService.login(dto);
     }
 
-
+  
 
 
    @PostMapping("/registration/client")
