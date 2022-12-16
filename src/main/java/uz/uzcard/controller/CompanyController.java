@@ -24,6 +24,10 @@ public class CompanyController {
     @Autowired
     private CompanyService companyService;
 
+
+
+
+
     @PostMapping("/create")
     @ApiOperation(value = "Api for create company " ,nickname = " API for create company" ,notes = "create company only admin ")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
@@ -31,13 +35,15 @@ public class CompanyController {
             @ApiResponse(code = 201, message = "Yaratildi "),
             @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
             @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
-
     })
     @PreAuthorize("ROLE_ADMIN")
     public ResponseEntity create(@Valid @RequestBody CompanyRegistrationDTO create){
 
         return companyService.create(create);
     }
+
+
+
 
 
     @PutMapping("/update/{id}")
@@ -47,7 +53,6 @@ public class CompanyController {
             @ApiResponse(code = 201, message = "Yaratildi "),
             @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
             @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
-
     })
     @PreAuthorize("ROLE_ADMIN")
     public ResponseEntity update(@PathVariable("id") String id,@Valid @RequestBody CompanyUpdateDTO update){
@@ -55,18 +60,35 @@ public class CompanyController {
         return companyService.update(id,update);
     }
 
- @GetMapping("/getAll")
+
+
+
+    @GetMapping("/getAll")
     @ApiOperation(value = "Api for get all company  by page " ,nickname = " API for get all company" ,notes = "get all companies only admin ")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
             @ApiResponse(code = 403, message = "Ruxsat yo'q "),
             @ApiResponse(code = 201, message = "Yaratildi "),
             @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
             @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
-
     })
     @PreAuthorize("ROLE_ADMIN")
     public ResponseEntity<PageImpl> update(@RequestParam(value = "page" ,defaultValue = "0") Integer page, @RequestParam(value = "size" ,defaultValue = "2") Integer size){
         return companyService.getAllCompany(page,size);
+    }
+
+
+
+    @DeleteMapping("/delete/{id}")
+    @ApiOperation(value = "Api for delete company  by id " ,nickname = " API for delete company" ,notes = "Delete  only admin ")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
+            @ApiResponse(code = 403, message = "Ruxsat yo'q "),
+            @ApiResponse(code = 201, message = "Yaratildi "),
+            @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
+            @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
+    })
+    @PreAuthorize("ROLE_ADMIN")
+    public ResponseEntity delete(@PathVariable("id") String id){
+        return companyService.delete(id);
     }
 
 

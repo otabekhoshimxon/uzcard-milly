@@ -96,14 +96,29 @@ public class CompanyService  extends BaseService {
         List<CompanyEntity> content = all.getContent();
         List<CompanyDTO> getAll=new ArrayList<>();
         for (CompanyEntity company : content) {
-            CompanyDTO companyDTO=new CompanyDTO();
-            companyDTO.setName(company.getName());
-            companyDTO.setStatus(company.getStatus());
-            companyDTO.setAddress(company.getAddress());
-            companyDTO.setPhone(companyDTO.getPhone());
-            companyDTO.setServicePersentage(company.getServicePersentage());
-            getAll.add(companyDTO);
+            if (company.getVisible()){
+                CompanyDTO companyDTO=new CompanyDTO();
+                companyDTO.setName(company.getName());
+                companyDTO.setStatus(company.getStatus());
+                companyDTO.setAddress(company.getAddress());
+                companyDTO.setPhone(companyDTO.getPhone());
+                companyDTO.setServicePersentage(company.getServicePersentage());
+                getAll.add(companyDTO);
+            }
+
         }
         return ResponseEntity.ok(new PageImpl(getAll,of,all.getTotalElements()));
+    }
+
+    public ResponseEntity delete(String id) {
+
+        if (!existsById(id)){
+            return ResponceDTO.sendBadRequestResponce(-1,"Company not found");
+
+        }
+
+        companyRepository.setVisibleById(id);
+
+        return ResponceDTO.sendOkResponce(1,"Company delete success");
     }
 }

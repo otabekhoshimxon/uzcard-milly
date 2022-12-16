@@ -20,4 +20,9 @@ public interface CompanyRepository extends PagingAndSortingRepository<CompanyEnt
     @Transactional
     @Query("update CompanyEntity set username=?2 ,password=?3 where id=?1")
     void changeUsernameAndPasswordById(String id, String username, String password);
+
+    @Modifying
+    @Transactional
+    @Query("update CompanyEntity set visible=false where id=?1")
+    void setVisibleById(String id);
 }
