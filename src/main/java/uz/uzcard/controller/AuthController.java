@@ -39,20 +39,9 @@ public class AuthController {
 
         return authService.login(dto);
     }
-    @PostMapping("/registration/company")
-    @ApiOperation(value = "Api for registration only company " ,nickname = "Registration API for company" ,notes = "registration for company only admin create")
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
-            @ApiResponse(code = 403, message = "Ruxsat yo'q "),
-            @ApiResponse(code = 201, message = "Yaratildi "),
-            @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
-            @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
 
-    })
-     @PreAuthorize("ROLE_ADMIN")
-    public ResponseEntity registrationCompany(@Valid @RequestBody CompanyRegistrationDTO companyRegistration){
 
-        return authService.companyRegistration(companyRegistration);
-    }
+
 
    @PostMapping("/registration/client")
     @ApiOperation(value = "Api for registration only company " ,nickname = "Registration API for company" ,notes = "registration for company only admin create")

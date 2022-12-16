@@ -48,12 +48,7 @@ public class AuthService {
     }
 
 
-    public ResponseEntity companyRegistration(CompanyRegistrationDTO dto) {
 
-         return companyService.registration(dto);
-
-
-    }
 
 
     public ResponseEntity clientRegistration(ClientRegistrationDTO dto) {
