@@ -12,6 +12,8 @@ import uz.uzcard.entity.MessageEntity;
 import uz.uzcard.repository.MessageRepository;
 import uz.uzcard.util.RandomUtil;
 
+import java.util.Optional;
+
 
 @Service
 public class MessageService {
@@ -76,8 +78,8 @@ public class MessageService {
 
     public boolean checkCode(String activationCode,String phone) {
 
-        String lastMessageCodeByPhone = messageRepository.getLastMessageCodeByPhone(phone);
-        return lastMessageCodeByPhone.equals(activationCode);
+        Optional<MessageEntity> lastMessageCodeByPhone = messageRepository.getDistinctFirstByCodeOrderByIdIdAsc(phone);
+        return lastMessageCodeByPhone.map(messageEntity -> messageEntity.getCode().equals(activationCode)).orElse(false);
 
     }
 }

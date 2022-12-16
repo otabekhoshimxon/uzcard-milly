@@ -3,7 +3,6 @@ package uz.uzcard.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import uz.uzcard.entity.ClientEntity;
 
@@ -24,6 +23,6 @@ public interface ClientRepository extends JpaRepository<ClientEntity,String> {
 
     @Modifying
     @Transactional
-    @Query(value = "update client  set status='ACTIVE' where  phoneNumber=?1 " ,nativeQuery = true)
-    void   setActiveClient(String phone);
+    @Query(value = "update ClientEntity  set status='ACTIVE' where  phoneNumber=?1 " )
+    void setActiveClient(String phone);
 }

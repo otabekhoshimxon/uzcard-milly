@@ -4,6 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import uz.uzcard.entity.MessageEntity;
 
+import java.util.Optional;
+
 public interface MessageRepository extends JpaRepository<MessageEntity,String> {
 
 
@@ -13,6 +15,6 @@ public interface MessageRepository extends JpaRepository<MessageEntity,String> {
     int getMessageCount(String phone);
 
 
-    @Query(value = "select code from message where phone=?1 order by id desc ",nativeQuery = true)
-    String getLastMessageCodeByPhone(String phone);
+    @Query(value = "from MessageEntity where phone=?1 order by id asc ")
+    Optional<MessageEntity> getDistinctFirstByCodeOrderByIdIdAsc(String phone);
 }
