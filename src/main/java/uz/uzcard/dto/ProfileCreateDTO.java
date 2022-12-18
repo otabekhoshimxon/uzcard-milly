@@ -9,7 +9,7 @@ import javax.validation.constraints.Email;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProfileRegistrationDTO {
+public class ProfileCreateDTO {
     private String name;
     private String surname;
     @Email

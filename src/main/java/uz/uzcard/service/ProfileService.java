@@ -3,10 +3,9 @@ package uz.uzcard.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import uz.uzcard.dto.ProfileRegistrationDTO;
+import uz.uzcard.dto.ProfileCreateDTO;
 import uz.uzcard.dto.ProfileUpdateDTO;
 import uz.uzcard.dto.responce.ResponceDTO;
-import uz.uzcard.entity.CompanyEntity;
 import uz.uzcard.entity.ProfileEntity;
 import uz.uzcard.enums.GeneralRole;
 import uz.uzcard.enums.GeneralStatus;
@@ -49,7 +48,7 @@ public class ProfileService  extends BaseService {
 
 
 
-    public ResponseEntity create(ProfileRegistrationDTO create) {
+    public ResponseEntity create(ProfileCreateDTO create) {
 
 
         if (existsByUsername(create.getUsername())){
