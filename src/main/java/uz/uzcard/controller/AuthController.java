@@ -67,6 +67,14 @@ public class AuthController {
     }
 
 
+    @ApiOperation(value = "Api for verify only profile " ,nickname = "Verification API for profile" ,notes = "Verification for profile only with email")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
+            @ApiResponse(code = 403, message = "Ruxsat yo'q "),
+            @ApiResponse(code = 201, message = "Yaratildi "),
+            @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
+            @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
+
+    })
     @PutMapping("/verification/{id}")
     public ResponseEntity verificationClient(@PathVariable("id") String id){
 
