@@ -1,7 +1,7 @@
 package uz.uzcard.enums;
 
 public enum GeneralRole {
-    ADMIN,
+    ADMIN,SUPER_ADMIN,
     MODERATOR,
     CUSTOMER,
     COMPANY,

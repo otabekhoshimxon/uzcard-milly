@@ -1,6 +1,8 @@
 package uz.uzcard.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -36,6 +38,7 @@ public class CompanyService  extends BaseService {
         return companyRepository.existsByUsername(username);
     }
 
+
     public CompanyEntity getByUsername(String username){
         Optional<CompanyEntity> byUsername =
                 companyRepository.getByUsername(username);
@@ -54,6 +57,7 @@ public class CompanyService  extends BaseService {
         return ResponceDTO.sendAuthorizationToken(company.getUsername(), JwtUtil.encodeId(company.getId()));
 
     }
+
 
     public ResponseEntity update(String id,CompanyUpdateDTO update) {
 
@@ -82,10 +86,13 @@ public class CompanyService  extends BaseService {
 
 
 
+
+
     public CompanyEntity getById(String id){
         Optional<CompanyEntity> byId = companyRepository.findById(id);
         return byId.orElse(null);
     }
+
 
     public ResponseEntity<PageImpl> getAllCompany(Integer page, Integer size) {
 
@@ -98,10 +105,11 @@ public class CompanyService  extends BaseService {
         for (CompanyEntity company : content) {
             if (company.getVisible()){
                 CompanyDTO companyDTO=new CompanyDTO();
+                companyDTO.setUsername(company.getUsername());
                 companyDTO.setName(company.getName());
                 companyDTO.setStatus(company.getStatus());
                 companyDTO.setAddress(company.getAddress());
-                companyDTO.setPhone(companyDTO.getPhone());
+                companyDTO.setPhone(company.getPhone());
                 companyDTO.setServicePersentage(company.getServicePersentage());
                 getAll.add(companyDTO);
             }

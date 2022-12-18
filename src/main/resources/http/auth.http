@@ -1,13 +1,19 @@
-###
-POST http://localhost:8080/auth/registration
-Content-Type: Application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImZmODA4MTgxODUwNzdjZmIwMTg1MDc3ZDAyZjcwMDAwIiwiaWF0IjoxNjcwODkzMTQ1LCJleHAiOjE2NzA5MzYzNDV9.Ggf0dpP15v8Fmig9Sn6KlUAVe5COIC6nmuGrojd79HY
+POST http://localhost:8080/auth/login
+Content-Type: application/json
 
 {
-  "name": "Payme",
-  "address": "Tashkent.Shaykhontohur",
-  "email": "paymeuzb@gmail.com",
-  "phone": "+998908093341",
-  "username": "PaymeUzbekistan2022",
-  "password": "payme2022"
+  "username": "String",
+  "password": "String"
+}
+
+
+
+
+###
+PUT http://localhost:8080/auth/verification
+Content-Type: application/json
+
+{
+  "phoneNumber": "String",
+  "activationCode": "String"
 }

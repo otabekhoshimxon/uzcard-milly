@@ -5,13 +5,10 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.annotations.GenericGenerator;
-import uz.uzcard.enums.GeneralRole;
-import uz.uzcard.enums.GeneralStatus;
 
-import javax.persistence.*;
-import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Getter
 @Setter

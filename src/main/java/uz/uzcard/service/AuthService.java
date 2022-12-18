@@ -64,4 +64,9 @@ public class AuthService {
 
         return  clientService.activateClient(verification);
     }
+
+    public ResponseEntity verifyProfileById(String id) {
+
+       return profileService.verifyProfileById(id);
+    }
 }

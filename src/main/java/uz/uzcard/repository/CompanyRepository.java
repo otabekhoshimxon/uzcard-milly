@@ -3,12 +3,13 @@ package uz.uzcard.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.transaction.annotation.Transactional;
 import uz.uzcard.entity.CompanyEntity;
 
 import java.util.Optional;
-
+@RedisHash
 public interface CompanyRepository extends PagingAndSortingRepository<CompanyEntity,String> {
 
 

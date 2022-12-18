@@ -40,7 +40,7 @@ public class AuthController {
         return authService.login(dto);
     }
 
-  
+
 
 
    @PostMapping("/registration/client")
@@ -64,6 +64,13 @@ public class AuthController {
     public ResponseEntity verificationClient(@Valid @RequestBody VerificationDTO verification){
 
         return authService.verifyClient(verification);
+    }
+
+
+    @PutMapping("/verification/{id}")
+    public ResponseEntity verificationClient(@PathVariable("id") String id){
+
+        return authService.verifyProfileById(id);
     }
 
 
