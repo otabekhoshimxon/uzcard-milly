@@ -15,6 +15,7 @@ import uz.uzcard.dto.CompanyRegistrationDTO;
 import uz.uzcard.dto.VerificationDTO;
 import uz.uzcard.service.AuthService;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 
 @RestController

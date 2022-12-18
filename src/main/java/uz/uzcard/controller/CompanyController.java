@@ -12,6 +12,7 @@ import uz.uzcard.dto.CompanyRegistrationDTO;
 import uz.uzcard.dto.CompanyUpdateDTO;
 import uz.uzcard.service.CompanyService;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 
 @RestController
@@ -87,6 +88,7 @@ public class CompanyController {
             @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
     })
     @PreAuthorize("ROLE_ADMIN")
+
     public ResponseEntity delete(@PathVariable("id") String id){
         return companyService.delete(id);
     }

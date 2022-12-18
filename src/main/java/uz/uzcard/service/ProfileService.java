@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import uz.uzcard.dto.ProfileRegistrationDTO;
+import uz.uzcard.dto.ProfileUpdateDTO;
 import uz.uzcard.dto.responce.ResponceDTO;
 import uz.uzcard.entity.CompanyEntity;
 import uz.uzcard.entity.ProfileEntity;
@@ -83,5 +84,33 @@ public class ProfileService  extends BaseService {
         profile.setStatus(GeneralStatus.ACTIVE);
         profileRepository.save(profile);
         return ResponceDTO.sendOkResponce(profile.getUsername(), 1,"Success");
+    }
+
+    public ResponseEntity update(String id, ProfileUpdateDTO update) {
+
+        Optional<ProfileEntity> byId = profileRepository.findById(id);
+        if (byId.isEmpty()){
+            return ResponceDTO.sendBadRequestResponce(-1,"Profile not found");
+        }
+        if (existsByUsername(update.getUsername())){
+            return ResponceDTO.sendBadRequestResponce(-1,"Username already taken");
+
+        }
+
+        if (profileRepository.existsByEmail(update.getEmail())){
+            return ResponceDTO.sendBadRequestResponce(-1,"Email already taken");
+
+        }
+        ProfileEntity profile = byId.get();
+        profile.setName(update.getName());
+        profile.setPassword(MD5PasswordGenerator.getMd5Password(update.getPassword()));
+        profile.setSurname(update.getSurname());
+        profile.setEmail(update.getEmail());
+        profile.setUsername(update.getUsername());
+
+        profileRepository.save(profile);
+        return ResponceDTO.sendOkResponce(1,"Success");
+
+
     }
 }
