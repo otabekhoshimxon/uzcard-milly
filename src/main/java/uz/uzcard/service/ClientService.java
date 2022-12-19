@@ -9,14 +9,13 @@ import uz.uzcard.dto.VerificationDTO;
 import uz.uzcard.dto.responce.ResponceDTO;
 import uz.uzcard.entity.ClientEntity;
 import uz.uzcard.enums.GeneralStatus;
-import uz.uzcard.interfaces.BaseService;
 import uz.uzcard.repository.ClientRepository;
 import uz.uzcard.util.CompanyUtil;
 
 import java.util.Optional;
 
 @Service
-public class ClientService extends BaseService {
+public class ClientService  {
 
 
     @Autowired
@@ -29,7 +28,7 @@ public class ClientService extends BaseService {
     private MessageService messageService;
 
 
-    @Override
+
     public boolean existsById(String id) {
         return clientRepository.existsById(id);
     }
@@ -58,8 +57,6 @@ public class ClientService extends BaseService {
         if (clientRepository.existsByPhoneNumber(dto.getPhone())){
             return ResponceDTO.sendBadRequestResponce(-1,"Phone number already registered");
         }
-        if (clientRepository.existsByEmail(dto.getEmail()))
-            return ResponceDTO.sendBadRequestResponce(-1,"Email already registered");
 
         ClientEntity client=new ClientEntity(dto);
         client.setStatus(GeneralStatus.BLOCK);

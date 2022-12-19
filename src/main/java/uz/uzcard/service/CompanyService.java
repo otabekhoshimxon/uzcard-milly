@@ -1,8 +1,6 @@
 package uz.uzcard.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -11,24 +9,22 @@ import uz.uzcard.dto.CompanyRegistrationDTO;
 import uz.uzcard.dto.CompanyUpdateDTO;
 import uz.uzcard.dto.responce.ResponceDTO;
 import uz.uzcard.entity.CompanyEntity;
-import uz.uzcard.interfaces.BaseService;
 import uz.uzcard.repository.CompanyRepository;
 import uz.uzcard.util.JwtUtil;
 import uz.uzcard.util.MD5PasswordGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
-public class CompanyService  extends BaseService {
+public class CompanyService {
 
     @Autowired
     private CompanyRepository companyRepository;
 
 
-    @Override
+
     public boolean existsById(String id) {
 
         return companyRepository.existsById(id);

@@ -27,7 +27,8 @@ public class ClientEntity extends BaseEntity {
 
     @Column
     private String phoneNumber;
-
+    @Column
+    private String email;
     @Column
     private String passportSeria;
     @Column

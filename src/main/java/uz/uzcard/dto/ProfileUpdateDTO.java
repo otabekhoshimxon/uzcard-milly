@@ -12,8 +12,6 @@ import javax.validation.constraints.Email;
 public class ProfileUpdateDTO {
     private String name;
     private String surname;
-    @Email
-    private String email;
     private String username;
     private String password;
 

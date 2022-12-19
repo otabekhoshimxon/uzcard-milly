@@ -1,5 +1,6 @@
 package uz.uzcard.controller;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -12,10 +13,10 @@ import uz.uzcard.dto.CompanyRegistrationDTO;
 import uz.uzcard.dto.CompanyUpdateDTO;
 import uz.uzcard.service.CompanyService;
 
-import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 
 @RestController
+@Api(tags = "Company controller")
 @RequestMapping("/api/v1/company")
 public class CompanyController {
 

@@ -40,7 +40,7 @@ public class UzcardProjectApplication {
                 profile.setPassword(MD5PasswordGenerator.getMd5Password("1306"));
                 profile.setSurname("Hoshimxon");
                 profile.setName("Otabek");
-                profile.setEmail("otabekhoshimxon@gmail.com");
+
                 profileRepository.save(profile);
             }
         };

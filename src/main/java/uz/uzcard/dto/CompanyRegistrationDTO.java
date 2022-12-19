@@ -18,8 +18,6 @@ public class CompanyRegistrationDTO {
     @NotNull(message = "Service Persentage is required")
     private Double servicePersentage;
     @Email(message = "Email is not valid")
-    private String email;
-    @NotNull(message = "Phone is required")
     private String phone;
     @NotNull(message = "Username is required")
     private String username;

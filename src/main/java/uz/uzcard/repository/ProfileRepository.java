@@ -14,5 +14,5 @@ public interface ProfileRepository extends JpaRepository<ProfileEntity,String> {
 
     Optional<ProfileEntity> getByUsername(String username);
 
-    boolean existsByEmail(String username);
+
 }

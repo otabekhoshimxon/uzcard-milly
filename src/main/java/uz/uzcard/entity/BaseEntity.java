@@ -28,8 +28,7 @@ public class BaseEntity  implements Serializable {
     protected String name;
     @Column
     protected String username;
-    @Column
-    protected String email;
+
     @Column
     @Size(min = 5,max = 250)
     protected String password;

@@ -12,14 +12,6 @@ import uz.uzcard.service.CompanyService;
 @Component
 public class CompanyUtil {
 
-
-    @Autowired
-    private CompanyService companyService;
-
-
-
-
-
     public CustomUserDetails getCurrentUser() {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

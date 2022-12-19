@@ -6,7 +6,6 @@ Authorization: Bearer
   "name": "String",
   "address": "String",
   "servicePersentage": 0.0,
-  "email": "String",
   "phone": "String",
   "username": "String",
   "password": "String"
