@@ -3,10 +3,9 @@ package uz.uzcard.entity;
 
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
-import uz.uzcard.dto.CompanyRegistrationDTO;
+import uz.uzcard.dto.company.CompanyRegistrationDTO;
 import uz.uzcard.enums.GeneralRole;
 import uz.uzcard.enums.GeneralStatus;
-import uz.uzcard.util.JwtUtil;
 import uz.uzcard.util.MD5PasswordGenerator;
 
 import javax.persistence.*;
@@ -16,21 +15,37 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @ToString
-
 @Entity
 @Table(name = "company")
-public class CompanyEntity extends BaseEntity {
+public class CompanyEntity implements BaseEntity {
 
-
+    @Id
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    private String id;
+    @Column
+    private String name;
+    @Column
+    @Size(min = 5,max = 250)
+    private String password;
+    @Column
+    private LocalDateTime createdDate=LocalDateTime.now();
+    @Column
+    @Enumerated(EnumType.STRING)
+    private GeneralStatus status=GeneralStatus.ACTIVE;
+    @Column
+    @Enumerated(EnumType.STRING)
+    private GeneralRole role=GeneralRole.CLIENT;
+    @Column
+    private Boolean visible=Boolean.TRUE;
     @Column
     private String address;
     @Column
     private String phone;
     @Column
     private Double servicePersentage;
-
-
-
+    @Column
+    private String username;
     public CompanyEntity() {
     }
 

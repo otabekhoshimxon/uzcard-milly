@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import uz.uzcard.dto.ClientRegistrationDTO;
+import uz.uzcard.dto.client.ClientCreateDTO;
 import uz.uzcard.dto.VerificationDTO;
+import uz.uzcard.dto.client.ClientFilterDTO;
+import uz.uzcard.dto.client.ClientUpdateDTO;
 import uz.uzcard.dto.responce.ResponceDTO;
 import uz.uzcard.entity.ClientEntity;
 import uz.uzcard.enums.GeneralStatus;
@@ -22,7 +24,6 @@ public class ClientService  {
     private ClientRepository clientRepository;
     @Autowired
     private CompanyUtil companyUtil;
-
     @Autowired
     @Lazy
     private MessageService messageService;
@@ -35,37 +36,24 @@ public class ClientService  {
 
 
 
-    public ClientEntity getByUsername(String username){
-        Optional<ClientEntity> byUsername =
-                clientRepository.getByUsername(username);
-
-        return byUsername.orElse(null);
-    }
-
-    public boolean existsByUsername(String username){
-
-             return    clientRepository.existsByUsername(username);
+    public ResponseEntity create(ClientCreateDTO create) {
 
 
-    }
-
-    public ResponseEntity registration(ClientRegistrationDTO dto) {
-
-        if (existsByUsername(dto.getUsername())){
-            return ResponceDTO.sendBadRequestResponce(-1,"Username already registered");
-        }
-        if (clientRepository.existsByPhoneNumber(dto.getPhone())){
+        if (clientRepository.existsByPhoneNumber(create.getPhone())){
             return ResponceDTO.sendBadRequestResponce(-1,"Phone number already registered");
         }
 
-        ClientEntity client=new ClientEntity(dto);
+        ClientEntity client=new ClientEntity(create);
         client.setStatus(GeneralStatus.BLOCK);
         client.setCompanyId(companyUtil.getCurrentUser().getId());
         clientRepository.save(client);
         messageService.sendVerifyCode(client.getId());
-        return ResponceDTO.sendOkResponce(client.getUsername(),1,"Message sent a phone number ");
+        return ResponceDTO.sendOkResponce(client.getPhoneNumber(),1,"Message sent a phone number ");
+
 
     }
+
+
 
 
     public String getPhoneNumberById(String id) {
@@ -96,4 +84,22 @@ public class ClientService  {
         clientRepository.setActiveClient(phone);
         return ResponceDTO.sendOkResponce(1,"ok");
     }
+
+    public ResponseEntity update(String id, ClientUpdateDTO update) {
+
+
+        return null;
+
+    }
+
+    public ResponseEntity filter(ClientFilterDTO filter) {
+
+
+        return null;
+    }
+
+
+
+
+
 }

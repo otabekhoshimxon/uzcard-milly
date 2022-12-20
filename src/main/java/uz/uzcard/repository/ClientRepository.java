@@ -12,9 +12,6 @@ import java.util.Optional;
 public interface ClientRepository extends JpaRepository<ClientEntity,String> {
 
 
-    Optional<ClientEntity> getByUsername(String username);
-
-    boolean existsByUsername(String username);
 
     boolean existsByPhoneNumber(String phone);
 

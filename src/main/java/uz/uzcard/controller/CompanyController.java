@@ -9,8 +9,8 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import uz.uzcard.dto.CompanyRegistrationDTO;
-import uz.uzcard.dto.CompanyUpdateDTO;
+import uz.uzcard.dto.company.CompanyRegistrationDTO;
+import uz.uzcard.dto.company.CompanyUpdateDTO;
 import uz.uzcard.service.CompanyService;
 
 import javax.validation.Valid;

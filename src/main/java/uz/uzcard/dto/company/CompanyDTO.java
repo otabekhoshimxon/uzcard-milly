@@ -1,4 +1,4 @@
-package uz.uzcard.dto;
+package uz.uzcard.dto.company;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;

@@ -2,9 +2,8 @@ package uz.uzcard.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import uz.uzcard.dto.ProfileFilterDTO;
+import uz.uzcard.dto.profile.ProfileFilterDTO;
 import uz.uzcard.entity.ProfileEntity;
-import uz.uzcard.interfaces.ProfileMapping;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

@@ -1,4 +1,4 @@
-package uz.uzcard.dto;
+package uz.uzcard.dto.profile;
 
 import lombok.Data;
 

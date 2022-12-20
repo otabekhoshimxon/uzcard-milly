@@ -19,31 +19,31 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 @Entity
 @Table(name = "profile")
-public class ProfileEntity extends BaseEntity{
+public class ProfileEntity implements BaseEntity{
 
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
-    protected String id;
+    private String id;
     @Column
-    protected String name;
+    private String name;
     @Column
-    protected String username;
+    private String username;
 
     @Column
     @Size(min = 5,max = 250)
-    protected String password;
+    private String password;
     @Column
-    protected LocalDateTime createdDate=LocalDateTime.now();
-    @Column
-    @Enumerated(EnumType.STRING)
-    protected GeneralStatus status=GeneralStatus.ACTIVE;
+    private LocalDateTime createdDate=LocalDateTime.now();
     @Column
     @Enumerated(EnumType.STRING)
-    protected GeneralRole role=GeneralRole.CUSTOMER;
+    private GeneralStatus status=GeneralStatus.ACTIVE;
+    @Column
+    @Enumerated(EnumType.STRING)
+    private GeneralRole role=GeneralRole.CLIENT;
 
     @Column
-    protected Boolean visible=Boolean.TRUE;
+    private Boolean visible=Boolean.TRUE;
 
     @Column
     private String surname;

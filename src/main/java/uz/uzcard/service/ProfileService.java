@@ -3,9 +3,9 @@ package uz.uzcard.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import uz.uzcard.dto.ProfileCreateDTO;
-import uz.uzcard.dto.ProfileFilterDTO;
-import uz.uzcard.dto.ProfileUpdateDTO;
+import uz.uzcard.dto.profile.ProfileCreateDTO;
+import uz.uzcard.dto.profile.ProfileFilterDTO;
+import uz.uzcard.dto.profile.ProfileUpdateDTO;
 import uz.uzcard.dto.responce.ResponceDTO;
 import uz.uzcard.entity.ProfileEntity;
 import uz.uzcard.enums.GeneralRole;
@@ -55,22 +55,7 @@ public class ProfileService {
         return ResponceDTO.sendOkResponce(1, "Success ");
     }
 
-    public ResponseEntity verifyProfileById(String id) {
 
-        if (!existsById(id)){
-            return ResponceDTO.sendBadRequestResponce(-1,"Profile not found");
-
-        }
-        Optional<ProfileEntity> byId = profileRepository.findById(id);
-        if (byId.isEmpty()){
-            return ResponceDTO.sendBadRequestResponce(-1,"Profile not found");
-
-        }
-        ProfileEntity profile = byId.get();
-        profile.setStatus(GeneralStatus.ACTIVE);
-        profileRepository.save(profile);
-        return ResponceDTO.sendOkResponce(profile.getUsername(), 1,"Success");
-    }
 
     public ResponseEntity update(String id, ProfileUpdateDTO update) {
 
