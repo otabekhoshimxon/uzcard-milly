@@ -2,7 +2,6 @@ package uz.uzcard.dto.company;
 
 import lombok.*;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 @Getter
@@ -17,16 +16,14 @@ public class CompanyRegistrationDTO {
     private String address;
     @NotNull(message = "Service Persentage is required")
     private Double servicePersentage;
-    @Email(message = "Email is not valid")
+    @NotNull(message = "Phone is not valid")
     private String phone;
     @NotNull(message = "Username is required")
     private String username;
     @NotNull(message = "Password is required")
     private String password;
-
-
-
-
+    @NotNull(message = "Password is required")
+    private String cardPrefix;
 
 
 }

@@ -10,6 +10,7 @@ import uz.uzcard.dto.client.ClientFilterDTO;
 import uz.uzcard.dto.client.ClientUpdateDTO;
 import uz.uzcard.dto.responce.ResponceDTO;
 import uz.uzcard.entity.ClientEntity;
+import uz.uzcard.entity.CompanyEntity;
 import uz.uzcard.enums.GeneralStatus;
 import uz.uzcard.repository.ClientRepository;
 import uz.uzcard.util.CompanyUtil;
@@ -87,8 +88,21 @@ public class ClientService  {
 
     public ResponseEntity update(String id, ClientUpdateDTO update) {
 
+        if (!existsById(id)){
+            return ResponceDTO.sendBadRequestResponce(-1,"Client not found");
+        }
 
-        return null;
+        if (clientRepository.existsByPhoneNumber(update.getPhone())){
+            return ResponceDTO.sendBadRequestResponce(-1,"Phone number is exists");
+
+        }
+        Optional<ClientEntity> byId = clientRepository.findById(id);
+
+        ClientEntity client = byId.get();
+
+        client.setName(update.getName());
+        client.setCompanyId( companyUtil.getCurrentUser().getId());
+        return null ;
 
     }
 

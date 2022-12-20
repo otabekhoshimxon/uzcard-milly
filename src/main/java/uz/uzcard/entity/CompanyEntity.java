@@ -42,6 +42,9 @@ public class CompanyEntity implements BaseEntity {
     private String address;
     @Column
     private String phone;
+
+    @Column
+    private String cardPrefix;
     @Column
     private Double servicePersentage;
     @Column
@@ -56,6 +59,7 @@ public class CompanyEntity implements BaseEntity {
         this.name=dto.getName();
         this.address=dto.getAddress();
         this.phone=dto.getPhone();
+        this.cardPrefix=dto.getCardPrefix();
         this.username=dto.getUsername();
         this.password= MD5PasswordGenerator.getMd5Password(dto.getPassword());
         this.servicePersentage=dto.getServicePersentage();
