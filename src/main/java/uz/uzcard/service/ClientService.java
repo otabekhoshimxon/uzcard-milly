@@ -105,7 +105,7 @@ public class ClientService  {
 
         clientRepository.save(client);
         messageService.sendVerifyCode(id);
-        return null ;
+        return ResponceDTO.sendOkResponce(1,"Updated") ;
 
     }
 
