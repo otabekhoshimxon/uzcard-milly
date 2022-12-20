@@ -102,6 +102,9 @@ public class ClientService  {
 
         client.setName(update.getName());
         client.setCompanyId( companyUtil.getCurrentUser().getId());
+
+        clientRepository.save(client);
+        messageService.sendVerifyCode(id);
         return null ;
 
     }
