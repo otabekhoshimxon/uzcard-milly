@@ -101,6 +101,10 @@ public class ClientService  {
         ClientEntity client = byId.get();
 
         client.setName(update.getName());
+        client.setStatus(GeneralStatus.BLOCK);
+        client.setMiddleName(update.getMiddleName());
+        client.setSurname(update.getSurname());
+        client.setPassword(update.getPassword());
         client.setCompanyId( companyUtil.getCurrentUser().getId());
 
         clientRepository.save(client);
