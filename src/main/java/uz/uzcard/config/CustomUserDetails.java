@@ -19,7 +19,8 @@ public class CustomUserDetails implements UserDetails {
 
 
     private String id;
-    private String userName;
+    private String phone;
+
     private String password;
     private Boolean visible;
     private GeneralRole role;
@@ -31,15 +32,15 @@ public class CustomUserDetails implements UserDetails {
 
     public CustomUserDetails(ProfileEntity base) {
         this.id=base.getId();
-        this.userName=base.getUsername();
         this.role=base.getRole();
+        this.phone=base.getPhone();
         this.status=base.getStatus();
         this.visible=base.getVisible();
         this.password=base.getPassword();
     }public CustomUserDetails(CompanyEntity base) {
 
         this.id=base.getId();
-        this.userName=base.getUsername();
+        this.phone=base.getPhone();
         this.role=base.getRole();
         this.status=base.getStatus();
         this.visible=base.getVisible();
@@ -47,7 +48,7 @@ public class CustomUserDetails implements UserDetails {
     }public CustomUserDetails(ClientEntity base) {
 
         this.id=base.getId();
-        this.userName=base.getUsername();
+        this.phone=base.getPhone();
         this.role=base.getRole();
         this.status=base.getStatus();
         this.visible=base.getVisible();
@@ -66,7 +67,7 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return userName;
+        return phone;
     }
 
     @Override

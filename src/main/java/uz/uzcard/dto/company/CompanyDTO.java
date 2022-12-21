@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CompanyDTO {
     private String name;
-    private String username;
+
     private String phone;
     private String address;
     private Double servicePersentage;

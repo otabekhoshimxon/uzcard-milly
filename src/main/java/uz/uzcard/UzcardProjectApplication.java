@@ -15,28 +15,21 @@ import uz.uzcard.util.MD5PasswordGenerator;
 @SpringBootApplication
 @EnableCaching
 public class UzcardProjectApplication {
-
-
     @Autowired
     private ProfileRepository profileRepository;
-
     public static void main(String[] args) {
-
-
         SpringApplication.run(UzcardProjectApplication.class, args);
-
-
     }
 
     @Bean
     public CommandLineRunner runner() {
 
         return args -> {
-            String username="Otabek13";
-            if (!profileRepository.existsByUsername(username)) {
+            String phone="998908063341";
+            if (!profileRepository.existsByPhone(phone)) {
                 ProfileEntity profile = new ProfileEntity();
-                profile.setUsername(username);
-                profile.setRole(GeneralRole.ADMIN);
+                profile.setPhone(phone);
+                profile.setRole(GeneralRole.SUPER_ADMIN);
                 profile.setPassword(MD5PasswordGenerator.getMd5Password("1306"));
                 profile.setSurname("Hoshimxon");
                 profile.setName("Otabek");

@@ -7,13 +7,13 @@ import org.springframework.data.redis.core.RedisHash;
 import org.springframework.transaction.annotation.Transactional;
 import uz.uzcard.entity.ClientEntity;
 
+import java.util.List;
 import java.util.Optional;
 @RedisHash
 public interface ClientRepository extends JpaRepository<ClientEntity,String> {
 
 
 
-    boolean existsByPhoneNumber(String phone);
 
 
     Optional<ClientEntity> getClientEntityById (String id);
@@ -22,4 +22,8 @@ public interface ClientRepository extends JpaRepository<ClientEntity,String> {
     @Transactional
     @Query(value = "update ClientEntity  set status='ACTIVE' where  phoneNumber=?1 " )
     void setActiveClient(String phone);
+
+    Optional<ClientEntity> getByPhone(String phone);
+
+    boolean existsByPhone(String phone);
 }

@@ -1,7 +1,6 @@
 package uz.uzcard.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -9,9 +8,6 @@ import org.springframework.stereotype.Component;
 import uz.uzcard.repository.ClientRepository;
 import uz.uzcard.repository.CompanyRepository;
 import uz.uzcard.repository.ProfileRepository;
-import uz.uzcard.service.ClientService;
-import uz.uzcard.service.CompanyService;
-import uz.uzcard.service.ProfileService;
 
 @Component
 public class CustomUserDetailServise implements UserDetailsService {
@@ -27,19 +23,19 @@ public class CustomUserDetailServise implements UserDetailsService {
 
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String phone) throws UsernameNotFoundException {
 
 
 
-        if (profileRepository.existsByUsername(username)){
-            return new CustomUserDetails(profileRepository.getByUsername(username).get());
+        if (profileRepository.existsByPhone(phone)){
+            return new CustomUserDetails(profileRepository.getByPhone(phone).get());
         }
 
-        if (companyRepository.existsByUsername(username)){
-            return new CustomUserDetails(companyRepository.getByUsername(username).get());
+        if (companyRepository.existsByPhone(phone)){
+            return new CustomUserDetails(companyRepository.getByPhone(phone).get());
         }
-        if (clientRepository.existsByUsername(username)){
-            return new CustomUserDetails(clientRepository.getByUsername(username).get());
+        if (clientRepository.existsByPhone(phone)){
+            return new CustomUserDetails(clientRepository.getByPhone(phone).get());
         }
 
         return null;

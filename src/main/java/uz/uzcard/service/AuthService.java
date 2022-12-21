@@ -28,7 +28,7 @@ public class AuthService {
 
 
     public ResponseEntity login(AuthDTO dto) {
-        Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(dto.getUsername(), dto.getPassword()));
+        Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(dto.getPhone(), dto.getPassword()));
         CustomUserDetails principal = (CustomUserDetails) authenticate.getPrincipal();
 
         String bearer="Bearer ";

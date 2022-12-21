@@ -35,7 +35,7 @@ public class ClientEntity implements BaseEntity {
     private String middleName;
 
     @Column
-    private String phoneNumber;
+    private String phone;
 
     @Column
     private String passportSeria;
@@ -70,7 +70,7 @@ public class ClientEntity implements BaseEntity {
         this.name = dto.getName();
         this.surname = dto.getSurname();
         this.middleName = dto.getMiddleName();
-        this.phoneNumber = dto.getPhone();
+        this.phone = dto.getPhone();
         this.passportSeria = dto.getPassportSeria();
         this.passportNumber = dto.getPassportNumber();
         this.role = GeneralRole.CLIENT;

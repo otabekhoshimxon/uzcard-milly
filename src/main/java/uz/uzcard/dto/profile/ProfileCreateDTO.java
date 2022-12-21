@@ -17,7 +17,7 @@ public class ProfileCreateDTO {
     private String surname;
 
     @NotNull
-    private String username;
+    private String phone;
     @NotNull
     private String password;
 

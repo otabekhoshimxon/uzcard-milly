@@ -9,12 +9,12 @@ import org.springframework.http.ResponseEntity;
 public class ResponceDTO {
 
 
-    private String username;
+    private String phone;
     private String message;
     private Integer status;
 
-    public ResponceDTO(String username, String message) {
-        this.username = username;
+    public ResponceDTO(String phone, String message) {
+        this.phone = phone;
         this.message = message;
         this.status=1;
     }
@@ -24,10 +24,10 @@ public class ResponceDTO {
         this.message = message;
     }
 
-    public ResponceDTO(String username, Integer code, String message) {
+    public ResponceDTO(String phone, Integer code, String message) {
         this.status = code;
         this.message = message;
-        this.username = username;
+        this.phone = phone;
     }
 
 
@@ -35,16 +35,16 @@ public class ResponceDTO {
         return ResponseEntity.badRequest().body(new ResponceDTO(code, message));
     }
 
-    public static ResponseEntity sendAuthorizationToken(String username, String message) {
-        return ResponseEntity.ok().body(new ResponceDTO(username, message));
+    public static ResponseEntity sendAuthorizationToken(String phone, String message) {
+        return ResponseEntity.ok().body(new ResponceDTO(phone, message));
     }
 
     public static ResponseEntity sendOkResponce(Integer code, String message) {
         return ResponseEntity.ok().body(new ResponceDTO(code, message));
     }
 
-    public static ResponseEntity sendOkResponce(String username, Integer code, String message) {
-        return ResponseEntity.ok().body(new ResponceDTO(username, code, message));
+    public static ResponseEntity sendOkResponce(String phone, Integer code, String message) {
+        return ResponseEntity.ok().body(new ResponceDTO(phone, code, message));
     }
 
 

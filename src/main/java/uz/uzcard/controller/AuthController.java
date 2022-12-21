@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import uz.uzcard.dto.AuthDTO;
-import uz.uzcard.dto.client.ClientCreateDTO;
 import uz.uzcard.dto.VerificationDTO;
 import uz.uzcard.service.AuthService;
 

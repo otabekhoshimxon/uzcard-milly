@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 public class CompanyUpdateDTO {
 
     @NotNull(message = "Username is required")
-    private String username;
+    private String phone;
     @NotNull(message = "Password is required")
     private String password;
 

@@ -4,14 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import uz.uzcard.dto.client.ClientCreateDTO;
 import uz.uzcard.dto.VerificationDTO;
+import uz.uzcard.dto.client.ClientCreateDTO;
 import uz.uzcard.dto.client.ClientFilterDTO;
 import uz.uzcard.dto.client.ClientUpdateDTO;
 import uz.uzcard.dto.responce.ResponceDTO;
 import uz.uzcard.entity.ClientEntity;
-import uz.uzcard.entity.CompanyEntity;
 import uz.uzcard.enums.GeneralStatus;
+import uz.uzcard.repository.ClientFilterRepository;
 import uz.uzcard.repository.ClientRepository;
 import uz.uzcard.util.CompanyUtil;
 
@@ -23,6 +23,9 @@ public class ClientService  {
 
     @Autowired
     private ClientRepository clientRepository;
+
+    @Autowired
+    private ClientFilterRepository clientFilter;
     @Autowired
     private CompanyUtil companyUtil;
     @Autowired
@@ -40,7 +43,7 @@ public class ClientService  {
     public ResponseEntity create(ClientCreateDTO create) {
 
 
-        if (clientRepository.existsByPhoneNumber(create.getPhone())){
+        if (clientRepository.existsByPhone(create.getPhone())){
             return ResponceDTO.sendBadRequestResponce(-1,"Phone number already registered");
         }
 
@@ -49,7 +52,7 @@ public class ClientService  {
         client.setCompanyId(companyUtil.getCurrentUser().getId());
         clientRepository.save(client);
         messageService.sendVerifyCode(client.getId());
-        return ResponceDTO.sendOkResponce(client.getPhoneNumber(),1,"Message sent a phone number ");
+        return ResponceDTO.sendOkResponce(client.getPhone(),1,"Message sent a phone number ");
 
 
     }
@@ -61,7 +64,7 @@ public class ClientService  {
         Optional<ClientEntity> clientEntityById = clientRepository.getClientEntityById(id);
 
         if (clientEntityById.isPresent()){
-            return clientEntityById.get().getPhoneNumber();
+            return clientEntityById.get().getPhone();
         }
         return null;
     }
@@ -92,7 +95,7 @@ public class ClientService  {
             return ResponceDTO.sendBadRequestResponce(-1,"Client not found");
         }
 
-        if (clientRepository.existsByPhoneNumber(update.getPhone())){
+        if (clientRepository.existsByPhone(update.getPhone())){
             return ResponceDTO.sendBadRequestResponce(-1,"Phone number is exists");
 
         }
@@ -116,7 +119,7 @@ public class ClientService  {
     public ResponseEntity filter(ClientFilterDTO filter) {
 
 
-        return null;
+        return ResponseEntity.ok(clientFilter.clientFiter(filter));
     }
 
 

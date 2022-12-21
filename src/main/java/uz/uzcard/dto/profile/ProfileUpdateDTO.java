@@ -12,7 +12,7 @@ import javax.validation.constraints.Email;
 public class ProfileUpdateDTO {
     private String name;
     private String surname;
-    private String username;
+    private String phone;
     private String password;
 
 

@@ -27,9 +27,9 @@ public class ProfileEntity implements BaseEntity{
     private String id;
     @Column
     private String name;
-    @Column
-    private String username;
 
+    @Column
+    private String phone;
     @Column
     @Size(min = 5,max = 250)
     private String password;

@@ -30,27 +30,16 @@ public class CompanyService {
         return companyRepository.existsById(id);
     }
 
-    public boolean existsByUsername(String username) {
-        return companyRepository.existsByUsername(username);
-    }
-
-
-    public CompanyEntity getByUsername(String username){
-        Optional<CompanyEntity> byUsername =
-                companyRepository.getByUsername(username);
-
-        return byUsername.orElse(null);
-    }
 
     public ResponseEntity create(CompanyRegistrationDTO dto) {
 
-        if (existsByUsername(dto.getUsername())){
+        if (companyRepository.existsByPhone(dto.getPhone())){
             return ResponceDTO.sendBadRequestResponce(-1,"Already registered");
         }
 
         CompanyEntity company=new CompanyEntity(dto);
         companyRepository.save(company);
-        return ResponceDTO.sendAuthorizationToken(company.getUsername(), JwtUtil.encodeId(company.getId()));
+        return ResponceDTO.sendAuthorizationToken(company.getPhone(), JwtUtil.encodeId(company.getId()));
 
     }
 
@@ -63,11 +52,11 @@ public class CompanyService {
 
         }
 
-        if (existsByUsername(update.getUsername())){
+        if (companyRepository.existsByPhone(update.getPhone())){
             return ResponceDTO.sendBadRequestResponce(-1,"Username already taken");
         }
 
-        companyRepository.changeUsernameAndPasswordById(id,update.getUsername(), MD5PasswordGenerator.getMd5Password(update.getPassword()));
+        companyRepository.changePhoneAndPasswordById(id,update.getPhone(), MD5PasswordGenerator.getMd5Password(update.getPassword()));
 
 
 
@@ -101,7 +90,7 @@ public class CompanyService {
         for (CompanyEntity company : content) {
             if (company.getVisible()){
                 CompanyDTO companyDTO=new CompanyDTO();
-                companyDTO.setUsername(company.getUsername());
+                companyDTO.setPhone(company.getPhone());
                 companyDTO.setName(company.getName());
                 companyDTO.setStatus(company.getStatus());
                 companyDTO.setAddress(company.getAddress());
