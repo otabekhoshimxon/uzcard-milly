@@ -9,8 +9,8 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>uz.uzcard</groupId>
-	<artifactId>uzcard-project</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>uzcard-milliy</artifactId>
+	<version>demo</version>
 	<name>uzcard-project</name>
 	<description>uzcard-project</description>
 	<properties>
