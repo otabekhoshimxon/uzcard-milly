@@ -1,13 +1,13 @@
 package uz.uzcard.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.redis.core.RedisHash;
+
+import org.springframework.data.repository.PagingAndSortingRepository;
 import uz.uzcard.entity.ProfileEntity;
 
-import java.util.List;
 import java.util.Optional;
-@RedisHash
-public interface ProfileRepository extends JpaRepository<ProfileEntity,String> {
+
+public interface ProfileRepository extends PagingAndSortingRepository<ProfileEntity,String> {
 
 
 
