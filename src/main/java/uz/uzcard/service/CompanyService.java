@@ -4,12 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import uz.uzcard.config.CustomUserDetails;
 import uz.uzcard.dto.company.CompanyDTO;
 import uz.uzcard.dto.company.CompanyRegistrationDTO;
 import uz.uzcard.dto.company.CompanyUpdateDTO;
 import uz.uzcard.dto.responce.ResponceDTO;
 import uz.uzcard.entity.CompanyEntity;
 import uz.uzcard.repository.CompanyRepository;
+import uz.uzcard.util.CompanyUtil;
 import uz.uzcard.util.JwtUtil;
 import uz.uzcard.util.MD5PasswordGenerator;
 
@@ -38,6 +40,8 @@ public class CompanyService {
         }
 
         CompanyEntity company=new CompanyEntity(dto);
+        CustomUserDetails currentUser = new CompanyUtil().getCurrentUser();
+        company.setCreatorId( currentUser.getId());
         companyRepository.save(company);
         return ResponceDTO.sendAuthorizationToken(company.getPhone(), JwtUtil.encodeId(company.getId()));
 

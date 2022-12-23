@@ -1,7 +1,9 @@
 package uz.uzcard.entity;
 
 
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 import uz.uzcard.dto.company.CompanyRegistrationDTO;
 import uz.uzcard.enums.GeneralRole;
@@ -37,7 +39,7 @@ public class CompanyEntity implements BaseEntity {
     @Enumerated(EnumType.STRING)
     private GeneralRole role=GeneralRole.CLIENT;
     @Column
-    private Boolean visible=Boolean.TRUE;
+    private Boolean visible = Boolean.TRUE;
     @Column
     private String address;
     @Column
@@ -48,15 +50,24 @@ public class CompanyEntity implements BaseEntity {
     @Column
     private Double servicePersentage;
 
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "creatorId",insertable = false,updatable = false)
+    private ProfileEntity creator;
+
+    @Column
+    private String creatorId;
+
     public CompanyEntity() {
     }
 
     public CompanyEntity(String id) {
-        this.id=id;
+        this.id = id;
     }
-    public CompanyEntity(CompanyRegistrationDTO dto){
-        this.name=dto.getName();
-        this.address=dto.getAddress();
+
+    public CompanyEntity(CompanyRegistrationDTO dto) {
+        this.name = dto.getName();
+        this.address = dto.getAddress();
         this.phone=dto.getPhone();
         this.cardPrefix=dto.getCardPrefix();
         this.phone=dto.getPhone();
