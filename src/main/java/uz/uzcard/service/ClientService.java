@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import uz.uzcard.dto.VerificationDTO;
 import uz.uzcard.dto.client.ClientCreateDTO;
+import uz.uzcard.dto.client.ClientDTO;
 import uz.uzcard.dto.client.ClientFilterDTO;
 import uz.uzcard.dto.client.ClientUpdateDTO;
 import uz.uzcard.dto.responce.ResponceDTO;
@@ -15,6 +16,8 @@ import uz.uzcard.repository.ClientFilterRepository;
 import uz.uzcard.repository.ClientRepository;
 import uz.uzcard.util.CompanyUtil;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -123,7 +126,32 @@ public class ClientService  {
     }
 
 
+    public ResponseEntity getByProfileId(String profileId) {
 
 
+        List<ClientEntity> byProfileId = clientRepository.getByProfileId(profileId);
+        if (byProfileId.isEmpty()){
+            return ResponceDTO.sendBadRequestResponce(-1,"Not found");
+        }
+        List<ClientDTO> list=new ArrayList<>();
 
+        for (ClientEntity client : byProfileId) {
+            ClientDTO dto=new ClientDTO();
+            dto.setId(client.getId());
+            dto.setName(client.getName());
+            dto.setMiddleName(client.getMiddleName());
+            dto.setSurname(client.getSurname());
+            dto.setRole(client.getRole());
+            dto.setCompanyId(client.getCompanyId());
+            dto.setStatus(client.getStatus());
+            dto.setPassportSeria(client.getPassportSeria());
+            dto.setPassportNumber(client.getPassportNumber());
+            dto.setPhone(client.getPhone());
+            dto.setVisible(client.getVisible());
+            list.add(dto);
+        }
+
+        return ResponseEntity.ok(list);
+
+    }
 }

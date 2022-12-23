@@ -24,7 +24,8 @@ public class CompanyService {
 
     @Autowired
     private CompanyRepository companyRepository;
-
+    @Autowired
+    private CompanyUtil companyUtil;
 
 
     public boolean existsById(String id) {
@@ -40,8 +41,8 @@ public class CompanyService {
         }
 
         CompanyEntity company=new CompanyEntity(dto);
-        CustomUserDetails currentUser = new CompanyUtil().getCurrentUser();
-        company.setCreatorId( currentUser.getId());
+
+        company.setCreatorId( companyUtil.getCurrentUser().getId());
         companyRepository.save(company);
         return ResponceDTO.sendAuthorizationToken(company.getPhone(), JwtUtil.encodeId(company.getId()));
 

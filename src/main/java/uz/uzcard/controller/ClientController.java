@@ -79,6 +79,21 @@ public class ClientController {
     }
 
 
+  @GetMapping("/getByProfileId/{id}")
+    @ApiOperation(value = "Api for filter client " ,nickname = " API for filter client" ,notes = "filter client only bank ")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
+            @ApiResponse(code = 403, message = "Ruxsat yo'q "),
+            @ApiResponse(code = 201, message = "Yaratildi "),
+            @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
+            @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
+    })
+    @PreAuthorize("ROLE_SUPER_ADMIN")
+    public ResponseEntity getByProfileId(@PathVariable("id") String profileId){
+
+        return clientService.getByProfileId(profileId);
+    }
+
+
 
 
 
