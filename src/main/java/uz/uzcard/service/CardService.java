@@ -3,6 +3,8 @@ package uz.uzcard.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 import uz.uzcard.config.CustomUserDetails;
 import uz.uzcard.dto.VerificationDTO;
@@ -16,7 +18,9 @@ import uz.uzcard.repository.CardRepository;
 import uz.uzcard.util.CardNumberGenerator;
 import uz.uzcard.util.CurrentUserUtil;
 
+import java.util.Collection;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class CardService {
@@ -68,5 +72,37 @@ public class CardService {
         cardRepository.activateCardByPhone(verification.getPhoneNumber());
         return ResponceDTO.sendOkResponce(1,"Card activated");
 
+    }
+
+    public ResponseEntity changeStatusCard(String id) {
+
+
+        Optional<CardEntity> byId = cardRepository.findById(id);
+        if (byId.isEmpty()){
+            return ResponceDTO.sendBadRequestResponce(-1,"Card not found");
+        }
+
+        Collection<? extends GrantedAuthority> authorities = currentUserUtil.getCurrentUser().getAuthorities();
+
+        CardEntity card = byId.get();
+        if (authorities.contains(new SimpleGrantedAuthority("BANK"))){
+
+            if (card.getStatus().equals(GeneralStatus.ACTIVE)){
+                card.setStatus(GeneralStatus.BLOCK);
+            }
+            else {
+                card.setStatus(GeneralStatus.ACTIVE);
+            }
+            cardRepository.save(card);
+
+
+        }
+        if (authorities.contains(new SimpleGrantedAuthority("PAYMENT"))){
+            if (card.getStatus().equals(GeneralStatus.ACTIVE)){
+                card.setStatus(GeneralStatus.BLOCK);
+            }
+
+        }
+        return ResponceDTO.sendOkResponce(1,"Successfully changed status card");
     }
 }
