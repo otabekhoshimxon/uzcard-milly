@@ -12,3 +12,15 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImZmODA4MTgxODU0NTFlYzkwMTg1N
   "passportSeria": "AA",
   "passportNumber": "1234561"
 }
+
+
+###
+
+POST http://localhost:8081/api/v1/client/filter
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImZmODA4MTgxODU0NTFlYzkwMTg1NDUyMDg0ZDkwMDAwIiwiaWF0IjoxNjcyMDcyMjAwLCJleHAiOjE2NzIxMTU0MDB9.6GouYd2ADGhGK6PYdoJpzgeKlcJXJwPhnTfK-L_hV9Q
+
+{
+  "name": "Barno",
+  "surname": "Rahmonova"
+}

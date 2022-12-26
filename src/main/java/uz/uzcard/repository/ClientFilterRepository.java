@@ -17,7 +17,7 @@ public class ClientFilterRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public List clientFilter(ClientFilterDTO dto, String id) {
+    public List<ClientEntity> clientFilter(ClientFilterDTO dto, String id) {
 
         StringBuilder builder = new StringBuilder();
         builder.append(" select p.* from client p  ");
@@ -27,7 +27,7 @@ public class ClientFilterRepository {
         return getList(dto, builder);
     }
 
-    public List clientFilter(ClientFilterDTO dto) {
+    public List<ClientEntity> clientFilter(ClientFilterDTO dto) {
 
         StringBuilder builder = new StringBuilder();
         builder.append(" select p.* from client p  ");
@@ -36,7 +36,7 @@ public class ClientFilterRepository {
         return getList(dto, builder);
     }
 
-    private List getList(ClientFilterDTO dto, StringBuilder builder) {
+    private List<ClientEntity> getList(ClientFilterDTO dto, StringBuilder builder) {
         if (dto.getPhone() != null) {
             builder.append(" and p.phone = '" + dto.getPhone() + "' ");
         }
@@ -53,6 +53,6 @@ public class ClientFilterRepository {
         Query query = entityManager.createNativeQuery(builder.toString(), ClientEntity.class);
 
 
-        return  query.getResultList();
+        return  (List<ClientEntity>)query.getResultList();
     }
 }

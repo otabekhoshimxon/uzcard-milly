@@ -9,6 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import uz.uzcard.dto.ClientFilterResponseDTO;
 import uz.uzcard.dto.VerificationDTO;
 import uz.uzcard.dto.client.ClientCreateDTO;
 import uz.uzcard.dto.client.ClientDTO;
@@ -128,24 +129,22 @@ public class ClientService  {
     public ResponseEntity filter(ClientFilterDTO filter) {
 
 
-
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (!(authentication instanceof AnonymousAuthenticationToken)) {
-
-
-        }
-
-        Collection<? extends GrantedAuthority> authorities =
-                companyUtil.getCurrentUser().getAuthorities();
+        Collection<? extends GrantedAuthority> authorities =companyUtil.getCurrentUser().getAuthorities();
 
         if (authorities.stream().anyMatch(grantedAuthority -> grantedAuthority.equals(new SimpleGrantedAuthority("COMPANY")))){
-            return ResponseEntity.ok(clientFilter.clientFilter(filter,companyUtil.getCurrentUser().getId()));
+
+            List<ClientEntity> clientEntities = clientFilter.clientFilter(filter, companyUtil.getCurrentUser().getId());
+
+
+            return toClientFilterResponseDTO(clientEntities);
         }
         else {
-            return ResponseEntity.ok(clientFilter.clientFilter(filter));
+            List<ClientEntity> clientEntities = clientFilter.clientFilter(filter);
+
+
+            return toClientFilterResponseDTO(clientEntities);
 
         }
-
 
     }
 
@@ -176,6 +175,35 @@ public class ClientService  {
         }
 
         return ResponseEntity.ok(list);
+
+    }
+
+
+    public ResponseEntity toClientFilterResponseDTO(List<ClientEntity> clients){
+
+
+        List<ClientFilterResponseDTO> responseDTOList=new ArrayList<>();
+        for (ClientEntity client : clients) {
+            ClientFilterResponseDTO dto=new ClientFilterResponseDTO();
+            dto.setId(client.getId());
+            dto.setName(client.getName());
+            dto.setSurname(client.getSurname());
+            dto.setMiddleName(client.getMiddleName());
+            dto.setCompanyId(client.getCompanyId());
+            dto.setRole(client.getRole());
+            dto.setVisible(client.getVisible());
+            dto.setPhone(client.getPhone());
+            dto.setStatus(client.getStatus());
+            dto.setPassportNumber(client.getPassportNumber());
+            dto.setPassportSeria(client.getPassportSeria());
+            responseDTOList.add(dto);
+
+        }
+        if (responseDTOList.isEmpty()){
+            return ResponseEntity.badRequest().body("Not found");
+        }
+
+        return ResponseEntity.ok(responseDTOList);
 
     }
 }
