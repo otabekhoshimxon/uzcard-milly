@@ -3,6 +3,11 @@ package uz.uzcard.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import uz.uzcard.dto.VerificationDTO;
 import uz.uzcard.dto.client.ClientCreateDTO;
@@ -17,6 +22,7 @@ import uz.uzcard.repository.ClientRepository;
 import uz.uzcard.util.CompanyUtil;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -122,7 +128,25 @@ public class ClientService  {
     public ResponseEntity filter(ClientFilterDTO filter) {
 
 
-        return ResponseEntity.ok(clientFilter.clientFiter(filter));
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+
+
+        }
+
+        Collection<? extends GrantedAuthority> authorities =
+                companyUtil.getCurrentUser().getAuthorities();
+
+        if (authorities.stream().anyMatch(grantedAuthority -> grantedAuthority.equals(new SimpleGrantedAuthority("COMPANY")))){
+            return ResponseEntity.ok(clientFilter.clientFilter(filter,companyUtil.getCurrentUser().getId()));
+        }
+        else {
+            return ResponseEntity.ok(clientFilter.clientFilter(filter));
+
+        }
+
+
     }
 
 

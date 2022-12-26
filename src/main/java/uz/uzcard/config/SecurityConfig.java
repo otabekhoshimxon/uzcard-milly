@@ -55,7 +55,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers(AUTH_WHITELIST).permitAll()
-                .antMatchers("/auth/login").permitAll();
+                .antMatchers("/auth/login").permitAll()
+                .antMatchers("/api/v1/client/filter").hasAnyAuthority("SUPER_ADMIN","COMPANY");
 
 
         http.authorizeRequests().anyRequest().authenticated();

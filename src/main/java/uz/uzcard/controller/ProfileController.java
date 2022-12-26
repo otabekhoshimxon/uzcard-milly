@@ -38,7 +38,7 @@ public class ProfileController {
             @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
             @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
     })
-    @PreAuthorize("ROLE_SUPER_ADMIN")
+    @PreAuthorize("ROLE_ADMIN")
     public ResponseEntity create(@Valid @RequestBody ProfileCreateDTO create){
 
         return profileService.create(create);
@@ -54,7 +54,7 @@ public class ProfileController {
             @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
             @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
     })
-    @PreAuthorize("ROLE_SUPER_ADMIN")
+    @PreAuthorize("ROLE_ADMIN")
     public ResponseEntity update(@PathVariable("id") String id,@Valid @RequestBody ProfileUpdateDTO update){
 
         return profileService.update(id,update);
@@ -69,7 +69,7 @@ public class ProfileController {
             @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
             @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
     })
-    @PreAuthorize("ROLE_SUPER_ADMIN")
+    @PreAuthorize("ROLE_ADMIN")
     public ResponseEntity filter(@Valid @RequestBody ProfileFilterDTO filter){
 
         return profileService.filter(filter);

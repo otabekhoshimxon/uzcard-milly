@@ -1,0 +1,14 @@
+POST http://localhost:8081/api/v1/client/create
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImZmODA4MTgxODU0NTFlYzkwMTg1NDUyMDg0ZDkwMDAwIiwiaWF0IjoxNjcxOTAyMDM3LCJleHAiOjE2NzE5NDUyMzd9.Y2Q0z_VpAkshNDxYfa8lYnjHLMIn4sjjAU-MBnJDCSw
+
+
+{
+  "name": "Sardor",
+  "surname": "Rasulov",
+  "middleName": "Hakimov",
+  "password": "1998",
+  "phone": "998908093342",
+  "passportSeria": "AA",
+  "passportNumber": "1234561"
+}

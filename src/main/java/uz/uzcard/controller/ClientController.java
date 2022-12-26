@@ -41,7 +41,7 @@ public class ClientController {
             @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
             @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
     })
-    @PreAuthorize("ROLE_BANK")
+    @PreAuthorize("ROLE_COMPANY")
     public ResponseEntity create(@Valid @RequestBody ClientCreateDTO create){
 
         return clientService.create(create);
@@ -57,7 +57,7 @@ public class ClientController {
             @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
             @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
     })
-    @PreAuthorize("ROLE_BANK")
+    @PreAuthorize("ROLE_COMPANY")
     public ResponseEntity update(@PathVariable("id") String id,@Valid @RequestBody ClientUpdateDTO update){
 
         return clientService.update(id,update);
@@ -72,22 +72,21 @@ public class ClientController {
             @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
             @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
     })
-    @PreAuthorize("ROLE_SUPER_ADMIN")
     public ResponseEntity filter(@Valid @RequestBody ClientFilterDTO filter){
 
         return clientService.filter(filter);
     }
 
-
+    @PreAuthorize("ROLE_ADMIN")
   @GetMapping("/getByProfileId/{id}")
-    @ApiOperation(value = "Api for filter client " ,nickname = " API for filter client" ,notes = "filter client only bank ")
+    @ApiOperation(value = "Api for filter client " ,nickname = " API for get client" ,notes = "get clients only ADMIN ")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
             @ApiResponse(code = 403, message = "Ruxsat yo'q "),
             @ApiResponse(code = 201, message = "Yaratildi "),
             @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
             @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
     })
-    @PreAuthorize("ROLE_SUPER_ADMIN")
+
     public ResponseEntity getByProfileId(@PathVariable("id") String profileId){
 
         return clientService.getByProfileId(profileId);

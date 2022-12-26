@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 import uz.uzcard.enums.GeneralStatus;
+import uz.uzcard.util.CardNumberGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -22,6 +23,9 @@ public class CardEntity {
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
+
+    @Column(nullable = false)
+    private String prefix;
 
     @Column(unique = true,nullable = false)
     private String number;

@@ -70,6 +70,10 @@ public class CustomUserDetails implements UserDetails {
         return phone;
     }
 
+    public String getPhone(){
+        return phone;
+    }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;

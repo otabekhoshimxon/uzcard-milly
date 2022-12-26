@@ -31,7 +31,7 @@ public class MessageService {
 
     private String messageUrl="https://api.smsfly.uz/";
 
-    private String messageKey="4b77045c-3a12-11eb-9bb4-6799ca27647f";
+    private String messageKey="key";
 
 
     public void sendVerifyCode(String id) {

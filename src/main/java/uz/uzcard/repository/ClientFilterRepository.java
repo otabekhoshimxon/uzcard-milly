@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import uz.uzcard.dto.client.ClientFilterDTO;
 import uz.uzcard.entity.ClientEntity;
-import uz.uzcard.entity.ProfileEntity;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -18,16 +17,30 @@ public class ClientFilterRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public List clientFiter(ClientFilterDTO dto) {
+    public List clientFilter(ClientFilterDTO dto, String id) {
 
         StringBuilder builder = new StringBuilder();
-        builder.append(" select p from client p  ");
+        builder.append(" select p.* from client p  ");
+        builder.append(" where p.visible = true ");
+        builder.append(" and  p.company_id= '" + id + "' ");
+
+        return getList(dto, builder);
+    }
+
+    public List clientFilter(ClientFilterDTO dto) {
+
+        StringBuilder builder = new StringBuilder();
+        builder.append(" select p.* from client p  ");
         builder.append(" where p.visible = true ");
 
+        return getList(dto, builder);
+    }
+
+    private List getList(ClientFilterDTO dto, StringBuilder builder) {
         if (dto.getPhone() != null) {
             builder.append(" and p.phone = '" + dto.getPhone() + "' ");
         }
-  if (dto.getMiddleName() != null) {
+        if (dto.getMiddleName() != null) {
             builder.append(" and p.middle_name = '" + dto.getMiddleName() + "' ");
         }
 
@@ -38,6 +51,7 @@ public class ClientFilterRepository {
             builder.append(" and p.surname = '" + dto.getSurname() + "' ");
         }
         Query query = entityManager.createNativeQuery(builder.toString(), ClientEntity.class);
+
 
         return  query.getResultList();
     }

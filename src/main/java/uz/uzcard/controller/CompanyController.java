@@ -38,7 +38,7 @@ public class CompanyController {
             @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
             @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
     })
-    @PreAuthorize("ROLE_SUPER_ADMIN")
+    @PreAuthorize("ROLE_ADMIN")
     public ResponseEntity create(@Valid @RequestBody CompanyRegistrationDTO create){
 
         return companyService.create(create);
@@ -56,7 +56,7 @@ public class CompanyController {
             @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
             @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
     })
-    @PreAuthorize("ROLE_SUPER_ADMIN")
+    @PreAuthorize("ROLE_ADMIN")
     public ResponseEntity update(@PathVariable("id") String id,@Valid @RequestBody CompanyUpdateDTO update){
 
         return companyService.update(id,update);
@@ -73,7 +73,7 @@ public class CompanyController {
             @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
             @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
     })
-    @PreAuthorize("ROLE_SUPER_ADMIN")
+    @PreAuthorize("ROLE_ADMIN")
     public ResponseEntity<PageImpl> update(@RequestParam(value = "page" ,defaultValue = "0") Integer page, @RequestParam(value = "size" ,defaultValue = "2") Integer size){
         return companyService.getAllCompany(page,size);
     }
@@ -88,7 +88,7 @@ public class CompanyController {
             @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
             @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
     })
-    @PreAuthorize("ROLE_SUPER_ADMIN")
+    @PreAuthorize("ROLE_ADMIN")
 
     public ResponseEntity delete(@PathVariable("id") String id){
         return companyService.delete(id);

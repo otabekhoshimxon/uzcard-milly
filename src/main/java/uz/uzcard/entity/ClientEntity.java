@@ -1,5 +1,6 @@
 package uz.uzcard.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -11,6 +12,7 @@ import uz.uzcard.util.MD5PasswordGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Getter
@@ -20,7 +22,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "client",uniqueConstraints = @UniqueConstraint(columnNames = {"passportSeria", "passportNumber"}))
 
-public class ClientEntity implements BaseEntity {
+public class ClientEntity implements BaseEntity, Serializable {
 
     @Id
     @GeneratedValue(generator = "system-uuid")
@@ -43,6 +45,7 @@ public class ClientEntity implements BaseEntity {
     private String passportNumber;
     @JoinColumn(name = "companyId",insertable = false,updatable = false)
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private CompanyEntity company;
 
     @Column

@@ -1,12 +1,13 @@
-POST http://localhost:8080/api/v1/company/create
+POST http://localhost:8081/api/v1/company/create
 Content-Type: application/json
-Authorization: Bearer
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImZmODA4MTgxODU0NTFkODAwMTg1NDUxZDg5NjMwMDAwIiwiaWF0IjoxNjcxOTAxOTQzLCJleHAiOjE2NzE5NDUxNDN9.kvJIKNwjjyj9qxMa4WpY6A3EOgOMWR-cnppWQ31qNwA
+
 
 {
-  "name": "String",
-  "address": "String",
-  "servicePersentage": 0.0,
-  "phone": "String",
-  "username": "String",
-  "password": "String"
+  "name": "Payme",
+  "address": "Tashkent ...",
+  "servicePersentage": 1.0,
+  "phone": "998908093341",
+  "password": "1111",
+  "cardPrefix": "9860"
 }

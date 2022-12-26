@@ -29,7 +29,7 @@ public class UzcardProjectApplication {
             if (!profileRepository.existsByPhone(phone)) {
                 ProfileEntity profile = new ProfileEntity();
                 profile.setPhone(phone);
-                profile.setRole(GeneralRole.SUPER_ADMIN);
+                profile.setRole(GeneralRole.ADMIN);
                 profile.setPassword(MD5PasswordGenerator.getMd5Password("1306"));
                 profile.setSurname("Hoshimxon");
                 profile.setName("Otabek");

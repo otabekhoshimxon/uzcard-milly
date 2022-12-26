@@ -1,19 +1,19 @@
-POST http://localhost:8080/auth/login
+POST http://localhost:8081/auth/login
 Content-Type: application/json
 
 {
-  "username": "String",
-  "password": "String"
+  "phone": "998908063341",
+  "password": "1234"
 }
 
 
 
 
 ###
-PUT http://localhost:8080/auth/verification
+PUT http://localhost:8081/auth/verification
 Content-Type: application/json
 
 {
-  "phoneNumber": "String",
-  "activationCode": "String"
+  "phoneNumber": "998908093341",
+  "activationCode": "18222"
 }
