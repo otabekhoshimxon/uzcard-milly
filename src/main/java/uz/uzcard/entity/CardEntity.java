@@ -6,7 +6,6 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 import uz.uzcard.enums.GeneralStatus;
-import uz.uzcard.util.CardNumberGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -27,7 +26,10 @@ public class CardEntity {
     @Column(nullable = false)
     private String prefix;
 
-    @Column(unique = true,nullable = false)
+    @Column()
+    private Long balance;
+
+    @Column(unique = true, nullable = false)
     private String number;
 
     @Column(nullable = false)
@@ -40,6 +42,7 @@ public class CardEntity {
     private LocalDateTime createdDate = LocalDateTime.now();
 
     @Column
+    @Enumerated(EnumType.STRING)
     private GeneralStatus status=GeneralStatus.ACTIVE;
 
     @JoinColumn(name = "clientId",insertable = false,updatable = false)

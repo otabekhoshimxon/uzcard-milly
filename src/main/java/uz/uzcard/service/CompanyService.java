@@ -4,14 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import uz.uzcard.config.CustomUserDetails;
 import uz.uzcard.dto.company.CompanyDTO;
 import uz.uzcard.dto.company.CompanyRegistrationDTO;
 import uz.uzcard.dto.company.CompanyUpdateDTO;
 import uz.uzcard.dto.responce.ResponceDTO;
 import uz.uzcard.entity.CompanyEntity;
+import uz.uzcard.enums.GeneralRole;
 import uz.uzcard.repository.CompanyRepository;
-import uz.uzcard.util.CompanyUtil;
+import uz.uzcard.util.CurrentUserUtil;
 import uz.uzcard.util.JwtUtil;
 import uz.uzcard.util.MD5PasswordGenerator;
 
@@ -25,7 +25,7 @@ public class CompanyService {
     @Autowired
     private CompanyRepository companyRepository;
     @Autowired
-    private CompanyUtil companyUtil;
+    private CurrentUserUtil currentUserUtil;
 
 
     public boolean existsById(String id) {
@@ -36,13 +36,19 @@ public class CompanyService {
 
     public ResponseEntity create(CompanyRegistrationDTO dto) {
 
+
+        if (!(dto.getRole().equals(GeneralRole.BANK.name()) && dto.getRole().equals(GeneralRole.PAYMENT.name()))){
+            return ResponceDTO.sendBadRequestResponce(-1,"Role is not valid");
+        }
         if (companyRepository.existsByPhone(dto.getPhone())){
             return ResponceDTO.sendBadRequestResponce(-1,"Already registered");
         }
 
+
+
         CompanyEntity company=new CompanyEntity(dto);
 
-        company.setCreatorId( companyUtil.getCurrentUser().getId());
+        company.setCreatorId( currentUserUtil.getCurrentUser().getId());
         companyRepository.save(company);
         return ResponceDTO.sendAuthorizationToken(company.getPhone(), JwtUtil.encodeId(company.getId()));
 

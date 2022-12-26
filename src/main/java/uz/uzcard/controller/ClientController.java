@@ -41,7 +41,7 @@ public class ClientController {
             @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
             @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
     })
-    @PreAuthorize("ROLE_COMPANY")
+    @PreAuthorize("ROLE_BANK")
     public ResponseEntity create(@Valid @RequestBody ClientCreateDTO create){
 
         return clientService.create(create);
@@ -57,7 +57,7 @@ public class ClientController {
             @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
             @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
     })
-    @PreAuthorize("ROLE_COMPANY")
+    @PreAuthorize("ROLE_BANK")
     public ResponseEntity update(@PathVariable("id") String id,@Valid @RequestBody ClientUpdateDTO update){
 
         return clientService.update(id,update);

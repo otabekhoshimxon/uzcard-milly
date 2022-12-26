@@ -12,6 +12,9 @@ import javax.validation.constraints.NotNull;
 public class CompanyRegistrationDTO {
     @NotNull(message = "Name is required")
     private String name;
+
+    @NotNull(message = "Role is required")
+    private String role;
     @NotNull(message = "Address is required")
     private String address;
     @NotNull(message = "Service Persentage is required")

@@ -9,6 +9,7 @@ import org.springframework.web.client.RestTemplate;
 import uz.uzcard.dto.message.MessageRequestDTO;
 import uz.uzcard.dto.message.MessageResponceDTO;
 import uz.uzcard.entity.MessageEntity;
+import uz.uzcard.enums.MessageType;
 import uz.uzcard.repository.MessageRepository;
 import uz.uzcard.util.RandomUtil;
 
@@ -49,8 +50,28 @@ public class MessageService {
         MessageEntity entity = new MessageEntity();
         entity.setPhone(phoneNumberById);
         entity.setCode(code);
+        entity.setMessageType(MessageType.ACTIVATE_ACCOUNT);
         entity.setStatus(responseDTO.getStatus());
 
+        messageRepository.save(entity);
+
+    }
+  public void sendActivateCardCode(String phoneNumber) {
+
+        String code = RandomUtil.getRandomSmsCode();
+        String message = " Hurmatli  mijoz kartangizni aktivlashtirish uchun \n  kodi [ " + code + " ]" +
+                "" +
+                "" +
+                "" +
+                "  ";
+
+        MessageResponceDTO responseDTO = send(phoneNumber, message);
+
+        MessageEntity entity = new MessageEntity();
+        entity.setPhone(phoneNumber);
+        entity.setCode(code);
+        entity.setMessageType(MessageType.ACTIVATE_CARD);
+        entity.setStatus(responseDTO.getStatus());
         messageRepository.save(entity);
 
     }

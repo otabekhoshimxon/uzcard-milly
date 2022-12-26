@@ -8,7 +8,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import uz.uzcard.config.CustomUserDetails;
 import uz.uzcard.dto.AuthDTO;
-import uz.uzcard.dto.client.ClientCreateDTO;
 import uz.uzcard.dto.VerificationDTO;
 import uz.uzcard.dto.responce.ResponceDTO;
 import uz.uzcard.util.JwtUtil;
@@ -21,6 +20,8 @@ public class AuthService {
     private CompanyService companyService;
     @Autowired
     private ClientService clientService;
+    @Autowired
+    private CardService cardService;
 
 
     @Autowired
@@ -47,15 +48,16 @@ public class AuthService {
     }
 
 
-
-
-
-
-
     public ResponseEntity verifyClient(VerificationDTO verification) {
 
-        return  clientService.activateClient(verification);
+        return clientService.activateClient(verification);
     }
 
 
+    public ResponseEntity verifyCard(VerificationDTO verification) {
+
+        return cardService.activateCard(verification);
+
+
+    }
 }

@@ -3,11 +3,8 @@ package uz.uzcard.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import uz.uzcard.dto.ClientFilterResponseDTO;
 import uz.uzcard.dto.VerificationDTO;
@@ -20,7 +17,7 @@ import uz.uzcard.entity.ClientEntity;
 import uz.uzcard.enums.GeneralStatus;
 import uz.uzcard.repository.ClientFilterRepository;
 import uz.uzcard.repository.ClientRepository;
-import uz.uzcard.util.CompanyUtil;
+import uz.uzcard.util.CurrentUserUtil;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -37,7 +34,7 @@ public class ClientService  {
     @Autowired
     private ClientFilterRepository clientFilter;
     @Autowired
-    private CompanyUtil companyUtil;
+    private CurrentUserUtil currentUserUtil;
     @Autowired
     @Lazy
     private MessageService messageService;
@@ -59,7 +56,7 @@ public class ClientService  {
 
         ClientEntity client=new ClientEntity(create);
         client.setStatus(GeneralStatus.BLOCK);
-        client.setCompanyId(companyUtil.getCurrentUser().getId());
+        client.setCompanyId(currentUserUtil.getCurrentUser().getId());
         clientRepository.save(client);
         messageService.sendVerifyCode(client.getId());
         return ResponceDTO.sendOkResponce(client.getPhone(),1,"Message sent a phone number ");
@@ -118,7 +115,7 @@ public class ClientService  {
         client.setMiddleName(update.getMiddleName());
         client.setSurname(update.getSurname());
         client.setPassword(update.getPassword());
-        client.setCompanyId( companyUtil.getCurrentUser().getId());
+        client.setCompanyId( currentUserUtil.getCurrentUser().getId());
 
         clientRepository.save(client);
         messageService.sendVerifyCode(id);
@@ -129,11 +126,11 @@ public class ClientService  {
     public ResponseEntity filter(ClientFilterDTO filter) {
 
 
-        Collection<? extends GrantedAuthority> authorities =companyUtil.getCurrentUser().getAuthorities();
+        Collection<? extends GrantedAuthority> authorities = currentUserUtil.getCurrentUser().getAuthorities();
 
-        if (authorities.stream().anyMatch(grantedAuthority -> grantedAuthority.equals(new SimpleGrantedAuthority("COMPANY")))){
+        if (authorities.stream().anyMatch(grantedAuthority -> grantedAuthority.equals(new SimpleGrantedAuthority("BANK")))){
 
-            List<ClientEntity> clientEntities = clientFilter.clientFilter(filter, companyUtil.getCurrentUser().getId());
+            List<ClientEntity> clientEntities = clientFilter.clientFilter(filter, currentUserUtil.getCurrentUser().getId());
 
 
             return toClientFilterResponseDTO(clientEntities);
@@ -205,5 +202,10 @@ public class ClientService  {
 
         return ResponseEntity.ok(responseDTOList);
 
+    }
+
+    public ClientEntity getById(String clientId)  {
+        Optional<ClientEntity> byId = clientRepository.findById(clientId);
+        return byId.orElse(null);
     }
 }

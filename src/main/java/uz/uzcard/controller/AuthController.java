@@ -42,11 +42,19 @@ public class AuthController {
 
 
 
-    @PreAuthorize("ROLE_COMPANY")
-    @PutMapping("/verification")
+    @PreAuthorize("ROLE_BANK")
+    @PutMapping("/client/verification")
     public ResponseEntity verificationClient(@Valid @RequestBody VerificationDTO verification){
 
         return authService.verifyClient(verification);
+    }
+
+
+    @PreAuthorize("ROLE_BANK")
+    @PutMapping("/card/verification")
+    public ResponseEntity verificationCard(@Valid @RequestBody VerificationDTO verification){
+
+        return authService.verifyCard(verification);
     }
 
 

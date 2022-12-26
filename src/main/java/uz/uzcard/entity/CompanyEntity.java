@@ -39,7 +39,7 @@ public class CompanyEntity implements BaseEntity, Serializable {
     private GeneralStatus status=GeneralStatus.ACTIVE;
     @Column
     @Enumerated(EnumType.STRING)
-    private GeneralRole role=GeneralRole.CLIENT;
+    private GeneralRole role;
     @Column
     private Boolean visible = Boolean.TRUE;
     @Column
@@ -72,10 +72,11 @@ public class CompanyEntity implements BaseEntity, Serializable {
         this.name = dto.getName();
         this.address = dto.getAddress();
         this.phone=dto.getPhone();
+        this.role=GeneralRole.valueOf(dto.getRole());
         this.cardPrefix=dto.getCardPrefix();
         this.phone=dto.getPhone();
         this.password= MD5PasswordGenerator.getMd5Password(dto.getPassword());
         this.servicePersentage=dto.getServicePersentage();
-        this.role=GeneralRole.COMPANY;
+        this.role=GeneralRole.BANK;
     }
 }
