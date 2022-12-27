@@ -7,6 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 import uz.uzcard.config.CustomUserDetails;
+import uz.uzcard.dto.AssignPhoneDTO;
 import uz.uzcard.dto.VerificationDTO;
 import uz.uzcard.dto.card.CardCreateDTO;
 import uz.uzcard.dto.responce.ResponceDTO;
@@ -105,4 +106,23 @@ public class CardService {
         }
         return ResponceDTO.sendOkResponce(1,"Successfully changed status card");
     }
+
+    public ResponseEntity assignPhone(AssignPhoneDTO assignPhone) {
+        Optional<CardEntity> byId = cardRepository.findById(assignPhone.getCardId());
+        if (byId.isEmpty()){
+            return ResponceDTO.sendBadRequestResponce(-1,"Card not found");
+
+        }
+        if (cardRepository.existsByPhone(assignPhone.getPhoneNumber())){
+            return ResponceDTO.sendBadRequestResponce(-1,"Phone number already registered");
+
+        }
+        CardEntity card = byId.get();
+        card.setPhone(assignPhone.getPhoneNumber());
+        cardRepository.save(card);
+
+        return ResponceDTO.sendOkResponce(card.getPhone(),1,"Assigned phone number");
+
+    }
+
 }

@@ -13,4 +13,6 @@ public interface CardRepository extends PagingAndSortingRepository<CardEntity, S
     @Transactional
     @Query("update CardEntity set status='ACTIVE' where phone=?1")
     void activateCardByPhone(String phoneNumber);
+
+    boolean existsByPhone(String phoneNumber);
 }

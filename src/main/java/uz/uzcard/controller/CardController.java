@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import uz.uzcard.dto.AssignPhoneDTO;
 import uz.uzcard.dto.card.CardCreateDTO;
 import uz.uzcard.service.CardService;
 
@@ -59,6 +60,20 @@ public class CardController {
 
 
         return cardService.changeStatusCard(id);
+
+    }
+    @PreAuthorize("hasRole('BANK')")
+    @PutMapping("/assignPhone")
+    @ApiOperation(value = "Api for change status card " ,nickname = " API for change status card" ,notes = "change status card only BANK  Payment only blocked card")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
+            @ApiResponse(code = 403, message = "Ruxsat yo'q "),
+            @ApiResponse(code = 201, message = "Yaratildi "),
+            @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
+            @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
+    })
+
+    public ResponseEntity assignPhone(@RequestBody AssignPhoneDTO assignPhone ){
+        return cardService.assignPhone(assignPhone);
 
     }
 
