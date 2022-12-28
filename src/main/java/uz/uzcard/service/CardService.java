@@ -10,6 +10,7 @@ import uz.uzcard.config.CustomUserDetails;
 import uz.uzcard.dto.AssignPhoneDTO;
 import uz.uzcard.dto.VerificationDTO;
 import uz.uzcard.dto.card.CardCreateDTO;
+import uz.uzcard.dto.card.CardDTO;
 import uz.uzcard.dto.responce.ResponceDTO;
 import uz.uzcard.entity.CardEntity;
 import uz.uzcard.entity.ClientEntity;
@@ -18,6 +19,7 @@ import uz.uzcard.enums.GeneralStatus;
 import uz.uzcard.repository.CardRepository;
 import uz.uzcard.util.CardNumberGenerator;
 import uz.uzcard.util.CurrentUserUtil;
+import uz.uzcard.util.MD5PasswordGenerator;
 
 import java.util.Collection;
 import java.util.Objects;
@@ -55,6 +57,7 @@ public class CardService {
         card.setBalance(cardCreate.getBalance());
         card.setPhone(client.getPhone());
         card.setClientId(client.getId());
+        card.setPassword(card.getPassword());
         card.setPrefix(company.getCardPrefix());
         card.setNumber(new CardNumberGenerator().generate(company.getCardPrefix(), 16));
         card.setStatus(GeneralStatus.NOT_ACTIVE);
@@ -125,4 +128,39 @@ public class CardService {
 
     }
 
+    public ResponseEntity getCardByCardId(String id) {
+
+        if (!cardRepository.existsById(id)){
+            return ResponceDTO.sendBadRequestResponce(-1,"Card not found");
+        }
+        CustomUserDetails currentUser = currentUserUtil.getCurrentUser();
+
+        if (currentUser.getAuthorities().contains(new SimpleGrantedAuthority("BANK"))){
+
+            Optional<CardEntity> cardCreatorById = cardRepository.getCardCreatorById(id,currentUser.getId());
+            if (cardCreatorById.isEmpty()){
+                return ResponceDTO.sendBadRequestResponce(-1,"Card not by  found");
+            }
+            return ResponseEntity.ok(getCardDTO(cardCreatorById.get()));
+        }
+
+        return ResponseEntity.ok(getCardDTO(cardRepository.findById(id).get()));
+    }
+
+
+    public CardDTO getCardDTO(CardEntity card){
+
+
+        CardDTO dto=new CardDTO();
+        dto.setId(card.getId());
+        dto.setNumber(card.getNumber());
+        dto.setBalance(card.getBalance());
+        dto.setClientId(card.getClientId());
+        dto.setCreatedDate(card.getCreatedDate());
+        dto.setExpiredDate(card.getExpiredDate());
+        dto.setPhone(card.getPhone());
+        dto.setStatus(card.getStatus());
+        dto.setVisible(card.getVisible());
+        return dto;
+    }
 }

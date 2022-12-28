@@ -1,5 +1,6 @@
 package uz.uzcard.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -8,6 +9,7 @@ import org.hibernate.annotations.GenericGenerator;
 import uz.uzcard.enums.GeneralStatus;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Getter
@@ -25,6 +27,9 @@ public class CardEntity {
 
     @Column(nullable = false)
     private String prefix;
+
+    @Column
+    private String password;
 
     @Column()
     private Long balance;
@@ -47,9 +52,12 @@ public class CardEntity {
 
     @JoinColumn(name = "clientId",insertable = false,updatable = false)
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private ClientEntity client;
 
     private String clientId;
+    @Column
+    private Boolean visible=Boolean.TRUE;
 
 
 }

@@ -77,6 +77,6 @@ public class CompanyEntity implements BaseEntity, Serializable {
         this.phone=dto.getPhone();
         this.password= MD5PasswordGenerator.getMd5Password(dto.getPassword());
         this.servicePersentage=dto.getServicePersentage();
-        this.role=GeneralRole.BANK;
+
     }
 }

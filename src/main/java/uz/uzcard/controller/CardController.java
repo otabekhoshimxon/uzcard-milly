@@ -48,7 +48,8 @@ public class CardController {
     @PreAuthorize("hasRole('BANK') or hasRole('PAYMENT')")
     @PutMapping("/changeStatus/{id}")
     @ApiOperation(value = "Api for change status card " ,nickname = " API for change status card" ,notes = "change status card only BANK  Payment only blocked card")
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
             @ApiResponse(code = 403, message = "Ruxsat yo'q "),
             @ApiResponse(code = 201, message = "Yaratildi "),
             @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
@@ -65,7 +66,8 @@ public class CardController {
     @PreAuthorize("hasRole('BANK')")
     @PutMapping("/assignPhone")
     @ApiOperation(value = "Api for change status card " ,nickname = " API for change status card" ,notes = "change status card only BANK  Payment only blocked card")
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
             @ApiResponse(code = 403, message = "Ruxsat yo'q "),
             @ApiResponse(code = 201, message = "Yaratildi "),
             @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
@@ -74,6 +76,23 @@ public class CardController {
 
     public ResponseEntity assignPhone(@RequestBody AssignPhoneDTO assignPhone ){
         return cardService.assignPhone(assignPhone);
+
+    }
+
+
+    @PreAuthorize("hasRole('PAYMENT') or hasRole('BANK')")
+    @GetMapping("/getCardByCardId/{id}")
+    @ApiOperation(value = "Api for get card by id " ,nickname = " API for get card" ,notes = "get card by id only Payment ")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
+            @ApiResponse(code = 403, message = "Ruxsat yo'q "),
+            @ApiResponse(code = 201, message = "Yaratildi "),
+            @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
+            @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
+    })
+
+    public ResponseEntity getCardByCardId(@PathVariable("id") String id){
+        return cardService.getCardByCardId(id);
 
     }
 

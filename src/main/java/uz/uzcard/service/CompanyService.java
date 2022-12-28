@@ -37,7 +37,7 @@ public class CompanyService {
     public ResponseEntity create(CompanyRegistrationDTO dto) {
 
 
-        if (!(dto.getRole().equals(GeneralRole.BANK.name()) && dto.getRole().equals(GeneralRole.PAYMENT.name()))){
+        if (!(dto.getRole().equals(GeneralRole.BANK.name()) || dto.getRole().equals(GeneralRole.PAYMENT.name()))){
             return ResponceDTO.sendBadRequestResponce(-1,"Role is not valid");
         }
         if (companyRepository.existsByPhone(dto.getPhone())){

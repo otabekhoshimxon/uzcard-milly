@@ -10,6 +10,9 @@ public class CardCreateDTO {
 
     @NotNull(message = "Balance is required")
     private Long balance;
+
+    @NotNull(message = "Password is required")
+    private String password;
     @NotNull(message = "Client id is required")
     private String clientId;
 }
