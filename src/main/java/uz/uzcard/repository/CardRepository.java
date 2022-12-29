@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 import uz.uzcard.entity.CardEntity;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface CardRepository extends PagingAndSortingRepository<CardEntity, String> {
@@ -23,5 +24,16 @@ public interface CardRepository extends PagingAndSortingRepository<CardEntity, S
             " inner join client cl on cl.id=cd.client_id " +
             " inner join company cm on cm.id=cl.company_id " +
             " where cd.id=:cardId and cm.id=:comId ",nativeQuery = true)
-    Optional<CardEntity> getCardCreatorById(@Param("cardId") String id, @Param("comId")String currentUserId);
+    Optional<CardEntity> getCardByIdAndCreatorId(@Param("cardId") String id, @Param("comId")String currentUserId);
+
+
+    @Query(value = "select * from card cd " +
+            " inner join client cl on cl.id =cd.client_id" +
+            " where cl.company_id=:comId and cd.phone=:ph ",nativeQuery = true)
+    List<CardEntity> getCardListByPhoneAndCompanyId( @Param("ph")String phone, @Param("comId") String id);
+
+
+
+    @Query(value = " select  * from card where phone=:ph and visible=true ",nativeQuery = true)
+    List<CardEntity> getCardListByPhone( @Param("ph")String phone);
 }

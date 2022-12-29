@@ -11,6 +11,7 @@ import uz.uzcard.dto.AssignPhoneDTO;
 import uz.uzcard.dto.VerificationDTO;
 import uz.uzcard.dto.card.CardCreateDTO;
 import uz.uzcard.dto.card.CardDTO;
+import uz.uzcard.dto.card.CardPhoneDTO;
 import uz.uzcard.dto.responce.ResponceDTO;
 import uz.uzcard.entity.CardEntity;
 import uz.uzcard.entity.ClientEntity;
@@ -19,11 +20,8 @@ import uz.uzcard.enums.GeneralStatus;
 import uz.uzcard.repository.CardRepository;
 import uz.uzcard.util.CardNumberGenerator;
 import uz.uzcard.util.CurrentUserUtil;
-import uz.uzcard.util.MD5PasswordGenerator;
 
-import java.util.Collection;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class CardService {
@@ -86,10 +84,9 @@ public class CardService {
             return ResponceDTO.sendBadRequestResponce(-1,"Card not found");
         }
 
-        Collection<? extends GrantedAuthority> authorities = currentUserUtil.getCurrentUser().getAuthorities();
 
         CardEntity card = byId.get();
-        if (authorities.contains(new SimpleGrantedAuthority("BANK"))){
+        if (checkRole("BANK")){
 
             if (card.getStatus().equals(GeneralStatus.ACTIVE)){
                 card.setStatus(GeneralStatus.BLOCK);
@@ -101,13 +98,19 @@ public class CardService {
 
 
         }
-        if (authorities.contains(new SimpleGrantedAuthority("PAYMENT"))){
+        if (checkRole("PAYMENT")){
             if (card.getStatus().equals(GeneralStatus.ACTIVE)){
                 card.setStatus(GeneralStatus.BLOCK);
             }
 
         }
         return ResponceDTO.sendOkResponce(1,"Successfully changed status card");
+    }
+
+
+    public boolean checkRole(String role){
+        Collection<? extends GrantedAuthority> authorities = currentUserUtil.getCurrentUser().getAuthorities();
+        return authorities.contains(new SimpleGrantedAuthority(role));
     }
 
     public ResponseEntity assignPhone(AssignPhoneDTO assignPhone) {
@@ -135,9 +138,9 @@ public class CardService {
         }
         CustomUserDetails currentUser = currentUserUtil.getCurrentUser();
 
-        if (currentUser.getAuthorities().contains(new SimpleGrantedAuthority("BANK"))){
+        if (checkRole("BANK")){
 
-            Optional<CardEntity> cardCreatorById = cardRepository.getCardCreatorById(id,currentUser.getId());
+            Optional<CardEntity> cardCreatorById = cardRepository.getCardByIdAndCreatorId(id,currentUser.getId());
             if (cardCreatorById.isEmpty()){
                 return ResponceDTO.sendBadRequestResponce(-1,"Card not by  found");
             }
@@ -162,5 +165,36 @@ public class CardService {
         dto.setStatus(card.getStatus());
         dto.setVisible(card.getVisible());
         return dto;
+    }
+
+    public ResponseEntity getCardListByPhone(CardPhoneDTO phone) {
+
+
+        if (!cardRepository.existsByPhone(phone.getPhone())){
+            return ResponceDTO.sendBadRequestResponce(-1,"Card not found ");
+
+        }
+        CustomUserDetails currentUser = currentUserUtil.getCurrentUser();
+
+        if (checkRole("BANK")){
+
+            List<CardEntity> cardListByPhoneAndCompanyId = cardRepository.getCardListByPhoneAndCompanyId(phone.getPhone(), currentUser.getId());
+            List<CardDTO> cardDTOS=new ArrayList<>();
+            for (CardEntity card : cardListByPhoneAndCompanyId) {
+                cardDTOS.add(getCardDTO(card));
+            }
+
+            return ResponseEntity.ok(cardDTOS);
+
+
+        }
+        List<CardEntity> cardListByPhone = cardRepository.getCardListByPhone(phone.getPhone());
+
+        List<CardDTO> cardDTOS=new ArrayList<>();
+        for (CardEntity card : cardListByPhone) {
+           cardDTOS.add(getCardDTO(card));
+        }
+
+        return ResponseEntity.ok(cardDTOS);
     }
 }
