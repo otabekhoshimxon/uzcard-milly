@@ -11,6 +11,7 @@ import uz.uzcard.dto.AssignPhoneDTO;
 import uz.uzcard.dto.VerificationDTO;
 import uz.uzcard.dto.card.CardCreateDTO;
 import uz.uzcard.dto.card.CardDTO;
+import uz.uzcard.dto.card.CardNumberDTO;
 import uz.uzcard.dto.card.CardPhoneDTO;
 import uz.uzcard.dto.responce.ResponceDTO;
 import uz.uzcard.entity.CardEntity;
@@ -32,7 +33,7 @@ public class CardService {
     private ClientService clientService;
     @Autowired
     private CompanyService companyService;
-  @Autowired
+    @Autowired
     private MessageService messageService;
 
     @Autowired
@@ -205,19 +206,36 @@ public class CardService {
         }
 
 
-
         return ResponseEntity.ok(dtoList(cardListByClientId));
 
     }
 
 
+    public ResponseEntity getCardByNumber(CardNumberDTO cardNumber) {
 
 
+        if (checkRole("BANK")) {
+
+            Optional<CardEntity> cardByNumberAndCompanyId = cardRepository.getCardByNumberAndCompanyId(cardNumber.getCardNumber(), currentUserUtil.getCurrentUser().getId());
+            if (cardByNumberAndCompanyId.isEmpty()) {
+                return ResponceDTO.sendBadRequestResponce(-1, "Card not found");
+            }
+
+            CardEntity card = cardByNumberAndCompanyId.get();
+            return ResponseEntity.ok(getCardDTO(card));
 
 
+        }
 
+        Optional<CardEntity> cardByNumber = cardRepository.getCardByNumber(cardNumber.getCardNumber());
+        if (cardByNumber.isEmpty()) {
+            return ResponceDTO.sendBadRequestResponce(-1, "Card not found");
+        }
 
+        CardEntity card = cardByNumber.get();
+        return ResponseEntity.ok(getCardDTO(card));
 
+    }
 
 
 ///////////////////////////////////////////////////
@@ -240,12 +258,14 @@ public class CardService {
     }
 
 
-    public List<CardDTO> dtoList(List<CardEntity> entityList){
-        List<CardDTO> cardDTOS=new ArrayList<>();
+    public List<CardDTO> dtoList(List<CardEntity> entityList) {
+        List<CardDTO> cardDTOS = new ArrayList<>();
         for (CardEntity card : entityList) {
 
             cardDTOS.add(getCardDTO(card));
         }
         return cardDTOS;
+
     }
 }
+

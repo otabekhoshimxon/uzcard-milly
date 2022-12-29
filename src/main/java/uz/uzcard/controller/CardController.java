@@ -11,6 +11,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import uz.uzcard.dto.AssignPhoneDTO;
 import uz.uzcard.dto.card.CardCreateDTO;
+import uz.uzcard.dto.card.CardNumberDTO;
 import uz.uzcard.dto.card.CardPhoneDTO;
 import uz.uzcard.service.CardService;
 
@@ -20,12 +21,8 @@ import javax.validation.Valid;
 @RequestMapping("/api/v1/card")
 @Api(tags = "Card controller")
 public class CardController {
-
-
-
     @Autowired
     private CardService cardService;
-
 
     @PreAuthorize("ROLE_BANK")
     @PostMapping("/create")
@@ -38,11 +35,7 @@ public class CardController {
     })
 
     public ResponseEntity create(@Valid @RequestBody CardCreateDTO cardCreate){
-
-
-
         return cardService.createCard(cardCreate);
-
     }
 
 
@@ -58,11 +51,7 @@ public class CardController {
     })
 
     public ResponseEntity changeStatus(@PathVariable("id") String id ){
-
-
-
         return cardService.changeStatusCard(id);
-
     }
     @PreAuthorize("hasRole('BANK')")
     @PutMapping("/assignPhone")
@@ -77,7 +66,6 @@ public class CardController {
 
     public ResponseEntity assignPhone(@RequestBody AssignPhoneDTO assignPhone ){
         return cardService.assignPhone(assignPhone);
-
     }
 
 
@@ -94,7 +82,6 @@ public class CardController {
 
     public ResponseEntity getCardByCardId(@PathVariable("id") String id){
         return cardService.getCardByCardId(id);
-
     }
 
     @PreAuthorize("hasRole('PAYMENT') or hasRole('BANK')")
@@ -110,7 +97,6 @@ public class CardController {
 
     public ResponseEntity getCardListByPhone(@RequestBody CardPhoneDTO phone){
         return cardService.getCardListByPhone(phone);
-
     }
   @PreAuthorize("hasRole('PAYMENT') or hasRole('BANK')")
     @GetMapping("/getCardListByClientId/{id}")
@@ -125,7 +111,22 @@ public class CardController {
 
     public ResponseEntity getCardListByClientId(@PathVariable String id){
         return cardService.getCardListByClientId(id);
+    }
 
+
+  @PreAuthorize("hasRole('PAYMENT') or hasRole('BANK')")
+    @GetMapping("/getCardByNumber")
+    @ApiOperation(value = "Api for get card by number " ,nickname = " API for get card" ,notes = "get card by number only Payment ")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
+            @ApiResponse(code = 403, message = "Ruxsat yo'q "),
+            @ApiResponse(code = 201, message = "Yaratildi "),
+            @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
+            @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
+    })
+
+    public ResponseEntity getCardByNumber(@RequestBody CardNumberDTO cardNumber){
+        return cardService.getCardByNumber(cardNumber);
     }
 
 

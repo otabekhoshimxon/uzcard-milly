@@ -5,7 +5,9 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
+import uz.uzcard.dto.card.CardNumberDTO;
 import uz.uzcard.entity.CardEntity;
 
 import java.util.List;
@@ -38,11 +40,19 @@ public interface CardRepository extends PagingAndSortingRepository<CardEntity, S
     List<CardEntity> getCardListByPhone( @Param("ph")String phone);
 
 
-    @Query(value = " select  * from card cd " +
+    @Query(value = " select  * from  card cd " +
             "  where cd.client_id=:clId and cd.company_id=:comId",nativeQuery = true)
     List<CardEntity> getCardListByClientIdAndCompanyId(@Param("clId") String id, @Param("comId") String id1);
 
 
     @Query(value = " select  * from card where client_id=:clId",nativeQuery = true)
     List<CardEntity> getByClientId(@Param("clId") String id);
+
+    
+    
+    @Query(value = " select  * from card where number=:cn and company_id=:comId" ,nativeQuery = true)
+    Optional<CardEntity> getCardByNumberAndCompanyId(@Param("cn") String cardNumber, @Param("comId") String id);
+
+
+    Optional<CardEntity> getCardByNumber(String cardNumber);
 }
