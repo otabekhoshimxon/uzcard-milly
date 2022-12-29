@@ -36,4 +36,13 @@ public interface CardRepository extends PagingAndSortingRepository<CardEntity, S
 
     @Query(value = " select  * from card where phone=:ph and visible=true ",nativeQuery = true)
     List<CardEntity> getCardListByPhone( @Param("ph")String phone);
+
+
+    @Query(value = " select  * from card cd " +
+            "  where cd.client_id=:clId and cd.company_id=:comId",nativeQuery = true)
+    List<CardEntity> getCardListByClientIdAndCompanyId(@Param("clId") String id, @Param("comId") String id1);
+
+
+    @Query(value = " select  * from card where client_id=:clId",nativeQuery = true)
+    List<CardEntity> getByClientId(@Param("clId") String id);
 }

@@ -57,6 +57,7 @@ public class CardService {
         card.setClientId(client.getId());
         card.setPassword(card.getPassword());
         card.setPrefix(company.getCardPrefix());
+        card.setCompanyId(currentUser.getId());
         card.setNumber(new CardNumberGenerator().generate(company.getCardPrefix(), 16));
         card.setStatus(GeneralStatus.NOT_ACTIVE);
         cardRepository.save(card);
@@ -151,22 +152,6 @@ public class CardService {
     }
 
 
-    public CardDTO getCardDTO(CardEntity card){
-
-
-        CardDTO dto=new CardDTO();
-        dto.setId(card.getId());
-        dto.setNumber(card.getNumber());
-        dto.setBalance(card.getBalance());
-        dto.setClientId(card.getClientId());
-        dto.setCreatedDate(card.getCreatedDate());
-        dto.setExpiredDate(card.getExpiredDate());
-        dto.setPhone(card.getPhone());
-        dto.setStatus(card.getStatus());
-        dto.setVisible(card.getVisible());
-        return dto;
-    }
-
     public ResponseEntity getCardListByPhone(CardPhoneDTO phone) {
 
 
@@ -196,5 +181,71 @@ public class CardService {
         }
 
         return ResponseEntity.ok(cardDTOS);
+    }
+
+    public ResponseEntity getCardListByClientId(String id) {
+
+        if (checkRole("BANK")){
+
+
+            List<CardEntity> cardListByClientIdAndCompanyId = cardRepository.getCardListByClientIdAndCompanyId(id, currentUserUtil.getCurrentUser().getId());
+
+
+            if (cardListByClientIdAndCompanyId.isEmpty()){
+                return ResponceDTO.sendBadRequestResponce(-1,"Card not found");
+            }
+
+            return ResponseEntity.ok(dtoList(cardListByClientIdAndCompanyId));
+
+        }
+
+        List<CardEntity> cardListByClientId = cardRepository.getByClientId(id);
+        if (cardListByClientId.isEmpty()){
+            return ResponceDTO.sendBadRequestResponce(-1,"Card not found");
+        }
+
+
+
+        return ResponseEntity.ok(dtoList(cardListByClientId));
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////
+
+
+    public CardDTO getCardDTO(CardEntity card){
+
+
+        CardDTO dto=new CardDTO();
+        dto.setId(card.getId());
+        dto.setNumber(card.getNumber());
+        dto.setBalance(card.getBalance());
+        dto.setClientId(card.getClientId());
+        dto.setCreatedDate(card.getCreatedDate());
+        dto.setExpiredDate(card.getExpiredDate());
+        dto.setPhone(card.getPhone());
+        dto.setStatus(card.getStatus());
+        dto.setVisible(card.getVisible());
+        return dto;
+    }
+
+
+    public List<CardDTO> dtoList(List<CardEntity> entityList){
+        List<CardDTO> cardDTOS=new ArrayList<>();
+        for (CardEntity card : entityList) {
+
+            cardDTOS.add(getCardDTO(card));
+        }
+        return cardDTOS;
     }
 }

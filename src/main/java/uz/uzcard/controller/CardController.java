@@ -99,7 +99,7 @@ public class CardController {
 
     @PreAuthorize("hasRole('PAYMENT') or hasRole('BANK')")
     @GetMapping("/getCardListByPhone")
-    @ApiOperation(value = "Api for get card by id " ,nickname = " API for get card" ,notes = "get card by id only Payment ")
+    @ApiOperation(value = "Api for get card by Phone " ,nickname = " API for get card" ,notes = "get card by Phone only Payment ")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
             @ApiResponse(code = 403, message = "Ruxsat yo'q "),
@@ -110,6 +110,21 @@ public class CardController {
 
     public ResponseEntity getCardListByPhone(@RequestBody CardPhoneDTO phone){
         return cardService.getCardListByPhone(phone);
+
+    }
+  @PreAuthorize("hasRole('PAYMENT') or hasRole('BANK')")
+    @GetMapping("/getCardListByClientId/{id}")
+    @ApiOperation(value = "Api for get card by clientId " ,nickname = " API for get card" ,notes = "get card by id only Payment ")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
+            @ApiResponse(code = 403, message = "Ruxsat yo'q "),
+            @ApiResponse(code = 201, message = "Yaratildi "),
+            @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
+            @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
+    })
+
+    public ResponseEntity getCardListByClientId(@PathVariable String id){
+        return cardService.getCardListByClientId(id);
 
     }
 

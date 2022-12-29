@@ -54,8 +54,13 @@ public class CardEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private ClientEntity client;
-
     private String clientId;
+
+    @JoinColumn(name = "companyId",insertable = false,updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    private CompanyEntity company;
+    private String companyId;
     @Column
     private Boolean visible=Boolean.TRUE;
 
