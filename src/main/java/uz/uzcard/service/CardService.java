@@ -267,5 +267,28 @@ public class CardService {
         return cardDTOS;
 
     }
+
+    public ResponseEntity getCardBalance(CardNumberDTO cardNumber) {
+
+
+
+        if (!cardRepository.existsByNumber(cardNumber.getCardNumber())){
+            return ResponceDTO.sendBadRequestResponce(-1,"Card not found");
+        }
+
+        if (checkRole("BANK"))
+        {
+            Long cardBalanceByNumberAndCompanyId = cardRepository.getCardBalanceByNumberAndCompanyId(cardNumber.getCardNumber(), currentUserUtil.getCurrentUser().getId());
+
+            return ResponseEntity.ok(cardBalanceByNumberAndCompanyId);
+
+
+
+        }
+
+        Long balanceByNumber = cardRepository.getBalanceByNumber(cardNumber.getCardNumber());
+        return  ResponseEntity.ok(balanceByNumber);
+
+    }
 }
 

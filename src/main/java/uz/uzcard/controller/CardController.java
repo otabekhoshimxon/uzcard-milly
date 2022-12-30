@@ -129,6 +129,21 @@ public class CardController {
         return cardService.getCardByNumber(cardNumber);
     }
 
+  @PreAuthorize("hasRole('PAYMENT') or hasRole('BANK')")
+    @GetMapping("/getCardBalance")
+    @ApiOperation(value = "Api for get card balance by number " ,nickname = " API for get card" ,notes = "get card by number only Payment ")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
+            @ApiResponse(code = 403, message = "Ruxsat yo'q "),
+            @ApiResponse(code = 201, message = "Yaratildi "),
+            @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
+            @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
+    })
+
+    public ResponseEntity getCardBalance(@RequestBody CardNumberDTO cardNumber){
+        return cardService.getCardBalance(cardNumber);
+    }
+
 
 
 
