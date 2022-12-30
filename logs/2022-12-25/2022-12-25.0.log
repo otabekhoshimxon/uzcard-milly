@@ -1,3 +1,0 @@
-2022-12-25 06:02:03 [34mINFO [0;39m - org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-12-25 06:02:03 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2022-12-25 06:02:03 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

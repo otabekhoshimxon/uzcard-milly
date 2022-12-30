@@ -114,7 +114,7 @@
     cardInfo:
       id(uuid),number,expired_date,phone,status,created_date,balance, balance, profile(id,name,surname)
 
-4. Transaction
+5. Transaction
     1. Create (BANK, PAYMENT)
     2. Get Transaction pagination by cardId (BANK,PAYMENT)
     3. Get Transaction pagination by card Pan(number) (BANK,PAYMENT)
