@@ -11,6 +11,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import uz.uzcard.dto.AssignPhoneDTO;
 import uz.uzcard.dto.card.CardCreateDTO;
+import uz.uzcard.dto.card.CardFilterDTO;
 import uz.uzcard.dto.card.CardNumberDTO;
 import uz.uzcard.dto.card.CardPhoneDTO;
 import uz.uzcard.service.CardService;
@@ -129,7 +130,7 @@ public class CardController {
         return cardService.getCardByNumber(cardNumber);
     }
 
-  @PreAuthorize("hasRole('PAYMENT') or hasRole('BANK')")
+    @PreAuthorize("hasRole('PAYMENT') or hasRole('BANK')")
     @GetMapping("/getCardBalance")
     @ApiOperation(value = "Api for get card balance by number " ,nickname = " API for get card" ,notes = "get card by number only Payment ")
     @ApiResponses(value = {
@@ -142,6 +143,23 @@ public class CardController {
 
     public ResponseEntity getCardBalance(@RequestBody CardNumberDTO cardNumber){
         return cardService.getCardBalance(cardNumber);
+    }
+
+    @PreAuthorize("hasRole('PAYMENT') or hasRole('BANK')")
+    @GetMapping("/filter")
+    @ApiOperation(value = "Api for filter " ,nickname = " API for get card" ,notes = "get card by number only Payment ")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
+            @ApiResponse(code = 403, message = "Ruxsat yo'q "),
+            @ApiResponse(code = 201, message = "Yaratildi "),
+            @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
+            @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
+    })
+
+    public ResponseEntity filter(@RequestBody CardFilterDTO filter){
+
+        //TODO  filterda muammo bor
+        return cardService.filter(filter);
     }
 
 

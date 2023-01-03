@@ -9,15 +9,13 @@ import org.springframework.stereotype.Service;
 import uz.uzcard.config.CustomUserDetails;
 import uz.uzcard.dto.AssignPhoneDTO;
 import uz.uzcard.dto.VerificationDTO;
-import uz.uzcard.dto.card.CardCreateDTO;
-import uz.uzcard.dto.card.CardDTO;
-import uz.uzcard.dto.card.CardNumberDTO;
-import uz.uzcard.dto.card.CardPhoneDTO;
+import uz.uzcard.dto.card.*;
 import uz.uzcard.dto.responce.ResponceDTO;
 import uz.uzcard.entity.CardEntity;
 import uz.uzcard.entity.ClientEntity;
 import uz.uzcard.entity.CompanyEntity;
 import uz.uzcard.enums.GeneralStatus;
+import uz.uzcard.repository.CardFilterRepository;
 import uz.uzcard.repository.CardRepository;
 import uz.uzcard.util.CardNumberGenerator;
 import uz.uzcard.util.CurrentUserUtil;
@@ -288,6 +286,23 @@ public class CardService {
 
         Long balanceByNumber = cardRepository.getBalanceByNumber(cardNumber.getCardNumber());
         return  ResponseEntity.ok(balanceByNumber);
+
+    }
+
+    public ResponseEntity filter(CardFilterDTO filter) {
+        @SuppressWarnings("unchecked")
+        List cardInfo = new CardFilterRepository().getCardInfo(filter);
+        return ResponseEntity.ok(cardInfo);
+
+
+
+
+    }
+
+    public CardEntity getCardById(String cardId) {
+        Optional<CardEntity> byId = cardRepository.findById(cardId);
+        CardEntity card = byId.orElse(null);
+        return card;
 
     }
 }
