@@ -34,11 +34,11 @@ public class TransferEntity  {
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private CardEntity toCard;
     private String toCardId;
-    private Long totalAmount;
-    private Long amount;
+    private Double totalAmount;
+    private Double amount;
 
-    private Long service_amount;
-    private Long service_percentage;
+    private Double service_amount;
+    private Double service_percentage;
 
     private LocalDateTime createdDate=LocalDateTime.now();
     @Enumerated(EnumType.STRING)

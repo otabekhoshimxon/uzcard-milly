@@ -113,6 +113,23 @@
 
     cardInfo:
       id(uuid),number,expired_date,phone,status,created_date,balance, balance, profile(id,name,surname)
+6. Transfer
+    1. Create Transfer
+        request: from_card_id, to_card_id, amount(5500)
+        response: {    id,from_card_id, to_card_id, amount(5500), total_amount(5600),
+                       service_amount(100),
+                       payment_service_percentage(0.5%),
+                       uzcard_service_percentage(0.5%),
+                       status(CREATED)
+                   }
+    2. Do Transfer by TransferID (change status to SUCCESS or FAILED)
+    3. Cancel Transfer by TransferID (if status ACTIVE change status to CANCELED, if SUCCESS not allow)
+    4. Reverse Transfer by TransferID
+
+ TransactionIfo
+           id,fromCard{id,number,phone,client{id,name,surname}},
+           ToCard{id,number,phone,client{id,name,surname}}, amount,createdDate,Status,transaction_type
+         Muhim-> cardNumber should be hidden  8600-****-****-1212
 
 5. Transaction
     1. Create (BANK, PAYMENT)
@@ -134,23 +151,6 @@
 
 
 
-6. Transfer
-    1. Create Transfer
-        request: from_card_id, to_card_id, amount(5500)
-        response: {    id,from_card_id, to_card_id, amount(5500), total_amount(5600),
-                       service_amount(100),
-                       payment_service_percentage(0.5%),
-                       uzcard_service_percentage(0.5%),
-                       status(CREATED)
-                   }
-    2. Do Transfer by TransferID (change status to SUCCESS or FAILED)
-    3. Cancel Transfer by TransferID (if status ACTIVE change status to CANCELED, if SUCCESS not allow)
-    4. Reverse Transfer by TransferID
-
- TransactionIfo
-           id,fromCard{id,number,phone,client{id,name,surname}},
-           ToCard{id,number,phone,client{id,name,surname}}, amount,createdDate,Status,transaction_type
-         Muhim-> cardNumber should be hidden  8600-****-****-1212
 
 
 4. Log
