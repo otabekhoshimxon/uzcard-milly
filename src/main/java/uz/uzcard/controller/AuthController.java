@@ -1,10 +1,7 @@
 package uz.uzcard.controller;
 
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -12,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import uz.uzcard.dto.AuthDTO;
 import uz.uzcard.dto.VerificationDTO;
 import uz.uzcard.service.AuthService;
-
 import javax.validation.Valid;
 
 @RestController

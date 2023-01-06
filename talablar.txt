@@ -116,7 +116,11 @@
 6. Transfer
     1. Create Transfer
         request: from_card_id, to_card_id, amount(5500)
-        response: {    id,from_card_id, to_card_id, amount(5500), total_amount(5600),
+        response: {    id,
+                       from_card_id,
+                       to_card_id,
+                       amount(5500),
+                       total_amount(5600),
                        service_amount(100),
                        payment_service_percentage(0.5%),
                        uzcard_service_percentage(0.5%),

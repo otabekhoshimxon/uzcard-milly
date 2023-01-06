@@ -135,7 +135,7 @@ public class TransferService {
 
         if (entity.getStatus().equals(TransferStatus.SUCCESS)) {
 
-                   return ResponceDTO.sendBadRequestResponce(-1, "Not allowed to cancel a successed transfer");
+            return ResponceDTO.sendBadRequestResponce(-1, "Not allowed to cancel a successed transfer");
 
         }
 
@@ -151,8 +151,39 @@ public class TransferService {
     public ResponseEntity reverse(String id) {
 
 
+        Optional<TransferEntity> byId = transferRepository.findById(id);
+        if (byId.isEmpty()) {
+            return ResponceDTO.sendBadRequestResponce(-1, "Transfer not found");
 
-        return null;
+        }
+        TransferEntity transfer = byId.get();
+        CompanyEntity company = companyService.getById(transfer.getCompanyId());
+        CardEntity from = cardService.getCardById(transfer.getFromCardId());
+
+        double service_percentage = uzCardServicePercentage + company.getServicePersentage(); // 0.7
+        double uzcardServiceAmount = (transfer.getAmount() /100)* service_percentage; // 70
+        double companyServiceAmount = (transfer.getAmount() /100)* company.getServicePersentage(); // 70
+        double total_amount = transfer.getAmount() + uzcardServiceAmount+companyServiceAmount; // 10,070
+
+        if (from.getBalance() < total_amount) {
+            return ResponceDTO.sendBadRequestResponce(-1, "Not enough money");
+        }
+
+        transactionService.create(transfer.getFromCard().getId(),transfer.getTotalAmount(),transfer.getId(), TransactionType.DEBIT);
+        transactionService.create(transfer.getToCard().getId(),  transfer.getAmount(),     transfer.getId(), TransactionType.CREDIT);
+        transactionService.create(transfer.getCompanyId(),       companyServiceAmount,     transfer.getId(), TransactionType.CREDIT);
+        transactionService.create(uzCardId,                      uzcardServiceAmount,      transfer.getId(), TransactionType.CREDIT);
+
+        cardService.changeBalance(transfer.getFromCardId(),transfer.getTotalAmount(),TransactionType.DEBIT);
+        cardService.changeBalance(transfer.getToCardId(),  transfer.getAmount(),     TransactionType.CREDIT);
+        cardService.changeBalance(transfer.getCompanyId(), companyServiceAmount,     TransactionType.CREDIT);
+        cardService.changeBalance(uzCardId,                uzcardServiceAmount,      TransactionType.CREDIT);
+
+        transferRepository.changeStatus(TransferStatus.REVERSED,transfer.getId());
+
+
+
+        return ResponceDTO.sendOkResponce(1, "Transfer successfully reversed");
     }
 
 

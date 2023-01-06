@@ -2907,3 +2907,28 @@ org.postgresql.util.PSQLException: ERROR: insert or update on table "transaction
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-01-06 17:37:57 [34mINFO [0;39m - org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-01-06 17:37:57 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-01-06 17:37:57 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2023-01-06 20:47:25 [34mINFO [0;39m - uz.uzcard.UzcardProjectApplication - Starting UzcardProjectApplication using Java 18.0.2 on java with PID 59294 (/home/otabek/Otabek Hoshimxon/Portfolios/uzcard-project/target/classes started by otabek in /home/otabek/Otabek Hoshimxon/Portfolios/uzcard-project)
+2023-01-06 20:47:25 [34mINFO [0;39m - uz.uzcard.UzcardProjectApplication - No active profile set, falling back to 1 default profile: "default"
+2023-01-06 20:47:39 [34mINFO [0;39m - org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-01-06 20:47:39 [34mINFO [0;39m - org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 249 ms. Found 7 JPA repository interfaces.
+2023-01-06 20:47:45 [34mINFO [0;39m - org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-01-06 20:47:45 [34mINFO [0;39m - org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-01-06 20:47:45 [34mINFO [0;39m - org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.69]
+2023-01-06 20:47:46 [34mINFO [0;39m - org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-01-06 20:47:46 [34mINFO [0;39m - org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 19946 ms
+2023-01-06 20:47:48 [34mINFO [0;39m - org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-01-06 20:47:50 [34mINFO [0;39m - org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-01-06 20:47:53 [34mINFO [0;39m - org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-01-06 20:47:55 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-01-06 20:48:01 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-01-06 20:48:01 [34mINFO [0;39m - org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-01-06 20:48:02 [31mWARN [0;39m - org.hibernate.id.UUIDHexGenerator - HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2023-01-06 20:48:05 [34mINFO [0;39m - org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-01-06 20:48:05 [34mINFO [0;39m - org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-01-06 20:48:07 [31mWARN [0;39m - org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-06 20:48:09 [34mINFO [0;39m - org.springframework.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@496e2bdd, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@17e725fb, org.springframework.security.web.context.SecurityContextPersistenceFilter@4e451f9a, org.springframework.security.web.header.HeaderWriterFilter@67e37d25, org.springframework.security.web.authentication.logout.LogoutFilter@56afbace, JwtTokenFilter(profileRepository=org.springframework.data.jpa.repository.support.SimpleJpaRepository@7f72855d, clientRepository=org.springframework.data.jpa.repository.support.SimpleJpaRepository@47a68e3f, companyRepository=org.springframework.data.jpa.repository.support.SimpleJpaRepository@52288c65), org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2f59cb6f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@672549f3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@33ef393a, org.springframework.security.web.session.SessionManagementFilter@1bd5b1c8, org.springframework.security.web.access.ExceptionTranslationFilter@6b3284, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@33fc92d6]
+2023-01-06 20:48:09 [34mINFO [0;39m - org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-01-06 20:48:10 [34mINFO [0;39m - uz.uzcard.UzcardProjectApplication - Started UzcardProjectApplication in 49.162 seconds (JVM running for 55.255)
