@@ -58,7 +58,7 @@ public class TransferController {
     }
 
  @PreAuthorize("hasRole('PAYMENT' or hasRole('BANK'))")
-    @PutMapping("/cansel/{id}")
+    @PutMapping("/cancel/{id}")
     @ApiOperation(value = "Api for cancel transfer transaction ", nickname = " API for cancel transfer transaction", notes = "cancel transfer transaction only BANK ")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
             @ApiResponse(code = 403, message = "Ruxsat yo'q "),
