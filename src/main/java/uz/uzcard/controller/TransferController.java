@@ -71,6 +71,35 @@ public class TransferController {
         return transferService.cancel(id);
     }
 
+ @PreAuthorize("hasRole('PAYMENT' or hasRole('BANK'))")
+    @PutMapping("/reverse/{id}")
+    @ApiOperation(value = "Api for reverse transfer transaction ", nickname = " API for reverse transfer transaction", notes = "reverse transfer transaction only BANK ")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
+            @ApiResponse(code = 403, message = "Ruxsat yo'q "),
+            @ApiResponse(code = 201, message = "Yaratildi "),
+            @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
+            @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
+    })
+    public ResponseEntity reverse(@PathVariable("id")String id) {
+
+        return transferService.reverse(id);
+    }
+
+
+ @PreAuthorize("hasRole('PAYMENT' or hasRole('BANK'))")
+    @PutMapping("/finish/{id}")
+    @ApiOperation(value = "Api for finish transfer transaction ", nickname = " API for finish transfer transaction", notes = "finish transfer transaction only BANK ")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
+            @ApiResponse(code = 403, message = "Ruxsat yo'q "),
+            @ApiResponse(code = 201, message = "Yaratildi "),
+            @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
+            @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
+    })
+    public ResponseEntity finish(@PathVariable("id")String id) {
+
+        return transferService.finish(id);
+    }
+
 
 
 

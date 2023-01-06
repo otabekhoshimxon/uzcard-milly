@@ -33,7 +33,7 @@ public class TransactionEntity {
     private String transferId;
 
 
-    private Long amount;
+    private Double amount;
 
     private LocalDateTime createdDate=LocalDateTime.now();
 

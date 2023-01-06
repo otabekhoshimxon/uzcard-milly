@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 public class CardCreateDTO {
 
     @NotNull(message = "Balance is required")
-    private Long balance;
+    private Double balance;
 
     @NotNull(message = "Password is required")
     private String password;

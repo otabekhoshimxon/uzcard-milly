@@ -32,7 +32,7 @@ public class CardEntity {
     private String password;
 
     @Column()
-    private Long balance;
+    private Double balance;
 
     @Column(unique = true, nullable = false)
     private String number;

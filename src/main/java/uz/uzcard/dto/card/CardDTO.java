@@ -12,7 +12,7 @@ public class CardDTO {
 
     private String id;
     private String prefix;
-    private Long balance;
+    private Double balance;
     private String number;
     private String phone;
     private LocalDateTime expiredDate;

@@ -15,6 +15,7 @@ import uz.uzcard.entity.CardEntity;
 import uz.uzcard.entity.ClientEntity;
 import uz.uzcard.entity.CompanyEntity;
 import uz.uzcard.enums.GeneralStatus;
+import uz.uzcard.enums.TransactionType;
 import uz.uzcard.repository.CardFilterRepository;
 import uz.uzcard.repository.CardRepository;
 import uz.uzcard.util.CardNumberGenerator;
@@ -54,7 +55,7 @@ public class CardService {
         card.setBalance(cardCreate.getBalance());
         card.setPhone(client.getPhone());
         card.setClientId(client.getId());
-        card.setPassword(card.getPassword());
+        card.setPassword(cardCreate.getPassword());
         card.setPrefix(company.getCardPrefix());
         card.setCompanyId(currentUser.getId());
         card.setNumber(new CardNumberGenerator().generate(company.getCardPrefix(), 16));
@@ -304,6 +305,18 @@ public class CardService {
         CardEntity card = byId.orElse(null);
         return card;
 
+    }
+
+    public void changeBalance(String cardId, Double amount, TransactionType type) {
+
+        if (type.equals(TransactionType.CREDIT)){
+            cardRepository.minusBalance(cardId,amount);
+        }
+        else if (type.equals(TransactionType.DEBIT)){
+
+            cardRepository.plusBalance(cardId,amount);
+
+        }
     }
 }
 

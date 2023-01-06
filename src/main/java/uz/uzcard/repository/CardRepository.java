@@ -64,4 +64,12 @@ public interface CardRepository extends PagingAndSortingRepository<CardEntity, S
 
     @Query(value = "select balance from card  where number=:nm",nativeQuery = true)
     Long getBalanceByNumber(@Param("nm") String cardNumber);
+    @Modifying
+    @Transactional
+    @Query("update CardEntity  set balance=balance-?2 where id=?1")
+    void minusBalance(String cardId, Double amount);
+    @Modifying
+    @Transactional
+    @Query("update CardEntity  set balance=balance+?2 where id=?1")
+    void plusBalance(String cardId, Double amount);
 }

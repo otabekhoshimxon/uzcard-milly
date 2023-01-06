@@ -3,6 +3,7 @@ package uz.uzcard.enums;
 public enum TransferStatus {
     SUCCESS,
     FAILED,
-    CANCELED
+    CANCELED,
+    IN_PROGRESS
 
 }

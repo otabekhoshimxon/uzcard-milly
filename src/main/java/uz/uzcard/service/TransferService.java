@@ -2,6 +2,7 @@ package uz.uzcard.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import uz.uzcard.config.CustomUserDetails;
@@ -12,6 +13,7 @@ import uz.uzcard.dto.transfer.TransferStatusDTO;
 import uz.uzcard.entity.CardEntity;
 import uz.uzcard.entity.CompanyEntity;
 import uz.uzcard.entity.TransferEntity;
+import uz.uzcard.enums.TransactionType;
 import uz.uzcard.enums.TransferStatus;
 import uz.uzcard.repository.TransferRepository;
 import uz.uzcard.util.CurrentUserUtil;
@@ -30,6 +32,10 @@ public class TransferService {
     private CurrentUserUtil currentUserUtil;
     @Autowired
     private TransferRepository transferRepository;
+
+    @Autowired
+    @Lazy
+    private TransactionService transactionService;
     @Autowired
     private CardService cardService;
     @Autowired
@@ -74,7 +80,7 @@ public class TransferService {
         transfer.setToCardId(to.getId());
         transfer.setTotalAmount(total_amount);
         transfer.setAmount(transferCreate.getAmount());
-        transfer.setStatus(TransferStatus.SUCCESS);
+        transfer.setStatus(TransferStatus.IN_PROGRESS);
         transfer.setService_amount(service_amount);
         transfer.setService_percentage(company.getServicePersentage());
         transfer.setCompanyId(company.getId());
@@ -140,5 +146,49 @@ public class TransferService {
 
 
         return ResponceDTO.sendOkResponce(1, "Transfer successfully canceled");
+    }
+
+    public ResponseEntity reverse(String id) {
+
+
+
+        return null;
+    }
+
+
+    public ResponseEntity finish(String id) {
+
+
+        Optional<TransferEntity> optional =transferRepository.findById(id);
+        if(optional.isEmpty()){
+            return ResponceDTO.sendBadRequestResponce(-1, "Transfer not found");
+        }
+
+        TransferEntity transfer = optional.get();
+        CompanyEntity company = companyService.getById(transfer.getCompanyId());
+        CardEntity from = cardService.getCardById(transfer.getFromCardId());
+
+        double service_percentage = uzCardServicePercentage + company.getServicePersentage(); // 0.7
+        double uzcardServiceAmount = (transfer.getAmount() /100)* service_percentage; // 70
+        double companyServiceAmount = (transfer.getAmount() /100)* company.getServicePersentage(); // 70
+        double total_amount = transfer.getAmount() + uzcardServiceAmount+companyServiceAmount; // 10,070
+
+        if (from.getBalance() < total_amount) {
+            return ResponceDTO.sendBadRequestResponce(-1, "Not enough money");
+        }
+        transactionService.create(transfer.getFromCard().getId(),transfer.getTotalAmount(),transfer.getId(), TransactionType.CREDIT);
+        transactionService.create(transfer.getToCard().getId(),  transfer.getAmount(),     transfer.getId(), TransactionType.DEBIT);
+        transactionService.create(transfer.getCompanyId(),       companyServiceAmount,     transfer.getId(), TransactionType.DEBIT);
+        transactionService.create(uzCardId,                      uzcardServiceAmount,      transfer.getId(), TransactionType.DEBIT);
+
+        cardService.changeBalance(transfer.getFromCardId(),transfer.getTotalAmount(),TransactionType.CREDIT);
+        cardService.changeBalance(transfer.getToCardId(),  transfer.getAmount(),     TransactionType.DEBIT);
+        cardService.changeBalance(transfer.getCompanyId(), companyServiceAmount,     TransactionType.DEBIT);
+        cardService.changeBalance(uzCardId,                uzcardServiceAmount,      TransactionType.DEBIT);
+
+        transferRepository.changeStatus(TransferStatus.SUCCESS,transfer.getId());
+
+        return ResponceDTO.sendOkResponce(1, "Transfer successfully finished");
+
     }
 }

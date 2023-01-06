@@ -8,9 +8,11 @@ import uz.uzcard.dto.responce.ResponceDTO;
 import uz.uzcard.entity.CardEntity;
 import uz.uzcard.entity.TransactionEntity;
 import uz.uzcard.entity.TransferEntity;
+import uz.uzcard.enums.TransactionStatus;
 import uz.uzcard.enums.TransactionType;
 import uz.uzcard.repository.TransactionRepository;
 
+import javax.transaction.Transaction;
 import java.util.Arrays;
 
 @Service
@@ -62,6 +64,21 @@ public class TransactionService {
 
 
         return ResponceDTO.sendOkResponce(1,"Successfully created transaction");
+
+
+    }
+
+    public void create(String cardId, Double totalAmount, String transferId, TransactionType type) {
+
+        TransactionEntity transaction = new TransactionEntity();
+        transaction.setType(type);
+        transaction.setTransferId(transferId);
+        transaction.setCardId(cardId);
+        transaction.setStatus(TransactionStatus.SUCCESS);
+        transaction.setAmount(totalAmount);
+        transactionRepository.save(transaction);
+
+
 
 
     }

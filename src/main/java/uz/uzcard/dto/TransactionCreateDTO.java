@@ -13,7 +13,7 @@ public class TransactionCreateDTO {
     @NotNull
     private String transferId;
     @Min(1000)
-    private Long amount;
+    private Double amount;
     @NotNull
     private String type;
 }
