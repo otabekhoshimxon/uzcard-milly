@@ -122,7 +122,7 @@
                        uzcard_service_percentage(0.5%),
                        status(CREATED)
                    }
-    2. Do Transfer by TransferID (change status to SUCCESS or FAILED)
+    2. change status by TransferID (change status to SUCCESS or FAILED)
     3. Cancel Transfer by TransferID (if status ACTIVE change status to CANCELED, if SUCCESS not allow)
     4. Reverse Transfer by TransferID
 

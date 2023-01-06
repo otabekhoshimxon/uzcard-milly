@@ -8,6 +8,7 @@ import uz.uzcard.config.CustomUserDetails;
 import uz.uzcard.dto.TransferResponceDTO;
 import uz.uzcard.dto.responce.ResponceDTO;
 import uz.uzcard.dto.transfer.TransferCreateDTO;
+import uz.uzcard.dto.transfer.TransferStatusDTO;
 import uz.uzcard.entity.CardEntity;
 import uz.uzcard.entity.CompanyEntity;
 import uz.uzcard.entity.TransferEntity;
@@ -15,6 +16,7 @@ import uz.uzcard.enums.TransferStatus;
 import uz.uzcard.repository.TransferRepository;
 import uz.uzcard.util.CurrentUserUtil;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Service
@@ -91,6 +93,27 @@ public class TransferService {
         responceDTO.setFromCard(transfer.getFromCardId());
         responceDTO.setServicePersentage(service_percentage);
         return ResponseEntity.ok(responceDTO);
+
+    }
+
+    public ResponseEntity changeStatus(String id, @Valid TransferStatusDTO transferStatus) {
+
+
+        if (!(transferStatus.equals(TransferStatus.SUCCESS.name()) || transferStatus.equals(TransferStatus.FAILED.name()))) {
+            return ResponceDTO.sendBadRequestResponce(-1, "Invalid transfer status");
+        }
+
+        Optional<TransferEntity> byId = transferRepository.findById(id);
+        if(byId.isEmpty()){
+            return ResponceDTO.sendBadRequestResponce(-1, "Transfer not found");
+
+        }
+
+        TransferEntity transfer = byId.get();
+        transfer.setStatus(TransferStatus.valueOf(transferStatus.getStatus()));
+        transferRepository.save(transfer);
+        return ResponceDTO.sendOkResponce(1, "Transfer successfully updated status");
+
 
     }
 }

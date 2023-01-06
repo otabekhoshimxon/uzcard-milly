@@ -7,11 +7,9 @@ import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import uz.uzcard.dto.transfer.TransferCreateDTO;
+import uz.uzcard.dto.transfer.TransferStatusDTO;
 import uz.uzcard.service.TransferService;
 
 import javax.validation.Valid;
@@ -43,5 +41,24 @@ public class TransferController {
 
         return transferService.create(transferCreate);
     }
+
+
+    @PreAuthorize("hasRole('PAYMENT' or hasRole('BANK'))")
+    @PutMapping("/changeStatus/{id}")
+    @ApiOperation(value = "Api for change status transaction ", nickname = " API for change status transaction", notes = "change status transaction only BANK ")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
+            @ApiResponse(code = 403, message = "Ruxsat yo'q "),
+            @ApiResponse(code = 201, message = "Yaratildi "),
+            @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
+            @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
+    })
+    public ResponseEntity changeStatus(@PathVariable("id")String id, @Valid @RequestBody TransferStatusDTO status) {
+
+        return transferService.changeStatus(id,status);
+    }
+
+
+
+
 
 }
