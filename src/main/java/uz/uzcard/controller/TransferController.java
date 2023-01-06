@@ -57,6 +57,20 @@ public class TransferController {
         return transferService.changeStatus(id,status);
     }
 
+ @PreAuthorize("hasRole('PAYMENT' or hasRole('BANK'))")
+    @PutMapping("/cansel/{id}")
+    @ApiOperation(value = "Api for cancel transfer transaction ", nickname = " API for cancel transfer transaction", notes = "cancel transfer transaction only BANK ")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
+            @ApiResponse(code = 403, message = "Ruxsat yo'q "),
+            @ApiResponse(code = 201, message = "Yaratildi "),
+            @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
+            @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
+    })
+    public ResponseEntity cancel(@PathVariable("id")String id) {
+
+        return transferService.cancel(id);
+    }
+
 
 
 

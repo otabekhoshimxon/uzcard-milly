@@ -116,4 +116,29 @@ public class TransferService {
 
 
     }
+
+    public ResponseEntity cancel(String id) {
+        Optional<TransferEntity> optional =
+                transferRepository.findById(id);
+
+        if (optional.isEmpty()) {
+            return ResponceDTO.sendBadRequestResponce(-1, "Transfer not found");
+        }
+
+        TransferEntity entity = optional.get();
+
+        if (entity.getStatus().equals(TransferStatus.SUCCESS)) {
+
+                   return ResponceDTO.sendBadRequestResponce(-1, "Not allowed to cancel a successed transfer");
+
+        }
+
+        if (entity.getStatus().equals(TransferStatus.CANCELED)) {
+            return ResponceDTO.sendBadRequestResponce(-1,         "Already canceled a transfer");
+
+        }
+
+
+        return ResponceDTO.sendOkResponce(1, "Transfer successfully canceled");
+    }
 }
