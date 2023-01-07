@@ -130,10 +130,6 @@
     3. Cancel Transfer by TransferID (if status ACTIVE change status to CANCELED, if SUCCESS not allow)
     4. Reverse Transfer by TransferID
 
- TransactionIfo
-           id,fromCard{id,number,phone,client{id,name,surname}},
-           ToCard{id,number,phone,client{id,name,surname}}, amount,createdDate,Status,transaction_type
-         Muhim-> cardNumber should be hidden  8600-****-****-1212
 
 5. Transaction
     1. Create (BANK, PAYMENT)

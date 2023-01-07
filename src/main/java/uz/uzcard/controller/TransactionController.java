@@ -7,10 +7,7 @@ import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import uz.uzcard.dto.TransactionCreateDTO;
 import uz.uzcard.dto.card.CardCreateDTO;
 import uz.uzcard.service.TransactionService;
@@ -32,7 +29,7 @@ public class TransactionController {
 
 
     @PreAuthorize("hasRole('PAYMENT' or hasRole('BANK'))")
-    @PostMapping("/create")
+    @GetMapping("/cardId/{id}")
     @ApiOperation(value = "Api for create transaction " ,nickname = " API for create transaction" ,notes = "create transaction only BANK ")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
             @ApiResponse(code = 403, message = "Ruxsat yo'q "),
@@ -41,8 +38,10 @@ public class TransactionController {
             @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
     })
 
-    public ResponseEntity create(@Valid @RequestBody TransactionCreateDTO transactionCreate){
-        return transactionService.create(transactionCreate);
+    public ResponseEntity getByCardId(@PathVariable("id") String id ,
+                                      @RequestParam(value = "page",defaultValue = "0") Integer page,
+                                      @RequestParam(value = "size",defaultValue = "4") Integer size) {
+        return transactionService.getByCardId(id,page,size);
     }
 
 

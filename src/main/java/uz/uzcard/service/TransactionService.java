@@ -1,11 +1,18 @@
 package uz.uzcard.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import uz.uzcard.dto.CardInfoDTO;
+import uz.uzcard.dto.ClientShortInfoDTO;
 import uz.uzcard.dto.TransactionCreateDTO;
+import uz.uzcard.dto.TransactionInfoDTO;
 import uz.uzcard.dto.responce.ResponceDTO;
 import uz.uzcard.entity.CardEntity;
+import uz.uzcard.entity.ClientEntity;
 import uz.uzcard.entity.TransactionEntity;
 import uz.uzcard.entity.TransferEntity;
 import uz.uzcard.enums.TransactionStatus;
@@ -13,7 +20,10 @@ import uz.uzcard.enums.TransactionType;
 import uz.uzcard.repository.TransactionRepository;
 
 import javax.transaction.Transaction;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TransactionService {
@@ -30,43 +40,7 @@ public class TransactionService {
     private TransactionRepository transactionRepository;
 
 
-    public ResponseEntity create(TransactionCreateDTO transactionCreate) {
 
-        CardEntity cardById = cardService.getCardById(transactionCreate.getCardId());
-
-        if (cardById == null) {
-            return ResponceDTO.sendBadRequestResponce(-1,"Card not found ");
-        }
-
-        TransferEntity byId = transferService.getById(transactionCreate.getTransferId());
-
-        if (byId == null) {
-
-            return ResponceDTO.sendBadRequestResponce(-1,"Transfer not found ");
-
-        }
-
-
-        if (!(TransactionType.valueOf(transactionCreate.getType().toUpperCase())==TransactionType.CREDIT
-            || TransactionType.valueOf(transactionCreate.getType().toUpperCase())==TransactionType.DEBIT)){
-
-            return ResponceDTO.sendBadRequestResponce(-1,"Type is not correct");
-
-        }
-
-        TransactionEntity entity=new TransactionEntity();
-        entity.setAmount(transactionCreate.getAmount());
-        entity.setCardId(cardById.getId());
-        entity.setType(TransactionType.valueOf(transactionCreate.getType().toUpperCase()));
-        entity.setTransferId(transactionCreate.getTransferId());
-
-        transactionRepository.save(entity);
-
-
-        return ResponceDTO.sendOkResponce(1,"Successfully created transaction");
-
-
-    }
 
     public void create(String cardId, Double totalAmount, String transferId, TransactionType type) {
 
@@ -81,5 +55,82 @@ public class TransactionService {
 
 
 
+    }
+
+
+    public ResponseEntity getByCardId(String cardId, Integer page, Integer size) {
+
+        if (transactionRepository.countByCardId(cardId)==0){
+            return ResponceDTO.sendBadRequestResponce(-1, "Card does not exist");
+        }
+
+
+        Pageable pageable= PageRequest.of(page,size);
+        List<TransactionEntity> byId = transactionRepository.findByCardId(cardId, pageable);
+        if (byId.isEmpty()){
+            return ResponceDTO.sendBadRequestResponce(-1, "Transactions does not exist");
+
+        }
+
+
+        PageImpl page1=new PageImpl(getInfoList(byId),pageable,byId.size());
+        return ResponseEntity.ok(page1);
+
+
+    }
+
+    public List<TransactionInfoDTO> getInfoList(List<TransactionEntity> list){
+
+        List<TransactionInfoDTO> transactionInfoDTOS=new ArrayList<>();
+        for (TransactionEntity entity : list) {
+            transactionInfoDTOS.add(getInfoDTO(entity));
+        }
+        return transactionInfoDTOS;
+    }
+
+
+    public TransactionInfoDTO getInfoDTO(TransactionEntity transaction) {
+
+
+        TransferEntity transfer = transaction.getTransfer();
+        CardEntity toCard = transfer.getToCard();
+        CardEntity fromCard = transfer.getFromCard();
+        //////////////////////////////////////////
+        ClientEntity toCardClient = toCard.getClient();
+        ClientShortInfoDTO clientShortInfoDTO=new ClientShortInfoDTO();
+        clientShortInfoDTO.setId(toCardClient.getId());
+        clientShortInfoDTO.setSurname(toCardClient.getSurname());
+        clientShortInfoDTO.setName(toCardClient.getName());
+        CardInfoDTO toCardInfo = new CardInfoDTO();
+        toCardInfo.setId(toCard.getId());
+        toCardInfo.setNumber(toCard.getNumber());
+        toCardInfo.setPhone(toCard.getPhone());
+        toCardInfo.setClient(clientShortInfoDTO);
+
+        //////////////////////////////////////////
+
+        ClientEntity fromCardClient = fromCard.getClient();
+        ClientShortInfoDTO fromCardClientShortInfo=new ClientShortInfoDTO();
+        fromCardClientShortInfo.setId(fromCardClient.getId());
+        fromCardClientShortInfo.setSurname(fromCardClient.getSurname());
+        fromCardClientShortInfo.setName(fromCardClient.getName());
+        CardInfoDTO fromCardInfo = new CardInfoDTO();
+        fromCardInfo.setId(toCard.getId());
+        fromCardInfo.setNumber(toCard.getNumber());
+        fromCardInfo.setPhone(toCard.getPhone());
+        fromCardInfo.setClient(clientShortInfoDTO);
+
+        ///////////////////////////////////////////
+
+
+        TransactionInfoDTO transactionInfoDTO = new TransactionInfoDTO();
+        transactionInfoDTO.setId(transaction.getId());
+        transactionInfoDTO.setFromCard(fromCardInfo);
+        transactionInfoDTO.setToCard(toCardInfo);
+        transactionInfoDTO.setAmount(transaction.getAmount());
+        transactionInfoDTO.setStatus(transaction.getStatus());
+        transactionInfoDTO.setType(transaction.getType());
+        transactionInfoDTO.setCreatedDate(transaction.getCreatedDate());
+        return transactionInfoDTO;
     }
 }
