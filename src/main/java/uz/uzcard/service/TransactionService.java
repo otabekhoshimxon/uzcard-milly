@@ -30,20 +30,12 @@ public class TransactionService {
 
 
     @Autowired
-    private CardService cardService;
-
-    @Autowired
-    private TransferService transferService;
-
-
-    @Autowired
     private TransactionRepository transactionRepository;
 
 
 
 
     public void create(String cardId, Double totalAmount, String transferId, TransactionType type) {
-
         TransactionEntity transaction = new TransactionEntity();
         transaction.setType(type);
         transaction.setTransferId(transferId);
@@ -51,33 +43,52 @@ public class TransactionService {
         transaction.setStatus(TransactionStatus.SUCCESS);
         transaction.setAmount(totalAmount);
         transactionRepository.save(transaction);
-
-
-
-
     }
 
 
     public ResponseEntity getByCardId(String cardId, Integer page, Integer size) {
-
         if (transactionRepository.countByCardId(cardId)==0){
             return ResponceDTO.sendBadRequestResponce(-1, "Card does not exist");
         }
-
-
         Pageable pageable= PageRequest.of(page,size);
-        List<TransactionEntity> byId = transactionRepository.findByCardId(cardId, pageable);
+        List<TransactionEntity> byId = getTransactionListByCardId(cardId, pageable);
         if (byId.isEmpty()){
             return ResponceDTO.sendBadRequestResponce(-1, "Transactions does not exist");
-
         }
-
-
         PageImpl page1=new PageImpl(getInfoList(byId),pageable,byId.size());
         return ResponseEntity.ok(page1);
+    }
 
+
+    public ResponseEntity getByCardNumber(String cardNumber, Integer page, Integer size) {
+        if (transactionRepository.countByCardNumber(cardNumber)==0){
+            return ResponceDTO.sendBadRequestResponce(-1, "Transactions does not exist");
+        }
+        Pageable pageable= PageRequest.of(page,size);
+        List<TransactionEntity> transactionListByCardNumber = getTransactionListByCardNumber(cardNumber, pageable);
+
+        PageImpl page1=new PageImpl(getInfoList(transactionListByCardNumber),pageable,transactionListByCardNumber.size());
+        return ResponseEntity.ok(page1);
 
     }
+
+
+
+
+
+
+
+    public List<TransactionEntity> getTransactionListByCardNumber(String cardNumber,Pageable pageable){
+        List<TransactionEntity> byCardNumber = transactionRepository.findByCardNumber(cardNumber, pageable);
+        return byCardNumber;
+    }
+    public List<TransactionEntity> getTransactionListByCardId(String cardId,Pageable pageable){
+        List<TransactionEntity> byId = transactionRepository.findByCardId(cardId, pageable);
+        return byId;
+    }
+
+
+
 
     public List<TransactionInfoDTO> getInfoList(List<TransactionEntity> list){
 
@@ -133,4 +144,6 @@ public class TransactionService {
         transactionInfoDTO.setCreatedDate(transaction.getCreatedDate());
         return transactionInfoDTO;
     }
+
+
 }

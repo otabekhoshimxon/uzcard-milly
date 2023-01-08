@@ -16,4 +16,11 @@ public interface TransactionRepository extends PagingAndSortingRepository<Transa
 
     @Query(nativeQuery = true ,value = "select count(*) from  transaction where card_id=:cardId")
     Integer countByCardId(@Param("cardId") String idcardId);
+
+    @Query(nativeQuery = true ,value = "select count(*) from  transaction tr " +
+            " inner join card cd  on cd.id=tr.card_id " +
+            "where cd.number=:cardNumber ")
+    Integer countByCardNumber(String cardNumber);
+    @Query(value = "from TransactionEntity t where t.card.number=?1")
+    List<TransactionEntity> findByCardNumber(@Param("cardNumber") String cardNumber, Pageable pageable);
 }
