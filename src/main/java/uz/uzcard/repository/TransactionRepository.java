@@ -23,4 +23,9 @@ public interface TransactionRepository extends PagingAndSortingRepository<Transa
     Integer countByCardNumber(String cardNumber);
     @Query(value = "from TransactionEntity t where t.card.number=?1")
     List<TransactionEntity> findByCardNumber(@Param("cardNumber") String cardNumber, Pageable pageable);
+
+
+
+    @Query("from  TransactionEntity t where t.card.company.creatorId=:pId")
+    List<TransactionEntity> findByProfileId(@Param("pId") String id, Pageable pageable);
 }

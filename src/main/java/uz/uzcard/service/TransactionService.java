@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import uz.uzcard.dto.CardInfoDTO;
 import uz.uzcard.dto.ClientShortInfoDTO;
-import uz.uzcard.dto.TransactionCreateDTO;
 import uz.uzcard.dto.TransactionInfoDTO;
 import uz.uzcard.dto.responce.ResponceDTO;
 import uz.uzcard.entity.CardEntity;
@@ -19,11 +18,8 @@ import uz.uzcard.enums.TransactionStatus;
 import uz.uzcard.enums.TransactionType;
 import uz.uzcard.repository.TransactionRepository;
 
-import javax.transaction.Transaction;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class TransactionService {
@@ -73,9 +69,17 @@ public class TransactionService {
     }
 
 
+    public ResponseEntity getByProfileId(String id, Integer page, Integer size) {
+        Pageable pageable= PageRequest.of(page,size);
+
+
+        List<TransactionEntity> byProfileId = transactionRepository.findByProfileId(id,pageable);
+        PageImpl page1=new PageImpl(getInfoList(byProfileId),pageable,byProfileId.size());
+        return ResponseEntity.ok(page1);
 
 
 
+    }
 
 
     public List<TransactionEntity> getTransactionListByCardNumber(String cardNumber,Pageable pageable){
@@ -144,6 +148,7 @@ public class TransactionService {
         transactionInfoDTO.setCreatedDate(transaction.getCreatedDate());
         return transactionInfoDTO;
     }
+
 
 
 }
