@@ -80,7 +80,7 @@ public class TransactionController {
     }
 
   @PreAuthorize("hasRole('PAYMENT' or hasRole('BANK'))")
-    @GetMapping("/phone")
+    @GetMapping("/byPhone")
     @ApiOperation(value = "Api for get transaction info by phone  " ,nickname = " API for get transaction info by phone " ,notes = "get transaction info by phone  only BANK ")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
             @ApiResponse(code = 403, message = "Ruxsat yo'q "),
