@@ -99,7 +99,20 @@ public class TransactionService {
     }
 
 
+    public ResponseEntity getCreditByCardId(String cardId, Integer page, Integer size) {
 
+
+        if (transactionRepository.countByCardId(cardId)==0){
+            return ResponceDTO.sendBadRequestResponce(-1, "Transactions does not exist");
+
+        }
+        Pageable pageable=PageRequest.of(page,size);
+        List<TransactionEntity> byCardId = transactionRepository.getByTransactionTypeAndCardId(TransactionType.CREDIT,cardId,pageable);
+
+        PageImpl page1=new PageImpl(getInfoList(byCardId),pageable,byCardId.size());
+        return ResponseEntity.ok(page1);
+
+    }
 
 
 

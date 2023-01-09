@@ -6,6 +6,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import uz.uzcard.dto.card.CardPhoneDTO;
 import uz.uzcard.entity.TransactionEntity;
+import uz.uzcard.enums.TransactionType;
 
 import java.util.List;
 
@@ -41,4 +42,7 @@ public interface TransactionRepository extends PagingAndSortingRepository<Transa
             " inner join card cd on cd.id=tr.card_id " +
             " where cd.phone=:phoneNumber ")
     List<TransactionEntity> findByPhone(@Param("phoneNumber") String phone, Pageable pageable);
+
+    @Query("from TransactionEntity where type=?1 and cardId=?2 ")
+    List<TransactionEntity> getByTransactionTypeAndCardId(TransactionType type, String cardId, Pageable pageable);
 }

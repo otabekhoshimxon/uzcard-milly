@@ -97,6 +97,24 @@ public class TransactionController {
 
 
 
+  @PreAuthorize("hasRole('PAYMENT' or hasRole('BANK'))")
+    @GetMapping("/getCreditByCardId/{cardId}")
+    @ApiOperation(value = "Api for get transaction info by phone  " ,nickname = " API for get transaction info by phone " ,notes = "get transaction info by phone  only BANK ")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
+            @ApiResponse(code = 403, message = "Ruxsat yo'q "),
+            @ApiResponse(code = 201, message = "Yaratildi "),
+            @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
+            @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
+    })
+
+    public ResponseEntity getCredit(@PathVariable("cardId")String  cardId,
+                                      @RequestParam(value = "page",defaultValue = "0") Integer page,
+                                      @RequestParam(value = "size",defaultValue = "5") Integer size) {
+        return transactionService.getCreditByCardId(cardId,page,size);
+    }
+
+
+
 
 
 
