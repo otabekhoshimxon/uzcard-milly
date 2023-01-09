@@ -139,7 +139,7 @@
     5. Get transaction pagination by phone (active phone) (BANK,PAYMENT)
     6. Get CREDIT pagination by  cardId (BANK,PAYMENT)
     7. Get DEBIT pagination by cardId. (BANK,PAYMENT)
-    8. Get Card  CREDIT and DEBIT  amount by monthly (oylik kirim va chiqim) (BANK,CLIENT)
+    8. Get Card  CREDIT and DEBIT  amount by monthly (oylik kirim va chiqim) by Card ID (BANK,CLIENT)
     9. Filter by: (ADMIN)
         client_id,cardNumber,cardId, amount (from_amount - to_amount),
             created_date (from_date, to_date), profile_name,status

@@ -121,8 +121,17 @@ public class TransactionService {
 
         return ResponseEntity.ok(transactionByTypeAndCardId);
 
+    }
 
 
+    public ResponseEntity getCreditAndDebitByCardId(String cardId) {
+
+        if (transactionRepository.countByCardId(cardId)==0){
+            return ResponceDTO.sendBadRequestResponce(-1, "Transactions does not exist");
+
+        }
+        Double debitAndCreditbyCardIdAmountByMonthly = transactionRepository.getDebitAndCreditbyCardIdAmountByMonthly(cardId);
+        return ResponseEntity.ok(debitAndCreditbyCardIdAmountByMonthly);
 
 
     }

@@ -4,6 +4,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.PathVariable;
 import uz.uzcard.dto.card.CardPhoneDTO;
 import uz.uzcard.entity.TransactionEntity;
 import uz.uzcard.enums.TransactionType;
@@ -45,4 +46,7 @@ public interface TransactionRepository extends PagingAndSortingRepository<Transa
 
     @Query("from TransactionEntity where type=?1 and cardId=?2 ")
     List<TransactionEntity> getByTransactionTypeAndCardId(TransactionType type, String cardId, Pageable pageable);
+
+    @Query(nativeQuery = true,value = "select sum(amount) from  transaction tr  where   tr.created_date < (now() + '1 months') and  tr.card_id=:cardId")
+    Double getDebitAndCreditbyCardIdAmountByMonthly(@PathVariable("cardId") String cardId);
 }

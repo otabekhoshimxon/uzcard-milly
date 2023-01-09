@@ -398,3 +398,665 @@ java.lang.IllegalArgumentException: Parameter value [CREDIT] did not match expec
 2023-01-09 11:56:17 [34mINFO [0;39m - org.springframework.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4fbdee7a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@615bd28b, org.springframework.security.web.context.SecurityContextPersistenceFilter@614d01b, org.springframework.security.web.header.HeaderWriterFilter@52dc71b2, org.springframework.security.web.authentication.logout.LogoutFilter@2ac7c683, JwtTokenFilter(profileRepository=org.springframework.data.jpa.repository.support.SimpleJpaRepository@fefd4a2, clientRepository=org.springframework.data.jpa.repository.support.SimpleJpaRepository@1ebcfcf1, companyRepository=org.springframework.data.jpa.repository.support.SimpleJpaRepository@8e100e7), org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5a8149f6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@769c80d1, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@420dde28, org.springframework.security.web.session.SessionManagementFilter@7828bc6b, org.springframework.security.web.access.ExceptionTranslationFilter@21f27bb5, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@c2ddfeb]
 2023-01-09 11:56:17 [34mINFO [0;39m - org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
 2023-01-09 11:56:17 [34mINFO [0;39m - uz.uzcard.UzcardProjectApplication - Started UzcardProjectApplication in 5.68 seconds (JVM running for 6.517)
+2023-01-09 12:10:53 [34mINFO [0;39m - org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-01-09 12:10:53 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-01-09 12:10:53 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2023-01-09 12:11:02 [34mINFO [0;39m - uz.uzcard.UzcardProjectApplication - Starting UzcardProjectApplication using Java 18.0.2 on java with PID 258997 (/home/otabek/Otabek Hoshimxon/Portfolios/uzcard-project/target/classes started by otabek in /home/otabek/Otabek Hoshimxon/Portfolios/uzcard-project)
+2023-01-09 12:11:02 [34mINFO [0;39m - uz.uzcard.UzcardProjectApplication - No active profile set, falling back to 1 default profile: "default"
+2023-01-09 12:11:03 [34mINFO [0;39m - org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-01-09 12:11:03 [34mINFO [0;39m - org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 66 ms. Found 7 JPA repository interfaces.
+2023-01-09 12:11:04 [34mINFO [0;39m - org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-01-09 12:11:04 [34mINFO [0;39m - org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-01-09 12:11:04 [34mINFO [0;39m - org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.69]
+2023-01-09 12:11:04 [34mINFO [0;39m - org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-01-09 12:11:04 [34mINFO [0;39m - org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2050 ms
+2023-01-09 12:11:04 [34mINFO [0;39m - org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-01-09 12:11:04 [34mINFO [0;39m - org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-01-09 12:11:04 [34mINFO [0;39m - org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-01-09 12:11:04 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-01-09 12:11:04 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-01-09 12:11:04 [34mINFO [0;39m - org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-01-09 12:11:04 [31mWARN [0;39m - org.hibernate.id.UUIDHexGenerator - HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2023-01-09 12:11:05 [34mINFO [0;39m - org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-01-09 12:11:05 [34mINFO [0;39m - org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-01-09 12:11:06 [31mWARN [0;39m - org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-09 12:11:06 [31mWARN [0;39m - org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'transactionController': Unsatisfied dependency expressed through field 'transactionService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'transactionService': Unsatisfied dependency expressed through field 'transactionRepository'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'transactionRepository' defined in uz.uzcard.repository.TransactionRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.lang.Double uz.uzcard.repository.TransactionRepository.getDebitAndCreditbyCardIdAmountByMonthly(java.lang.String,org.springframework.data.domain.Pageable); Reason: Method has to have one of the following return types[interface org.springframework.data.domain.Slice, interface org.springframework.data.domain.Page, interface java.util.List]; nested exception is java.lang.IllegalStateException: Method has to have one of the following return types[interface org.springframework.data.domain.Slice, interface org.springframework.data.domain.Page, interface java.util.List]
+2023-01-09 12:11:06 [34mINFO [0;39m - org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-01-09 12:11:06 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-01-09 12:11:06 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2023-01-09 12:11:06 [34mINFO [0;39m - org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2023-01-09 12:11:06 [34mINFO [0;39m - org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-01-09 12:11:06 [1;31mERROR[0;39m - org.springframework.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'transactionController': Unsatisfied dependency expressed through field 'transactionService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'transactionService': Unsatisfied dependency expressed through field 'transactionRepository'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'transactionRepository' defined in uz.uzcard.repository.TransactionRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.lang.Double uz.uzcard.repository.TransactionRepository.getDebitAndCreditbyCardIdAmountByMonthly(java.lang.String,org.springframework.data.domain.Pageable); Reason: Method has to have one of the following return types[interface org.springframework.data.domain.Slice, interface org.springframework.data.domain.Page, interface java.util.List]; nested exception is java.lang.IllegalStateException: Method has to have one of the following return types[interface org.springframework.data.domain.Slice, interface org.springframework.data.domain.Page, interface java.util.List]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:660)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
+	at uz.uzcard.UzcardProjectApplication.main(UzcardProjectApplication.java:21)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'transactionService': Unsatisfied dependency expressed through field 'transactionRepository'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'transactionRepository' defined in uz.uzcard.repository.TransactionRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.lang.Double uz.uzcard.repository.TransactionRepository.getDebitAndCreditbyCardIdAmountByMonthly(java.lang.String,org.springframework.data.domain.Pageable); Reason: Method has to have one of the following return types[interface org.springframework.data.domain.Slice, interface org.springframework.data.domain.Page, interface java.util.List]; nested exception is java.lang.IllegalStateException: Method has to have one of the following return types[interface org.springframework.data.domain.Slice, interface org.springframework.data.domain.Page, interface java.util.List]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:660)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:657)
+	... 20 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'transactionRepository' defined in uz.uzcard.repository.TransactionRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.lang.Double uz.uzcard.repository.TransactionRepository.getDebitAndCreditbyCardIdAmountByMonthly(java.lang.String,org.springframework.data.domain.Pageable); Reason: Method has to have one of the following return types[interface org.springframework.data.domain.Slice, interface org.springframework.data.domain.Page, interface java.util.List]; nested exception is java.lang.IllegalStateException: Method has to have one of the following return types[interface org.springframework.data.domain.Slice, interface org.springframework.data.domain.Page, interface java.util.List]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:657)
+	... 34 common frames omitted
+Caused by: org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.lang.Double uz.uzcard.repository.TransactionRepository.getDebitAndCreditbyCardIdAmountByMonthly(java.lang.String,org.springframework.data.domain.Pageable); Reason: Method has to have one of the following return types[interface org.springframework.data.domain.Slice, interface org.springframework.data.domain.Page, interface java.util.List]; nested exception is java.lang.IllegalStateException: Method has to have one of the following return types[interface org.springframework.data.domain.Slice, interface org.springframework.data.domain.Page, interface java.util.List]
+	at org.springframework.data.repository.query.QueryCreationException.create(QueryCreationException.java:101)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:107)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lambda$mapMethodsToQuery$1(QueryExecutorMethodInterceptor.java:95)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Iterator.forEachRemaining(Iterator.java:133)
+	at java.base/java.util.Collections$UnmodifiableCollection$1.forEachRemaining(Collections.java:1061)
+	at java.base/java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1845)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.mapMethodsToQuery(QueryExecutorMethodInterceptor.java:97)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lambda$new$0(QueryExecutorMethodInterceptor.java:87)
+	at java.base/java.util.Optional.map(Optional.java:260)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.<init>(QueryExecutorMethodInterceptor.java:87)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport.getRepository(RepositoryFactorySupport.java:365)
+	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.lambda$afterPropertiesSet$5(RepositoryFactoryBeanSupport.java:323)
+	at org.springframework.data.util.Lazy.getNullable(Lazy.java:231)
+	at org.springframework.data.util.Lazy.get(Lazy.java:115)
+	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.afterPropertiesSet(RepositoryFactoryBeanSupport.java:329)
+	at org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean.afterPropertiesSet(JpaRepositoryFactoryBean.java:144)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	... 44 common frames omitted
+Caused by: java.lang.IllegalStateException: Method has to have one of the following return types[interface org.springframework.data.domain.Slice, interface org.springframework.data.domain.Page, interface java.util.List]
+	at org.springframework.data.repository.query.QueryMethod.assertReturnTypeAssignable(QueryMethod.java:319)
+	at org.springframework.data.repository.query.QueryMethod.<init>(QueryMethod.java:89)
+	at org.springframework.data.jpa.repository.query.JpaQueryMethod.<init>(JpaQueryMethod.java:107)
+	at org.springframework.data.jpa.repository.query.DefaultJpaQueryMethodFactory.build(DefaultJpaQueryMethodFactory.java:44)
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$AbstractQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:93)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:103)
+	... 66 common frames omitted
+2023-01-09 12:11:57 [34mINFO [0;39m - uz.uzcard.UzcardProjectApplication - Starting UzcardProjectApplication using Java 18.0.2 on java with PID 259126 (/home/otabek/Otabek Hoshimxon/Portfolios/uzcard-project/target/classes started by otabek in /home/otabek/Otabek Hoshimxon/Portfolios/uzcard-project)
+2023-01-09 12:11:57 [34mINFO [0;39m - uz.uzcard.UzcardProjectApplication - No active profile set, falling back to 1 default profile: "default"
+2023-01-09 12:11:58 [34mINFO [0;39m - org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-01-09 12:11:58 [34mINFO [0;39m - org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 54 ms. Found 7 JPA repository interfaces.
+2023-01-09 12:11:58 [34mINFO [0;39m - org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-01-09 12:11:58 [34mINFO [0;39m - org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-01-09 12:11:58 [34mINFO [0;39m - org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.69]
+2023-01-09 12:11:58 [34mINFO [0;39m - org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-01-09 12:11:58 [34mINFO [0;39m - org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1641 ms
+2023-01-09 12:11:59 [34mINFO [0;39m - org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-01-09 12:11:59 [34mINFO [0;39m - org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-01-09 12:11:59 [34mINFO [0;39m - org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-01-09 12:11:59 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-01-09 12:11:59 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-01-09 12:11:59 [34mINFO [0;39m - org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-01-09 12:11:59 [31mWARN [0;39m - org.hibernate.id.UUIDHexGenerator - HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2023-01-09 12:12:00 [34mINFO [0;39m - org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-01-09 12:12:00 [34mINFO [0;39m - org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-01-09 12:12:01 [31mWARN [0;39m - org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-09 12:12:01 [31mWARN [0;39m - org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'transactionController': Unsatisfied dependency expressed through field 'transactionService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'transactionService': Unsatisfied dependency expressed through field 'transactionRepository'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'transactionRepository' defined in uz.uzcard.repository.TransactionRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.lang.Double uz.uzcard.repository.TransactionRepository.getDebitAndCreditbyCardIdAmountByMonthly(java.lang.String,org.springframework.data.domain.Pageable); Reason: Method has to have one of the following return types[interface org.springframework.data.domain.Slice, interface org.springframework.data.domain.Page, interface java.util.List]; nested exception is java.lang.IllegalStateException: Method has to have one of the following return types[interface org.springframework.data.domain.Slice, interface org.springframework.data.domain.Page, interface java.util.List]
+2023-01-09 12:12:01 [34mINFO [0;39m - org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-01-09 12:12:01 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-01-09 12:12:01 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2023-01-09 12:12:01 [34mINFO [0;39m - org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2023-01-09 12:12:01 [34mINFO [0;39m - org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-01-09 12:12:01 [1;31mERROR[0;39m - org.springframework.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'transactionController': Unsatisfied dependency expressed through field 'transactionService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'transactionService': Unsatisfied dependency expressed through field 'transactionRepository'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'transactionRepository' defined in uz.uzcard.repository.TransactionRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.lang.Double uz.uzcard.repository.TransactionRepository.getDebitAndCreditbyCardIdAmountByMonthly(java.lang.String,org.springframework.data.domain.Pageable); Reason: Method has to have one of the following return types[interface org.springframework.data.domain.Slice, interface org.springframework.data.domain.Page, interface java.util.List]; nested exception is java.lang.IllegalStateException: Method has to have one of the following return types[interface org.springframework.data.domain.Slice, interface org.springframework.data.domain.Page, interface java.util.List]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:660)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292)
+	at uz.uzcard.UzcardProjectApplication.main(UzcardProjectApplication.java:21)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'transactionService': Unsatisfied dependency expressed through field 'transactionRepository'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'transactionRepository' defined in uz.uzcard.repository.TransactionRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.lang.Double uz.uzcard.repository.TransactionRepository.getDebitAndCreditbyCardIdAmountByMonthly(java.lang.String,org.springframework.data.domain.Pageable); Reason: Method has to have one of the following return types[interface org.springframework.data.domain.Slice, interface org.springframework.data.domain.Page, interface java.util.List]; nested exception is java.lang.IllegalStateException: Method has to have one of the following return types[interface org.springframework.data.domain.Slice, interface org.springframework.data.domain.Page, interface java.util.List]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:660)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1431)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:619)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:657)
+	... 20 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'transactionRepository' defined in uz.uzcard.repository.TransactionRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.lang.Double uz.uzcard.repository.TransactionRepository.getDebitAndCreditbyCardIdAmountByMonthly(java.lang.String,org.springframework.data.domain.Pageable); Reason: Method has to have one of the following return types[interface org.springframework.data.domain.Slice, interface org.springframework.data.domain.Page, interface java.util.List]; nested exception is java.lang.IllegalStateException: Method has to have one of the following return types[interface org.springframework.data.domain.Slice, interface org.springframework.data.domain.Page, interface java.util.List]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:657)
+	... 34 common frames omitted
+Caused by: org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.lang.Double uz.uzcard.repository.TransactionRepository.getDebitAndCreditbyCardIdAmountByMonthly(java.lang.String,org.springframework.data.domain.Pageable); Reason: Method has to have one of the following return types[interface org.springframework.data.domain.Slice, interface org.springframework.data.domain.Page, interface java.util.List]; nested exception is java.lang.IllegalStateException: Method has to have one of the following return types[interface org.springframework.data.domain.Slice, interface org.springframework.data.domain.Page, interface java.util.List]
+	at org.springframework.data.repository.query.QueryCreationException.create(QueryCreationException.java:101)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:107)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lambda$mapMethodsToQuery$1(QueryExecutorMethodInterceptor.java:95)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.Iterator.forEachRemaining(Iterator.java:133)
+	at java.base/java.util.Collections$UnmodifiableCollection$1.forEachRemaining(Collections.java:1061)
+	at java.base/java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1845)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.mapMethodsToQuery(QueryExecutorMethodInterceptor.java:97)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lambda$new$0(QueryExecutorMethodInterceptor.java:87)
+	at java.base/java.util.Optional.map(Optional.java:260)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.<init>(QueryExecutorMethodInterceptor.java:87)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport.getRepository(RepositoryFactorySupport.java:365)
+	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.lambda$afterPropertiesSet$5(RepositoryFactoryBeanSupport.java:323)
+	at org.springframework.data.util.Lazy.getNullable(Lazy.java:231)
+	at org.springframework.data.util.Lazy.get(Lazy.java:115)
+	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.afterPropertiesSet(RepositoryFactoryBeanSupport.java:329)
+	at org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean.afterPropertiesSet(JpaRepositoryFactoryBean.java:144)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	... 44 common frames omitted
+Caused by: java.lang.IllegalStateException: Method has to have one of the following return types[interface org.springframework.data.domain.Slice, interface org.springframework.data.domain.Page, interface java.util.List]
+	at org.springframework.data.repository.query.QueryMethod.assertReturnTypeAssignable(QueryMethod.java:319)
+	at org.springframework.data.repository.query.QueryMethod.<init>(QueryMethod.java:89)
+	at org.springframework.data.jpa.repository.query.JpaQueryMethod.<init>(JpaQueryMethod.java:107)
+	at org.springframework.data.jpa.repository.query.DefaultJpaQueryMethodFactory.build(DefaultJpaQueryMethodFactory.java:44)
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$AbstractQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:93)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:103)
+	... 66 common frames omitted
+2023-01-09 12:12:36 [34mINFO [0;39m - uz.uzcard.UzcardProjectApplication - Starting UzcardProjectApplication using Java 18.0.2 on java with PID 259284 (/home/otabek/Otabek Hoshimxon/Portfolios/uzcard-project/target/classes started by otabek in /home/otabek/Otabek Hoshimxon/Portfolios/uzcard-project)
+2023-01-09 12:12:36 [34mINFO [0;39m - uz.uzcard.UzcardProjectApplication - No active profile set, falling back to 1 default profile: "default"
+2023-01-09 12:12:37 [34mINFO [0;39m - org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-01-09 12:12:37 [34mINFO [0;39m - org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 45 ms. Found 7 JPA repository interfaces.
+2023-01-09 12:12:37 [34mINFO [0;39m - org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-01-09 12:12:37 [34mINFO [0;39m - org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-01-09 12:12:37 [34mINFO [0;39m - org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.69]
+2023-01-09 12:12:37 [34mINFO [0;39m - org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-01-09 12:12:37 [34mINFO [0;39m - org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1649 ms
+2023-01-09 12:12:37 [34mINFO [0;39m - org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-01-09 12:12:37 [34mINFO [0;39m - org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-01-09 12:12:38 [34mINFO [0;39m - org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-01-09 12:12:38 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-01-09 12:12:38 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-01-09 12:12:38 [34mINFO [0;39m - org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-01-09 12:12:38 [31mWARN [0;39m - org.hibernate.id.UUIDHexGenerator - HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2023-01-09 12:12:39 [34mINFO [0;39m - org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-01-09 12:12:39 [34mINFO [0;39m - org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-01-09 12:12:39 [31mWARN [0;39m - org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-09 12:12:40 [34mINFO [0;39m - org.springframework.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@444fbd13, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@38241615, org.springframework.security.web.context.SecurityContextPersistenceFilter@3f0c2eff, org.springframework.security.web.header.HeaderWriterFilter@1bd5b1c8, org.springframework.security.web.authentication.logout.LogoutFilter@6bb46040, JwtTokenFilter(profileRepository=org.springframework.data.jpa.repository.support.SimpleJpaRepository@1ebcfcf1, clientRepository=org.springframework.data.jpa.repository.support.SimpleJpaRepository@50f5ce5b, companyRepository=org.springframework.data.jpa.repository.support.SimpleJpaRepository@31aee6d9), org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1e60890c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@167ccc3c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7f0b2bf1, org.springframework.security.web.session.SessionManagementFilter@6ba516ff, org.springframework.security.web.access.ExceptionTranslationFilter@2f403d0a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@77350382]
+2023-01-09 12:12:40 [34mINFO [0;39m - org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-01-09 12:12:41 [34mINFO [0;39m - uz.uzcard.UzcardProjectApplication - Started UzcardProjectApplication in 5.651 seconds (JVM running for 6.469)
+2023-01-09 12:13:08 [34mINFO [0;39m - org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-01-09 12:13:08 [34mINFO [0;39m - org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-01-09 12:13:08 [34mINFO [0;39m - org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-01-09 12:14:55 [34mINFO [0;39m - org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-01-09 12:14:55 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-01-09 12:14:55 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2023-01-09 12:15:01 [34mINFO [0;39m - uz.uzcard.UzcardProjectApplication - Starting UzcardProjectApplication using Java 18.0.2 on java with PID 259613 (/home/otabek/Otabek Hoshimxon/Portfolios/uzcard-project/target/classes started by otabek in /home/otabek/Otabek Hoshimxon/Portfolios/uzcard-project)
+2023-01-09 12:15:01 [34mINFO [0;39m - uz.uzcard.UzcardProjectApplication - No active profile set, falling back to 1 default profile: "default"
+2023-01-09 12:15:02 [34mINFO [0;39m - org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-01-09 12:15:02 [34mINFO [0;39m - org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 67 ms. Found 7 JPA repository interfaces.
+2023-01-09 12:15:02 [34mINFO [0;39m - org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-01-09 12:15:02 [34mINFO [0;39m - org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-01-09 12:15:02 [34mINFO [0;39m - org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.69]
+2023-01-09 12:15:03 [34mINFO [0;39m - org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-01-09 12:15:03 [34mINFO [0;39m - org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1819 ms
+2023-01-09 12:15:03 [34mINFO [0;39m - org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-01-09 12:15:03 [34mINFO [0;39m - org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-01-09 12:15:03 [34mINFO [0;39m - org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-01-09 12:15:03 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-01-09 12:15:03 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-01-09 12:15:03 [34mINFO [0;39m - org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-01-09 12:15:03 [31mWARN [0;39m - org.hibernate.id.UUIDHexGenerator - HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2023-01-09 12:15:04 [34mINFO [0;39m - org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-01-09 12:15:04 [34mINFO [0;39m - org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-01-09 12:15:05 [31mWARN [0;39m - org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-09 12:15:05 [34mINFO [0;39m - org.springframework.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@689fe2a3, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5257123d, org.springframework.security.web.context.SecurityContextPersistenceFilter@39e91bda, org.springframework.security.web.header.HeaderWriterFilter@22cca101, org.springframework.security.web.authentication.logout.LogoutFilter@769c80d1, JwtTokenFilter(profileRepository=org.springframework.data.jpa.repository.support.SimpleJpaRepository@2bab1821, clientRepository=org.springframework.data.jpa.repository.support.SimpleJpaRepository@568cbf8d, companyRepository=org.springframework.data.jpa.repository.support.SimpleJpaRepository@376c5950), org.springframework.security.web.savedrequest.RequestCacheAwareFilter@374013e8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@78d49939, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@11ec699, org.springframework.security.web.session.SessionManagementFilter@3e356ed6, org.springframework.security.web.access.ExceptionTranslationFilter@5d3f583d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@149ef64a]
+2023-01-09 12:15:06 [34mINFO [0;39m - org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-01-09 12:15:06 [34mINFO [0;39m - uz.uzcard.UzcardProjectApplication - Started UzcardProjectApplication in 5.91 seconds (JVM running for 6.776)
+2023-01-09 12:15:07 [34mINFO [0;39m - org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-01-09 12:15:07 [34mINFO [0;39m - org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-01-09 12:15:07 [34mINFO [0;39m - org.springframework.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2023-01-09 12:20:00 [34mINFO [0;39m - org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-01-09 12:20:00 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-01-09 12:20:00 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2023-01-09 12:20:06 [34mINFO [0;39m - uz.uzcard.UzcardProjectApplication - Starting UzcardProjectApplication using Java 18.0.2 on java with PID 260279 (/home/otabek/Otabek Hoshimxon/Portfolios/uzcard-project/target/classes started by otabek in /home/otabek/Otabek Hoshimxon/Portfolios/uzcard-project)
+2023-01-09 12:20:06 [34mINFO [0;39m - uz.uzcard.UzcardProjectApplication - No active profile set, falling back to 1 default profile: "default"
+2023-01-09 12:20:07 [34mINFO [0;39m - org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-01-09 12:20:07 [34mINFO [0;39m - org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 65 ms. Found 7 JPA repository interfaces.
+2023-01-09 12:20:08 [34mINFO [0;39m - org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-01-09 12:20:08 [34mINFO [0;39m - org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-01-09 12:20:08 [34mINFO [0;39m - org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.69]
+2023-01-09 12:20:08 [34mINFO [0;39m - org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-01-09 12:20:08 [34mINFO [0;39m - org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1934 ms
+2023-01-09 12:20:08 [34mINFO [0;39m - org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-01-09 12:20:08 [34mINFO [0;39m - org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-01-09 12:20:08 [34mINFO [0;39m - org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-01-09 12:20:09 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-01-09 12:20:09 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-01-09 12:20:09 [34mINFO [0;39m - org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-01-09 12:20:09 [31mWARN [0;39m - org.hibernate.id.UUIDHexGenerator - HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2023-01-09 12:20:10 [34mINFO [0;39m - org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-01-09 12:20:10 [34mINFO [0;39m - org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-01-09 12:20:10 [31mWARN [0;39m - org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-09 12:20:11 [34mINFO [0;39m - org.springframework.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@261c5d1f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@570089c4, org.springframework.security.web.context.SecurityContextPersistenceFilter@374013e8, org.springframework.security.web.header.HeaderWriterFilter@307ba188, org.springframework.security.web.authentication.logout.LogoutFilter@7cddc50f, JwtTokenFilter(profileRepository=org.springframework.data.jpa.repository.support.SimpleJpaRepository@57657b96, clientRepository=org.springframework.data.jpa.repository.support.SimpleJpaRepository@11ec699, companyRepository=org.springframework.data.jpa.repository.support.SimpleJpaRepository@7d2ddbf3), org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6b3284, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2e2a2b07, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4eee730c, org.springframework.security.web.session.SessionManagementFilter@2a5d9ede, org.springframework.security.web.access.ExceptionTranslationFilter@22cca101, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2e41b65a]
+2023-01-09 12:20:11 [34mINFO [0;39m - org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-01-09 12:20:12 [34mINFO [0;39m - uz.uzcard.UzcardProjectApplication - Started UzcardProjectApplication in 6.038 seconds (JVM running for 6.898)
+2023-01-09 12:20:13 [34mINFO [0;39m - org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-01-09 12:20:13 [34mINFO [0;39m - org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-01-09 12:20:13 [34mINFO [0;39m - org.springframework.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2023-01-09 12:20:13 [31mWARN [0;39m - org.hibernate.engine.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 42601
+2023-01-09 12:20:13 [1;31mERROR[0;39m - org.hibernate.engine.jdbc.spi.SqlExceptionHelper - ERROR: syntax error at or near "tr"
+  Position: 84
+2023-01-09 12:20:13 [1;31mERROR[0;39m - org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.InvalidDataAccessResourceUsageException: could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet] with root cause
+org.postgresql.util.PSQLException: ERROR: syntax error at or near "tr"
+  Position: 84
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2676)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2366)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:356)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:496)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:413)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:190)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:134)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.extract(ResultSetReturnImpl.java:57)
+	at org.hibernate.loader.Loader.getResultSet(Loader.java:2322)
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2075)
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2037)
+	at org.hibernate.loader.Loader.doQuery(Loader.java:956)
+	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:357)
+	at org.hibernate.loader.Loader.doList(Loader.java:2868)
+	at org.hibernate.loader.Loader.doList(Loader.java:2850)
+	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2682)
+	at org.hibernate.loader.Loader.list(Loader.java:2677)
+	at org.hibernate.loader.custom.CustomLoader.list(CustomLoader.java:338)
+	at org.hibernate.internal.SessionImpl.listCustomQuery(SessionImpl.java:2186)
+	at org.hibernate.internal.AbstractSharedSessionContract.list(AbstractSharedSessionContract.java:1204)
+	at org.hibernate.query.internal.NativeQueryImpl.doList(NativeQueryImpl.java:177)
+	at org.hibernate.query.internal.AbstractProducedQuery.list(AbstractProducedQuery.java:1617)
+	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1665)
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$SingleEntityExecution.doExecute(JpaQueryExecution.java:198)
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:90)
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:156)
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:144)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:137)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:121)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:160)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:139)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:145)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
+	at jdk.proxy2/jdk.proxy2.$Proxy152.getDebitAndCreditbyCardIdAmountByMonthly(Unknown Source)
+	at uz.uzcard.service.TransactionService.getCreditAndDebitByCardId(TransactionService.java:137)
+	at uz.uzcard.controller.TransactionController.getCreditAndDebit(TransactionController.java:145)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:670)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:779)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:337)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at uz.uzcard.config.JwtTokenFilter.doFilterInternal(JwtTokenFilter.java:82)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:112)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:82)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:221)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:186)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:687)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:891)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1784)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-01-09 12:20:32 [34mINFO [0;39m - org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-01-09 12:20:32 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-01-09 12:20:32 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2023-01-09 12:20:38 [34mINFO [0;39m - uz.uzcard.UzcardProjectApplication - Starting UzcardProjectApplication using Java 18.0.2 on java with PID 260478 (/home/otabek/Otabek Hoshimxon/Portfolios/uzcard-project/target/classes started by otabek in /home/otabek/Otabek Hoshimxon/Portfolios/uzcard-project)
+2023-01-09 12:20:38 [34mINFO [0;39m - uz.uzcard.UzcardProjectApplication - No active profile set, falling back to 1 default profile: "default"
+2023-01-09 12:20:39 [34mINFO [0;39m - org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-01-09 12:20:39 [34mINFO [0;39m - org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 62 ms. Found 7 JPA repository interfaces.
+2023-01-09 12:20:40 [34mINFO [0;39m - org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-01-09 12:20:40 [34mINFO [0;39m - org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-01-09 12:20:40 [34mINFO [0;39m - org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.69]
+2023-01-09 12:20:40 [34mINFO [0;39m - org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-01-09 12:20:40 [34mINFO [0;39m - org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1780 ms
+2023-01-09 12:20:40 [34mINFO [0;39m - org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-01-09 12:20:40 [34mINFO [0;39m - org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-01-09 12:20:40 [34mINFO [0;39m - org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-01-09 12:20:40 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-01-09 12:20:40 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-01-09 12:20:40 [34mINFO [0;39m - org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-01-09 12:20:41 [31mWARN [0;39m - org.hibernate.id.UUIDHexGenerator - HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2023-01-09 12:20:41 [34mINFO [0;39m - org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-01-09 12:20:41 [34mINFO [0;39m - org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-01-09 12:20:42 [31mWARN [0;39m - org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-09 12:20:43 [34mINFO [0;39m - org.springframework.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@77350382, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4fbdee7a, org.springframework.security.web.context.SecurityContextPersistenceFilter@60cbba57, org.springframework.security.web.header.HeaderWriterFilter@2e2a2b07, org.springframework.security.web.authentication.logout.LogoutFilter@19565b5, JwtTokenFilter(profileRepository=org.springframework.data.jpa.repository.support.SimpleJpaRepository@64dcfd09, clientRepository=org.springframework.data.jpa.repository.support.SimpleJpaRepository@6d18401b, companyRepository=org.springframework.data.jpa.repository.support.SimpleJpaRepository@1ebcfcf1), org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3be2ef56, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3bbb3c84, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@8e100e7, org.springframework.security.web.session.SessionManagementFilter@4e451f9a, org.springframework.security.web.access.ExceptionTranslationFilter@78d49939, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5b908c6d]
+2023-01-09 12:20:43 [34mINFO [0;39m - org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-01-09 12:20:43 [34mINFO [0;39m - uz.uzcard.UzcardProjectApplication - Started UzcardProjectApplication in 6.061 seconds (JVM running for 6.948)
+2023-01-09 12:20:45 [34mINFO [0;39m - org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-01-09 12:20:45 [34mINFO [0;39m - org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-01-09 12:20:45 [34mINFO [0;39m - org.springframework.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2023-01-09 12:20:45 [31mWARN [0;39m - org.hibernate.engine.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 42601
+2023-01-09 12:20:45 [1;31mERROR[0;39m - org.hibernate.engine.jdbc.spi.SqlExceptionHelper - ERROR: syntax error at or near "tr"
+  Position: 87
+2023-01-09 12:20:46 [1;31mERROR[0;39m - org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.InvalidDataAccessResourceUsageException: could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet] with root cause
+org.postgresql.util.PSQLException: ERROR: syntax error at or near "tr"
+  Position: 87
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2676)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2366)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:356)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:496)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:413)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:190)
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:134)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.extract(ResultSetReturnImpl.java:57)
+	at org.hibernate.loader.Loader.getResultSet(Loader.java:2322)
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2075)
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2037)
+	at org.hibernate.loader.Loader.doQuery(Loader.java:956)
+	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:357)
+	at org.hibernate.loader.Loader.doList(Loader.java:2868)
+	at org.hibernate.loader.Loader.doList(Loader.java:2850)
+	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2682)
+	at org.hibernate.loader.Loader.list(Loader.java:2677)
+	at org.hibernate.loader.custom.CustomLoader.list(CustomLoader.java:338)
+	at org.hibernate.internal.SessionImpl.listCustomQuery(SessionImpl.java:2186)
+	at org.hibernate.internal.AbstractSharedSessionContract.list(AbstractSharedSessionContract.java:1204)
+	at org.hibernate.query.internal.NativeQueryImpl.doList(NativeQueryImpl.java:177)
+	at org.hibernate.query.internal.AbstractProducedQuery.list(AbstractProducedQuery.java:1617)
+	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1665)
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$SingleEntityExecution.doExecute(JpaQueryExecution.java:198)
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:90)
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:156)
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:144)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:137)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:121)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:160)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:139)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:145)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
+	at jdk.proxy2/jdk.proxy2.$Proxy152.getDebitAndCreditbyCardIdAmountByMonthly(Unknown Source)
+	at uz.uzcard.service.TransactionService.getCreditAndDebitByCardId(TransactionService.java:137)
+	at uz.uzcard.controller.TransactionController.getCreditAndDebit(TransactionController.java:145)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:670)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:779)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:337)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at uz.uzcard.config.JwtTokenFilter.doFilterInternal(JwtTokenFilter.java:82)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:112)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:82)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:221)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:186)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:687)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:891)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1784)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-01-09 12:21:24 [34mINFO [0;39m - org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-01-09 12:21:24 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-01-09 12:21:25 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2023-01-09 12:21:30 [34mINFO [0;39m - uz.uzcard.UzcardProjectApplication - Starting UzcardProjectApplication using Java 18.0.2 on java with PID 260668 (/home/otabek/Otabek Hoshimxon/Portfolios/uzcard-project/target/classes started by otabek in /home/otabek/Otabek Hoshimxon/Portfolios/uzcard-project)
+2023-01-09 12:21:30 [34mINFO [0;39m - uz.uzcard.UzcardProjectApplication - No active profile set, falling back to 1 default profile: "default"
+2023-01-09 12:21:32 [34mINFO [0;39m - org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-01-09 12:21:32 [34mINFO [0;39m - org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 61 ms. Found 7 JPA repository interfaces.
+2023-01-09 12:21:32 [34mINFO [0;39m - org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-01-09 12:21:32 [34mINFO [0;39m - org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-01-09 12:21:32 [34mINFO [0;39m - org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.69]
+2023-01-09 12:21:32 [34mINFO [0;39m - org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-01-09 12:21:32 [34mINFO [0;39m - org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1745 ms
+2023-01-09 12:21:32 [34mINFO [0;39m - org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-01-09 12:21:32 [34mINFO [0;39m - org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-01-09 12:21:33 [34mINFO [0;39m - org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-01-09 12:21:33 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-01-09 12:21:33 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-01-09 12:21:33 [34mINFO [0;39m - org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-01-09 12:21:33 [31mWARN [0;39m - org.hibernate.id.UUIDHexGenerator - HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2023-01-09 12:21:34 [34mINFO [0;39m - org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-01-09 12:21:34 [34mINFO [0;39m - org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-01-09 12:21:34 [31mWARN [0;39m - org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-09 12:21:35 [34mINFO [0;39m - org.springframework.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@76379796, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@77350382, org.springframework.security.web.context.SecurityContextPersistenceFilter@2f59cb6f, org.springframework.security.web.header.HeaderWriterFilter@21f27bb5, org.springframework.security.web.authentication.logout.LogoutFilter@53850535, JwtTokenFilter(profileRepository=org.springframework.data.jpa.repository.support.SimpleJpaRepository@3f119b55, clientRepository=org.springframework.data.jpa.repository.support.SimpleJpaRepository@33ef393a, companyRepository=org.springframework.data.jpa.repository.support.SimpleJpaRepository@6d18401b), org.springframework.security.web.savedrequest.RequestCacheAwareFilter@614d01b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6ba516ff, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1ebcfcf1, org.springframework.security.web.session.SessionManagementFilter@7896e96a, org.springframework.security.web.access.ExceptionTranslationFilter@67e37d25, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@189f9f9f]
+2023-01-09 12:21:35 [34mINFO [0;39m - org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-01-09 12:21:36 [34mINFO [0;39m - uz.uzcard.UzcardProjectApplication - Started UzcardProjectApplication in 5.916 seconds (JVM running for 6.714)
+2023-01-09 12:21:39 [34mINFO [0;39m - org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-01-09 12:21:39 [34mINFO [0;39m - org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-01-09 12:21:39 [34mINFO [0;39m - org.springframework.web.servlet.DispatcherServlet - Completed initialization in 3 ms

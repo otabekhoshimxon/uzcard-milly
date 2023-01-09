@@ -129,6 +129,20 @@ public class TransactionController {
         return transactionService.getDebitByCardId(cardId,page,size);
     }
 
+  @PreAuthorize("hasRole('PAYMENT' or hasRole('BANK'))")
+    @GetMapping("/getCreditAndDebit/{cardId}")
+    @ApiOperation(value = "Api for get DEBIT transaction info by card ID  " ,nickname = " API for get DEBIT transaction info by card ID " ,notes = "get DEBIT transaction info by card ID  only BANK ")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
+            @ApiResponse(code = 403, message = "Ruxsat yo'q "),
+            @ApiResponse(code = 201, message = "Yaratildi "),
+            @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
+            @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
+    })
+
+    public ResponseEntity getCreditAndDebit(@PathVariable("cardId")String  cardId) {
+        return transactionService.getCreditAndDebitByCardId(cardId);
+    }
+
 
 
 
