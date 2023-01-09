@@ -104,20 +104,40 @@ public class TransactionService {
 
         if (transactionRepository.countByCardId(cardId)==0){
             return ResponceDTO.sendBadRequestResponce(-1, "Transactions does not exist");
+        }
+        PageImpl transactionByTypeAndCardId = getTransactionByTypeAndCardId(TransactionType.DEBIT, cardId, page, size);
+
+        return ResponseEntity.ok(transactionByTypeAndCardId);
+
+    }
+
+
+    public ResponseEntity getDebitByCardId(String cardId, Integer page, Integer size) {
+        if (transactionRepository.countByCardId(cardId)==0){
+            return ResponceDTO.sendBadRequestResponce(-1, "Transactions does not exist");
 
         }
-        Pageable pageable=PageRequest.of(page,size);
-        List<TransactionEntity> byCardId = transactionRepository.getByTransactionTypeAndCardId(TransactionType.CREDIT,cardId,pageable);
+        PageImpl transactionByTypeAndCardId = getTransactionByTypeAndCardId(TransactionType.DEBIT, cardId, page, size);
 
-        PageImpl page1=new PageImpl(getInfoList(byCardId),pageable,byCardId.size());
-        return ResponseEntity.ok(page1);
+        return ResponseEntity.ok(transactionByTypeAndCardId);
+
+
+
+
 
     }
 
 
 
+    public PageImpl getTransactionByTypeAndCardId(TransactionType transactionType, String cardId, Integer page, Integer size) {
+        Pageable pageable=PageRequest.of(page,size);
+        List<TransactionEntity> byCardId = transactionRepository.getByTransactionTypeAndCardId(transactionType,cardId,pageable);
+        PageImpl page1=new PageImpl(getInfoList(byCardId),pageable,byCardId.size());
+        return page1;
 
 
+
+    }
 
 
 

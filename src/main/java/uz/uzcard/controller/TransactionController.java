@@ -99,7 +99,7 @@ public class TransactionController {
 
   @PreAuthorize("hasRole('PAYMENT' or hasRole('BANK'))")
     @GetMapping("/getCreditByCardId/{cardId}")
-    @ApiOperation(value = "Api for get transaction info by phone  " ,nickname = " API for get transaction info by phone " ,notes = "get transaction info by phone  only BANK ")
+    @ApiOperation(value = "Api for get CREDIT transaction info by card ID  " ,nickname = " API for get CREDIT transaction info by card ID " ,notes = "get CREDIT transaction info by card ID  only BANK ")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
             @ApiResponse(code = 403, message = "Ruxsat yo'q "),
             @ApiResponse(code = 201, message = "Yaratildi "),
@@ -111,6 +111,22 @@ public class TransactionController {
                                       @RequestParam(value = "page",defaultValue = "0") Integer page,
                                       @RequestParam(value = "size",defaultValue = "5") Integer size) {
         return transactionService.getCreditByCardId(cardId,page,size);
+    }
+
+  @PreAuthorize("hasRole('PAYMENT' or hasRole('BANK'))")
+    @GetMapping("/getDebitByCardId/{cardId}")
+    @ApiOperation(value = "Api for get DEBIT transaction info by card ID  " ,nickname = " API for get DEBIT transaction info by card ID " ,notes = "get DEBIT transaction info by card ID  only BANK ")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
+            @ApiResponse(code = 403, message = "Ruxsat yo'q "),
+            @ApiResponse(code = 201, message = "Yaratildi "),
+            @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
+            @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
+    })
+
+    public ResponseEntity getDebitByCardId(@PathVariable("cardId")String  cardId,
+                                      @RequestParam(value = "page",defaultValue = "0") Integer page,
+                                      @RequestParam(value = "size",defaultValue = "5") Integer size) {
+        return transactionService.getDebitByCardId(cardId,page,size);
     }
 
 

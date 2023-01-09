@@ -345,3 +345,31 @@ java.lang.IllegalArgumentException: Parameter value [CREDIT] did not match expec
 2023-01-09 11:32:35 [34mINFO [0;39m - org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 2023-01-09 11:32:35 [34mINFO [0;39m - org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2023-01-09 11:32:35 [34mINFO [0;39m - org.springframework.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2023-01-09 11:48:45 [34mINFO [0;39m - org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-01-09 11:48:45 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2023-01-09 11:48:45 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2023-01-09 11:48:54 [34mINFO [0;39m - uz.uzcard.UzcardProjectApplication - Starting UzcardProjectApplication using Java 18.0.2 on java with PID 257645 (/home/otabek/Otabek Hoshimxon/Portfolios/uzcard-project/target/classes started by otabek in /home/otabek/Otabek Hoshimxon/Portfolios/uzcard-project)
+2023-01-09 11:48:54 [34mINFO [0;39m - uz.uzcard.UzcardProjectApplication - No active profile set, falling back to 1 default profile: "default"
+2023-01-09 11:48:55 [34mINFO [0;39m - org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-01-09 11:48:55 [34mINFO [0;39m - org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 44 ms. Found 7 JPA repository interfaces.
+2023-01-09 11:48:55 [34mINFO [0;39m - org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-01-09 11:48:55 [34mINFO [0;39m - org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-01-09 11:48:55 [34mINFO [0;39m - org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.69]
+2023-01-09 11:48:56 [34mINFO [0;39m - org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-01-09 11:48:56 [34mINFO [0;39m - org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1754 ms
+2023-01-09 11:48:56 [34mINFO [0;39m - org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-01-09 11:48:56 [34mINFO [0;39m - org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-01-09 11:48:56 [34mINFO [0;39m - org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-01-09 11:48:56 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-01-09 11:48:56 [34mINFO [0;39m - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-01-09 11:48:56 [34mINFO [0;39m - org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-01-09 11:48:56 [31mWARN [0;39m - org.hibernate.id.UUIDHexGenerator - HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2023-01-09 11:48:57 [34mINFO [0;39m - org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-01-09 11:48:57 [34mINFO [0;39m - org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-01-09 11:48:58 [31mWARN [0;39m - org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-09 11:48:58 [34mINFO [0;39m - org.springframework.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@77350382, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4fbdee7a, org.springframework.security.web.context.SecurityContextPersistenceFilter@60cbba57, org.springframework.security.web.header.HeaderWriterFilter@2e2a2b07, org.springframework.security.web.authentication.logout.LogoutFilter@19565b5, JwtTokenFilter(profileRepository=org.springframework.data.jpa.repository.support.SimpleJpaRepository@64dcfd09, clientRepository=org.springframework.data.jpa.repository.support.SimpleJpaRepository@6d18401b, companyRepository=org.springframework.data.jpa.repository.support.SimpleJpaRepository@1ebcfcf1), org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3be2ef56, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3bbb3c84, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@8e100e7, org.springframework.security.web.session.SessionManagementFilter@4e451f9a, org.springframework.security.web.access.ExceptionTranslationFilter@78d49939, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5b908c6d]
+2023-01-09 11:48:58 [34mINFO [0;39m - org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-01-09 11:48:59 [34mINFO [0;39m - uz.uzcard.UzcardProjectApplication - Started UzcardProjectApplication in 5.806 seconds (JVM running for 6.594)
+2023-01-09 11:50:18 [34mINFO [0;39m - org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-01-09 11:50:18 [34mINFO [0;39m - org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-01-09 11:50:18 [34mINFO [0;39m - org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
