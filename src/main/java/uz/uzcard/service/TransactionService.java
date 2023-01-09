@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import uz.uzcard.dto.CardInfoDTO;
 import uz.uzcard.dto.ClientShortInfoDTO;
 import uz.uzcard.dto.TransactionInfoDTO;
+import uz.uzcard.dto.card.CardPhoneDTO;
 import uz.uzcard.dto.responce.ResponceDTO;
 import uz.uzcard.entity.CardEntity;
 import uz.uzcard.entity.ClientEntity;
@@ -80,6 +81,32 @@ public class TransactionService {
 
 
     }
+
+    public ResponseEntity getByPhone(CardPhoneDTO phone, Integer page, Integer size) {
+
+        if(transactionRepository.countByPhone(phone.getPhone())==0){
+            return ResponceDTO.sendBadRequestResponce(-1, "Transactions does not exist");
+
+        }
+
+        Pageable pageable= PageRequest.of(page,size);
+        List<TransactionEntity> byPhone = transactionRepository.findByPhone(phone.getPhone(),pageable);
+        PageImpl page1=new PageImpl(getInfoList(byPhone),pageable,byPhone.size());
+        return ResponseEntity.ok(page1);
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
 
 
     public List<TransactionEntity> getTransactionListByCardNumber(String cardNumber,Pageable pageable){

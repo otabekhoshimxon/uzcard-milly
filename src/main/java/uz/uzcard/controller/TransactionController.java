@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import uz.uzcard.dto.TransactionCreateDTO;
 import uz.uzcard.dto.card.CardCreateDTO;
 import uz.uzcard.dto.card.CardNumberDTO;
+import uz.uzcard.dto.card.CardPhoneDTO;
 import uz.uzcard.service.TransactionService;
 
 import javax.validation.Valid;
@@ -76,6 +77,22 @@ public class TransactionController {
                                       @RequestParam(value = "page",defaultValue = "0") Integer page,
                                       @RequestParam(value = "size",defaultValue = "4") Integer size) {
         return transactionService.getByProfileId(id,page,size);
+    }
+
+  @PreAuthorize("hasRole('PAYMENT' or hasRole('BANK'))")
+    @GetMapping("/phone")
+    @ApiOperation(value = "Api for get transaction info by profile ID  " ,nickname = " API for get transaction info by profile ID " ,notes = "get transaction info by profile ID  only BANK ")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
+            @ApiResponse(code = 403, message = "Ruxsat yo'q "),
+            @ApiResponse(code = 201, message = "Yaratildi "),
+            @ApiResponse(code = 401, message = "Avtorizatsiyadan o'tilmagan "),
+            @ApiResponse(code = 404, message = "Mavjud bo'lmagan API ")
+    })
+
+    public ResponseEntity getCardByProfileId(@RequestBody CardPhoneDTO phone,
+                                      @RequestParam(value = "page",defaultValue = "0") Integer page,
+                                      @RequestParam(value = "size",defaultValue = "4") Integer size) {
+        return transactionService.getByPhone(phone,page,size);
     }
 
 

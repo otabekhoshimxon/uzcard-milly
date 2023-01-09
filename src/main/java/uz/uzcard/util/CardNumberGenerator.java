@@ -41,4 +41,7 @@ public class CardNumberGenerator {
         int mod = sum % 10;
         return ((mod == 0) ? 0 : 10 - mod);
     }
+
+
+
 }
