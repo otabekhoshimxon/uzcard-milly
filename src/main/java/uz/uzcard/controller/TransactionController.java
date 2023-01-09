@@ -131,7 +131,7 @@ public class TransactionController {
 
   @PreAuthorize("hasRole('PAYMENT' or hasRole('BANK'))")
     @GetMapping("/getCreditAndDebit/{cardId}")
-    @ApiOperation(value = "Api for get DEBIT and CREDIT  transaction info by card ID  " ,nickname = " API for get DEBIT and CREDIT transaction info by card ID " ,notes = "get DEBIT and CREDIT transaction info by card ID  only BANK ")
+    @ApiOperation(value = "Api for get DEBIT and CREDIT Amount Monthly by card ID  " ,nickname = " API for get DEBIT and CREDIT Amount Monthlyby card ID " ,notes = "get DEBIT and CREDIT Amount Monthlyby card ID  only BANK ")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Muvaffaqqiyatli"),
             @ApiResponse(code = 403, message = "Ruxsat yo'q "),
             @ApiResponse(code = 201, message = "Yaratildi "),
